@@ -31,24 +31,25 @@ public class index_FRAME extends javax.swing.JFrame {
         menu_item_2 = new javax.swing.JButton();
         menu_item_4 = new javax.swing.JButton();
         menu_item_3 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        index_Panel = new javax.swing.JPanel();
+        label_name = new javax.swing.JLabel();
+        label_membership = new javax.swing.JLabel();
+        label_something = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 204, 102));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         menu_Panel.setBackground(new java.awt.Color(255, 204, 204));
 
-        menu_item_1.setText("jButton1");
+        menu_item_1.setText("Check");
 
-        menu_item_2.setText("jButton1");
+        menu_item_2.setText("Class(es)");
 
-        menu_item_4.setText("jButton1");
+        menu_item_4.setText("--*-----");
 
-        menu_item_3.setText("jButton1");
+        menu_item_3.setText("-*-----");
 
         javax.swing.GroupLayout menu_PanelLayout = new javax.swing.GroupLayout(menu_Panel);
         menu_Panel.setLayout(menu_PanelLayout);
@@ -77,59 +78,41 @@ public class index_FRAME extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
+        getContentPane().add(menu_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 864, -1));
 
-        jLabel1.setText("jLabel1");
+        index_Panel.setBackground(new java.awt.Color(204, 255, 204));
 
-        jLabel2.setText("jLabel2");
+        label_name.setText("*--------");
 
-        jLabel3.setText("jLabel3");
+        label_membership.setText("----*---");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(586, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2))
-                .addGap(222, 222, 222))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        label_something.setText("--------*");
+
+        javax.swing.GroupLayout index_PanelLayout = new javax.swing.GroupLayout(index_Panel);
+        index_Panel.setLayout(index_PanelLayout);
+        index_PanelLayout.setHorizontalGroup(
+            index_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(index_PanelLayout.createSequentialGroup()
+                .addGap(172, 172, 172)
+                .addGroup(index_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(label_something)
+                    .addComponent(label_membership)
+                    .addComponent(label_name))
+                .addContainerGap(636, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addContainerGap(253, Short.MAX_VALUE))
+        index_PanelLayout.setVerticalGroup(
+            index_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(index_PanelLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(label_name)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(label_membership)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(label_something)
+                .addContainerGap(374, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(menu_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(menu_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        getContentPane().add(index_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 72, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -170,10 +153,10 @@ public class index_FRAME extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel index_Panel;
+    private javax.swing.JLabel label_membership;
+    private javax.swing.JLabel label_name;
+    private javax.swing.JLabel label_something;
     private javax.swing.JPanel menu_Panel;
     private javax.swing.JButton menu_item_1;
     private javax.swing.JButton menu_item_2;
