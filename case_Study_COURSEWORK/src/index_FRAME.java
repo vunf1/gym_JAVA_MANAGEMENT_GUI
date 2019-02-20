@@ -3,7 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.io.IOException;
+import java.net.URL;
 /**
  *
  * @author deoiveij
@@ -13,8 +17,26 @@ public class index_FRAME extends javax.swing.JFrame {
     /**
      * Creates new form index_FRAME
      */
+    public String progressValue;
+    
     public index_FRAME() {
         initComponents();
+        
+        this.menu_item_1.setText("<html><center>"+"Check"+"<br>"+"Membership"+"</center></html>");
+        this.menu_item_2.setText("<html><center>"+"Book"+"<br>"+"Class"+"</center></html>");
+        this.menu_item_3.setText("<html><center>"+"Update"+"<br>"+"Membership"+"</center></html>");
+        this.menu_item_4.setText("<html><center>"+"Account"+"<br>"+"Settings"+"</center></html>");
+        
+        
+        
+        
+        
+        progressValue= "30";
+        
+        this.n_actual_class_booked.setText(progressValue);
+        this.progressBar_membership.setValue(Integer.parseInt(this.n_actual_class_booked.getText()));
+        this.n_actual_class_booked2.setText(progressValue);
+        this.progressBar_membership2.setValue(Integer.parseInt(this.n_actual_class_booked.getText()));
     }
 
     /**
@@ -31,10 +53,46 @@ public class index_FRAME extends javax.swing.JFrame {
         menu_item_2 = new javax.swing.JButton();
         menu_item_4 = new javax.swing.JButton();
         menu_item_3 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         index_Panel = new javax.swing.JPanel();
         label_name = new javax.swing.JLabel();
         label_membership = new javax.swing.JLabel();
         label_something = new javax.swing.JLabel();
+        member_next_goal2 = new javax.swing.JLabel();
+        progressBar_membership2 = new javax.swing.JProgressBar();
+        n_actual_class_booked2 = new javax.swing.JLabel();
+        label_title_CLASS2 = new javax.swing.JLabel();
+        image_panel = new javax.swing.JPanel();
+        book_Panel = new javax.swing.JPanel();
+        label_name1 = new javax.swing.JLabel();
+        label_something1 = new javax.swing.JLabel();
+        member_next_goal1 = new javax.swing.JLabel();
+        progressBar_membership = new javax.swing.JProgressBar();
+        n_actual_class_booked = new javax.swing.JLabel();
+        label_title_CLASS = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        buttom_add2Book = new javax.swing.JButton();
+        label_text_AvaiableClass = new javax.swing.JLabel();
+        update_Panel = new javax.swing.JPanel();
+        label_name2 = new javax.swing.JLabel();
+        label_something2 = new javax.swing.JLabel();
+        member_next_goal3 = new javax.swing.JLabel();
+        progressBar_membership1 = new javax.swing.JProgressBar();
+        n_actual_class_booked1 = new javax.swing.JLabel();
+        label_title_CLASS1 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        buttom_add2Book1 = new javax.swing.JButton();
+        label_text_AvaiableClass1 = new javax.swing.JLabel();
+        accSettings_Panel = new javax.swing.JPanel();
+        buttom_add2Book2 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 204, 102));
@@ -42,80 +100,260 @@ public class index_FRAME extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         menu_Panel.setBackground(new java.awt.Color(255, 204, 204));
+        menu_Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        menu_item_1.setText("Check");
+        menu_item_1.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        menu_item_1.setText("Check Membership");
+        menu_item_1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_1ActionPerformed(evt);
+            }
+        });
+        menu_Panel.add(menu_item_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 130, 40));
 
-        menu_item_2.setText("Class(es)");
+        menu_item_2.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        menu_item_2.setText("Book");
+        menu_item_2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_2ActionPerformed(evt);
+            }
+        });
+        menu_Panel.add(menu_item_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 110, 40));
 
+        menu_item_4.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
         menu_item_4.setText("--*-----");
+        menu_item_4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_4ActionPerformed(evt);
+            }
+        });
+        menu_Panel.add(menu_item_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, 110, 40));
 
-        menu_item_3.setText("-*-----");
+        menu_item_3.setFont(new java.awt.Font("Trebuchet MS", 1, 11)); // NOI18N
+        menu_item_3.setText("Update");
+        menu_item_3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_item_3ActionPerformed(evt);
+            }
+        });
+        menu_Panel.add(menu_item_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, 110, 40));
 
-        javax.swing.GroupLayout menu_PanelLayout = new javax.swing.GroupLayout(menu_Panel);
-        menu_Panel.setLayout(menu_PanelLayout);
-        menu_PanelLayout.setHorizontalGroup(
-            menu_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menu_PanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(menu_item_1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(menu_item_2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(menu_item_3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(menu_item_4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        menu_PanelLayout.setVerticalGroup(
-            menu_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menu_PanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(menu_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(menu_item_2, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
-                    .addComponent(menu_item_4, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
-                    .addComponent(menu_item_3, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
-                    .addComponent(menu_item_1, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+        jLabel1.setFont(new java.awt.Font("Trajan Pro", 1, 18)); // NOI18N
+        jLabel1.setText("Member Area");
+        menu_Panel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
-        getContentPane().add(menu_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 864, -1));
+        jLabel2.setText("Hello <display name>");
+        menu_Panel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 36, -1, -1));
+
+        getContentPane().add(menu_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 60));
 
         index_Panel.setBackground(new java.awt.Color(204, 255, 204));
+        index_Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        label_name.setText("*--------");
+        label_name.setText("<Username>");
+        index_Panel.add(label_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, -1));
 
-        label_membership.setText("----*---");
+        label_membership.setText("<e-mail>");
+        index_Panel.add(label_membership, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, -1, -1));
 
-        label_something.setText("--------*");
+        label_something.setText("<actual membership>");
+        index_Panel.add(label_something, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, -1, -1));
 
-        javax.swing.GroupLayout index_PanelLayout = new javax.swing.GroupLayout(index_Panel);
-        index_Panel.setLayout(index_PanelLayout);
-        index_PanelLayout.setHorizontalGroup(
-            index_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(index_PanelLayout.createSequentialGroup()
-                .addGap(172, 172, 172)
-                .addGroup(index_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(label_something)
-                    .addComponent(label_membership)
-                    .addComponent(label_name))
-                .addContainerGap(636, Short.MAX_VALUE))
+        member_next_goal2.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
+        member_next_goal2.setText("<Next Goal>");
+        index_Panel.add(member_next_goal2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 320, -1, -1));
+
+        progressBar_membership2.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
+        index_Panel.add(progressBar_membership2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 460, -1));
+
+        n_actual_class_booked2.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
+        n_actual_class_booked2.setText("<number class Y>");
+        index_Panel.add(n_actual_class_booked2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, -1, -1));
+
+        label_title_CLASS2.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
+        label_title_CLASS2.setText("Membership Update Progress");
+        index_Panel.add(label_title_CLASS2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
+
+        javax.swing.GroupLayout image_panelLayout = new javax.swing.GroupLayout(image_panel);
+        image_panel.setLayout(image_panelLayout);
+        image_panelLayout.setHorizontalGroup(
+            image_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 140, Short.MAX_VALUE)
         );
-        index_PanelLayout.setVerticalGroup(
-            index_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(index_PanelLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(label_name)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(label_membership)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(label_something)
-                .addContainerGap(374, Short.MAX_VALUE))
+        image_panelLayout.setVerticalGroup(
+            image_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        getContentPane().add(index_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 72, -1, -1));
+        index_Panel.add(image_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 140, -1));
+
+        getContentPane().add(index_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 740, 360));
+
+        book_Panel.setBackground(new java.awt.Color(204, 255, 204));
+        book_Panel.setToolTipText("Book a Class");
+        book_Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        label_name1.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
+        label_name1.setText("<Username>");
+        book_Panel.add(label_name1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
+
+        label_something1.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
+        label_something1.setText("<actual membership>");
+        book_Panel.add(label_something1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, -1));
+
+        member_next_goal1.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
+        member_next_goal1.setText("<Next Goal>");
+        book_Panel.add(member_next_goal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 320, -1, -1));
+
+        progressBar_membership.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
+        book_Panel.add(progressBar_membership, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 460, -1));
+
+        n_actual_class_booked.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
+        n_actual_class_booked.setText("<number class Y>");
+        book_Panel.add(n_actual_class_booked, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, -1, -1));
+
+        label_title_CLASS.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
+        label_title_CLASS.setText("Membership Update Progress");
+        book_Panel.add(label_title_CLASS, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
+
+        jComboBox1.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        book_Panel.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 190, -1));
+
+        buttom_add2Book.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
+        buttom_add2Book.setText("Click to Book");
+        book_Panel.add(buttom_add2Book, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, -1, -1));
+
+        label_text_AvaiableClass.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
+        label_text_AvaiableClass.setText("Avaiable Classes");
+        book_Panel.add(label_text_AvaiableClass, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
+
+        getContentPane().add(book_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 740, 360));
+
+        update_Panel.setBackground(new java.awt.Color(204, 255, 204));
+        update_Panel.setToolTipText("Update Membership");
+        update_Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        label_name2.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
+        label_name2.setText("<Username>");
+        update_Panel.add(label_name2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
+
+        label_something2.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
+        label_something2.setText("<actual membership>");
+        update_Panel.add(label_something2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, -1));
+
+        member_next_goal3.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
+        member_next_goal3.setText("<Next Goal>");
+        update_Panel.add(member_next_goal3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 320, -1, -1));
+
+        progressBar_membership1.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
+        update_Panel.add(progressBar_membership1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 460, -1));
+
+        n_actual_class_booked1.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
+        n_actual_class_booked1.setText("<number class Y>");
+        update_Panel.add(n_actual_class_booked1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, -1, -1));
+
+        label_title_CLASS1.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
+        label_title_CLASS1.setText("Membership Update Progress");
+        update_Panel.add(label_title_CLASS1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
+
+        jComboBox2.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        update_Panel.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 190, -1));
+
+        buttom_add2Book1.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
+        buttom_add2Book1.setText("Click to Update");
+        update_Panel.add(buttom_add2Book1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, -1, -1));
+
+        label_text_AvaiableClass1.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
+        label_text_AvaiableClass1.setText("Avaiable Membership");
+        update_Panel.add(label_text_AvaiableClass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
+
+        getContentPane().add(update_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 740, 360));
+
+        accSettings_Panel.setBackground(new java.awt.Color(204, 255, 204));
+        accSettings_Panel.setToolTipText("Membership Settings");
+        accSettings_Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        buttom_add2Book2.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
+        buttom_add2Book2.setText("Edit");
+        accSettings_Panel.add(buttom_add2Book2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, -1, -1));
+
+        jTextField1.setText("jTextField1");
+        accSettings_Panel.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, 180, -1));
+
+        jTextField2.setText("jTextField1");
+        accSettings_Panel.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 180, -1));
+
+        jTextField3.setText("jTextField1");
+        accSettings_Panel.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 180, -1));
+
+        jLabel3.setText("Password");
+        accSettings_Panel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+
+        jLabel4.setText("jLabel3");
+        accSettings_Panel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+
+        jLabel5.setText("Username");
+        accSettings_Panel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+
+        jTextField4.setText("jTextField1");
+        accSettings_Panel.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 180, -1));
+
+        getContentPane().add(accSettings_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 740, 360));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void menu_item_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_2ActionPerformed
+        
+        /**
+         BOOK BUTTON
+         */
+        this.index_Panel.setVisible(false);
+        this.accSettings_Panel.setVisible(false);
+        this.update_Panel.setVisible(false);
+        
+        this.book_Panel.setVisible(true);
+    }//GEN-LAST:event_menu_item_2ActionPerformed
+
+    private void menu_item_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_1ActionPerformed
+        /**
+         CHECK BUTTON
+         */
+        this.book_Panel.setVisible(false);
+        this.accSettings_Panel.setVisible(false);
+        this.update_Panel.setVisible(false);
+        
+        this.index_Panel.setVisible(true);
+        
+        
+    }//GEN-LAST:event_menu_item_1ActionPerformed
+
+    
+    private void menu_item_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_3ActionPerformed
+        
+        /**
+         MEMBERSHIP UPDATE BUTTON
+         */
+        this.book_Panel.setVisible(false);
+        this.index_Panel.setVisible(false);
+        this.accSettings_Panel.setVisible(false);
+        
+        this.update_Panel.setVisible(true);
+
+    }//GEN-LAST:event_menu_item_3ActionPerformed
+
+    private void menu_item_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_4ActionPerformed
+        /**
+         ACC SETTINGS BUTTON
+         */
+        this.book_Panel.setVisible(false);
+        this.index_Panel.setVisible(false);
+        this.update_Panel.setVisible(false);
+        
+        this.accSettings_Panel.setVisible(true);
+    }//GEN-LAST:event_menu_item_4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,14 +391,50 @@ public class index_FRAME extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel accSettings_Panel;
+    private javax.swing.JPanel book_Panel;
+    private javax.swing.JButton buttom_add2Book;
+    private javax.swing.JButton buttom_add2Book1;
+    private javax.swing.JButton buttom_add2Book2;
+    private javax.swing.JPanel image_panel;
     private javax.swing.JPanel index_Panel;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     private javax.swing.JLabel label_membership;
     private javax.swing.JLabel label_name;
+    private javax.swing.JLabel label_name1;
+    private javax.swing.JLabel label_name2;
     private javax.swing.JLabel label_something;
+    private javax.swing.JLabel label_something1;
+    private javax.swing.JLabel label_something2;
+    private javax.swing.JLabel label_text_AvaiableClass;
+    private javax.swing.JLabel label_text_AvaiableClass1;
+    private javax.swing.JLabel label_title_CLASS;
+    private javax.swing.JLabel label_title_CLASS1;
+    private javax.swing.JLabel label_title_CLASS2;
+    private javax.swing.JLabel member_next_goal1;
+    private javax.swing.JLabel member_next_goal2;
+    private javax.swing.JLabel member_next_goal3;
     private javax.swing.JPanel menu_Panel;
     private javax.swing.JButton menu_item_1;
     private javax.swing.JButton menu_item_2;
     private javax.swing.JButton menu_item_3;
     private javax.swing.JButton menu_item_4;
+    public javax.swing.JLabel n_actual_class_booked;
+    public javax.swing.JLabel n_actual_class_booked1;
+    public javax.swing.JLabel n_actual_class_booked2;
+    public javax.swing.JProgressBar progressBar_membership;
+    public javax.swing.JProgressBar progressBar_membership1;
+    public javax.swing.JProgressBar progressBar_membership2;
+    private javax.swing.JPanel update_Panel;
     // End of variables declaration//GEN-END:variables
 }
