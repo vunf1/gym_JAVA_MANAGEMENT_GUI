@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import javax.imageio.ImageIO;
+import java.awt.Dimension;
+import java.awt.GraphicsEnvironment;
+import java.awt.Point;
 import javax.swing.*;
-import java.awt.*;
-import java.io.IOException;
-import java.net.URL;
+
 
 
 /**
@@ -19,6 +19,8 @@ public class index_FRAME extends javax.swing.JFrame {
 
     
     private void alertWAR(String s){
+        
+        
         JOptionPane optionPane = new JOptionPane(s,JOptionPane.WARNING_MESSAGE);
         JDialog dialog = optionPane.createDialog("Warning!");
         dialog.setAlwaysOnTop(true); // to show top of all other application
@@ -42,6 +44,10 @@ public class index_FRAME extends javax.swing.JFrame {
     public String progressValue;
     
     private void centerFrame() {
+        
+        NewClass tmp = new NewClass();
+        System.out.println(tmp.mytest());
+        
         //call to center Frames to center of actual Screen
             Dimension windowSize = getSize();
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -434,6 +440,8 @@ public class index_FRAME extends javax.swing.JFrame {
         /**
          CHECK BUTTON
          */
+        
+        
         this.book_Panel.setVisible(false);
         this.accSettings_Panel.setVisible(false);
         this.update_Panel.setVisible(false);
@@ -538,14 +546,18 @@ public class index_FRAME extends javax.swing.JFrame {
     private void list_membershipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list_membershipActionPerformed
         
         if(this.list_membership.getSelectedItem()=="Gold"){
-            alertINFO("Gold Selected");
+            this.label_info.setText("");
+            alertINFO(this.list_membership.getSelectedItem().toString());
         }
         
         if(this.list_membership.getSelectedItem()=="Silver"){
-            alertINFO("Silver Selected");
+            this.label_info.setText("");
+            alertINFO(this.list_membership.getSelectedItem().toString());
         }
         
         if(this.list_membership.getSelectedItem()=="Platinium"){
+            alertINFO(this.list_membership.getSelectedItem().toString());
+            
             this.label_info.setText("<html><center>You need first have membership Gold for only then choose Platinium, costs £100 p/year<center></html>");
         }
         
