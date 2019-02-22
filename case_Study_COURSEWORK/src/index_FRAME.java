@@ -7,8 +7,6 @@ import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
 import javax.swing.*;
-import java.sql.Connection;
-
 
 
 
@@ -18,8 +16,15 @@ import java.sql.Connection;
  */
 
 public class index_FRAME extends javax.swing.JFrame {
-
     
+    public String progressValue;
+    DataBase_mySQL conn = new DataBase_mySQL();
+    
+    
+    
+    
+    
+        
     private void alertWAR(String s){
         
         
@@ -41,10 +46,6 @@ public class index_FRAME extends javax.swing.JFrame {
         dialog.setVisible(true); // to visible the dialog
     };
     
-    
-    
-    public String progressValue;
-    
     private void centerFrame() {
         
         
@@ -62,7 +63,6 @@ public class index_FRAME extends javax.swing.JFrame {
         
         initComponents();
         centerFrame();
-        
         
         this.trigger_alert.setVisible(false);
         this.index_Panel.setVisible(false);
@@ -594,7 +594,7 @@ public class index_FRAME extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 
-                new index_FRAME().setVisible(true);
+                new index_FRAME().setVisible(false);
                 
                 
             }
