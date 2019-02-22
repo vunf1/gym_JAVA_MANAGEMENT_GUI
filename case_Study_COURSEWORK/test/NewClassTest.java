@@ -37,12 +37,12 @@ public class NewClassTest {
     }
 
     /**
-     * Test of mytest method, of class NewClass.
+     * Test of mytest method, of class dataBase.
      */
     @Test
     public void testMytest() {
         System.out.println("mytest");
-        NewClass instance = new NewClass();
+        dataBase instance = new dataBase();
         int expResult = 0;
         int result = instance.mytest();
         assertEquals(expResult, result);

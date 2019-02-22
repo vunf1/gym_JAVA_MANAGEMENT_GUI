@@ -7,6 +7,8 @@ import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
 import javax.swing.*;
+import java.sql.Connection;
+
 
 
 
@@ -45,8 +47,6 @@ public class index_FRAME extends javax.swing.JFrame {
     
     private void centerFrame() {
         
-        NewClass tmp = new NewClass();
-        System.out.println(tmp.mytest());
         
         //call to center Frames to center of actual Screen
             Dimension windowSize = getSize();
