@@ -49,17 +49,6 @@ public class index_FRAMETest {
         
     }
 
-    /**
-     * Test of <error> method, of class index_FRAME.
-     */
-    @Test
-    public void test<error>() {
-        System.out.println("<error>");
-        DataBase_mySQL.test = null;
-        index_FRAME instance = new index_FRAME();
-        instance.<error>(<error>);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+    
     
 }
