@@ -594,7 +594,6 @@ public class index_FRAME extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 
-                new loginFrame().setVisible(true);
                 new index_FRAME().setVisible(false);
                 
                 

@@ -16,7 +16,7 @@ import org.junit.runners.Suite;
  * @author deoiveij
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({loginFrameTest.class, DataBase_mySQL.class, index_FRAMETest.class})
+@Suite.SuiteClasses({loginFrameTest.class, NewClassTest.class, index_FRAMETest.class})
 public class RootSuite {
 
     @BeforeClass

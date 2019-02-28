@@ -16,14 +16,14 @@ import java.util.logging.Logger;
 public class DataBase_mySQL {
 
     
-    public static String connectionURL = "jdbc:derby://localhost:1527/membershipDB ";
-    public static String uName = "rooty";
-    public static String uPass= "rooty";
+    public static String connectionURL = "jdbc:mysql://localhost/MembershipDB";
+    public static String uName = "root";
+    public static String uPass= "";
     
     public static void main(String[] args) {
 
         
-        DataBase_mySQL.getMemberData_Request("m");
+        DataBase_mySQL.getMemberData_Request("vunf1");
         /*
         System.out.println("Trying to connect to database...");
         Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
@@ -94,8 +94,6 @@ public class DataBase_mySQL {
        
         try {
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
-            
-                    System.out.println("DB PASS");
             if (conn != null){
             
                 Statement st = conn.createStatement();
@@ -103,11 +101,10 @@ public class DataBase_mySQL {
                 //retrieve the sample records from the Person table
                 System.out.println("retrieve the sample records");
                 System.out.println("---------------------------------");
-                String sql = "SELECT * FROM MEMBERS_REQUEST WHERE USARNAME='"+username+"'";
+                String sql = "SELECT * FROM members_request WHERE username='"+username+"'";
                 rs=st.executeQuery(sql);
                 while(rs.next()){
-                    System.out.println("DB");
-                    //System.out.println(rs.getInt("id")+"\t"+rs.getString("username")+"\t"+rs.getString("membership"));
+                    System.out.println(rs.getInt("id")+"\t"+rs.getString("username")+"\t"+rs.getString("membership"));
                 }
             }else{System.out.println("DB FAILED");}
         } catch (SQLException ex) {
