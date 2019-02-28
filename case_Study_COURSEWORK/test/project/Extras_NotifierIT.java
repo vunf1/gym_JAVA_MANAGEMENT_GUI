@@ -45,7 +45,7 @@ public class Extras_NotifierIT {
         System.out.println("alertWAR");
         String s = "";
         Extras_Notifier instance = new Extras_Notifier();
-        instance.alertWAR(s);
+        instance.alertWARR(s);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -56,7 +56,7 @@ public class Extras_NotifierIT {
     @Test
     public void testAlertINFO() {
         System.out.println("alertINFO");
-        String s = "";
+        String s = "The test case is a prototype.";
         Extras_Notifier instance = new Extras_Notifier();
         instance.alertINFO(s);
         // TODO review the generated test code and remove the default call to fail.
