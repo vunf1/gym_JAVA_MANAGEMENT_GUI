@@ -8,6 +8,8 @@ package project;
 import java.awt.Dimension;
 
 import com.google.gson.JsonArray;
+import java.awt.GraphicsEnvironment;
+import java.awt.Point;
 
 /**
  *
@@ -15,28 +17,58 @@ import com.google.gson.JsonArray;
  */
 public class Admin_FRAME extends javax.swing.JFrame {
     public static HomeController controller = new HomeController();
+    public static Extras_Notifier alert = new Extras_Notifier();
     /**
      * Creates new form Admin_Page
      */
+    
+        public void centerFrame() {
+        //call to center Frames to center of actual Screen
+          
+        Dimension windowSize = getSize();
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            Point centerPoint = ge.getCenterPoint();
+
+            int dx = centerPoint.x - windowSize.width / 2;
+            int dy = centerPoint.y - windowSize.height / 2;    
+            setLocation(dx, dy);
+    
+    };
     public Admin_FRAME() {
         initComponents();
-        label_username_left.setText("OK");
+        centerFrame();
+        
+        
+        //label_username_left.setText(controller.varUser);
         
         JsonArray dataJson = new JsonArray();
-        dataJson=controller.getMembersData();
+        dataJson=controller.getREMembersData();
         
         for (int x = 0; x < dataJson.size(); x++) {
             //each member for lopp
             //create list to SCRUD data
-            //System.out.println(dataJson.get(x));
+            System.out.println(dataJson.get(x));
         
         }
-        Dimension dim = new Dimension(20, 10);
+        
         
         
         
     }
 
+    
+    public void displayUser()
+    {
+        
+        label_username_left.setText(controller.varUser);
+        
+    } 
+    public void displayMembersTable()
+    {
+        
+        label_username_left.setText(controller.varUser);
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,6 +81,7 @@ public class Admin_FRAME extends javax.swing.JFrame {
         left_panel = new javax.swing.JPanel();
         request_btn = new javax.swing.JButton();
         label_username_left = new javax.swing.JLabel();
+        upLabel_user_left = new javax.swing.JLabel();
         right_panel_index = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -64,26 +97,42 @@ public class Admin_FRAME extends javax.swing.JFrame {
         left_panel.setPreferredSize(new java.awt.Dimension(300, 600));
 
         request_btn.setText("Act. Request");
+        request_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                request_btnActionPerformed(evt);
+            }
+        });
 
         label_username_left.setText("<Advisor Username>");
+
+        upLabel_user_left.setText("Welcome");
 
         javax.swing.GroupLayout left_panelLayout = new javax.swing.GroupLayout(left_panel);
         left_panel.setLayout(left_panelLayout);
         left_panelLayout.setHorizontalGroup(
             left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(left_panelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(request_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(left_panelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(request_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(left_panelLayout.createSequentialGroup()
+                        .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(left_panelLayout.createSequentialGroup()
+                                .addGap(88, 88, 88)
+                                .addComponent(label_username_left))
+                            .addGroup(left_panelLayout.createSequentialGroup()
+                                .addGap(122, 122, 122)
+                                .addComponent(upLabel_user_left)))
+                        .addGap(0, 89, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(left_panelLayout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addComponent(label_username_left)
-                .addContainerGap(100, Short.MAX_VALUE))
         );
         left_panelLayout.setVerticalGroup(
             left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(left_panelLayout.createSequentialGroup()
-                .addGap(122, 122, 122)
+                .addGap(95, 95, 95)
+                .addComponent(upLabel_user_left)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(label_username_left)
                 .addGap(18, 18, 18)
                 .addComponent(request_btn)
@@ -112,6 +161,13 @@ public class Admin_FRAME extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void request_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_request_btnActionPerformed
+
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_request_btnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,9 +206,10 @@ public class Admin_FRAME extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel label_username_left;
+    public javax.swing.JLabel label_username_left;
     private javax.swing.JPanel left_panel;
     private javax.swing.JButton request_btn;
     private javax.swing.JPanel right_panel_index;
+    private javax.swing.JLabel upLabel_user_left;
     // End of variables declaration//GEN-END:variables
 }

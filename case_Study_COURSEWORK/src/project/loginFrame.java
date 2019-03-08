@@ -5,6 +5,8 @@ import com.google.gson.JsonArray;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -35,6 +37,7 @@ public class loginFrame extends javax.swing.JFrame {
     
     };
     Extras_Notifier alert = new Extras_Notifier();
+    EncryptClass encrypt= new EncryptClass();
     public loginFrame() {
         
         initComponents();
@@ -113,6 +116,11 @@ public class loginFrame extends javax.swing.JFrame {
         register_panel.add(back_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, -1, -1));
 
         register_btn_action.setText("Action");
+        register_btn_action.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                register_btn_actionActionPerformed(evt);
+            }
+        });
         register_panel.add(register_btn_action, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, 150, -1));
 
         getContentPane().add(register_panel);
@@ -183,13 +191,19 @@ public class loginFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_actionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actionActionPerformed
-        System.out.println(username_text_login.getText().toString());                                          
-        System.out.println(password_text_login.getText().toString());
-        //logic error
-        if(username_text_login.getText().toString()=="" || password_text_login.getText().toString()==""){
-            alert.alertINFO(username_text_login.getText());
+       List<String> dataUSPW = new ArrayList<String>();
+       
+        if(username_text_login.getText().equals("") || password_text_login.getText().equals("")){
+            alert.alertERROR("Empty");
+            //
+            
         }else{
-            alert.alertWARR("Empty fields");
+            dataUSPW.add(username_text_login.getText());
+            dataUSPW.add(password_text_login.getText());
+            dataUSPW.set(1,encrypt.setPassword2Hash(dataUSPW.get(1)));
+            alert.checkLogin(dataUSPW);
+            
+            
         };
         
         // TODO add your handling code here:
@@ -210,6 +224,33 @@ public class loginFrame extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_exit_btnActionPerformed
 
+    private void register_btn_actionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_register_btn_actionActionPerformed
+
+        
+        List<String> data = new ArrayList<String>();
+        if(register_username_text.getText().equals("")||register_password_text.getText().equals("")||register_password_text1.getText().equals("")||register_address_text.getText().equals("")||register_email_text.getText().equals("")){
+        
+        alert.alertERROR("Empty Field");
+        
+        }else{
+        
+            if(register_password_text.getText().equals(register_password_text1.getText())){
+
+                data.add(register_username_text.getText());
+                data.add(register_password_text.getText());
+                data.add(register_email_text.getText());
+                data.add(register_address_text.getText());
+                data.set(1,encrypt.setPassword2Hash(register_password_text.getText()));
+                alert.registerMember(data);
+            }else{
+
+                alert.alertERROR("Password field not equal");
+            }
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_register_btn_actionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -217,17 +258,6 @@ public class loginFrame extends javax.swing.JFrame {
     public static void main(String args[]) {
         
         
-        
-        
-        JsonArray dataJson = new JsonArray();
-        dataJson=HomeController.getMembersData();
-        //dataJson = dd.toString()
-        System.out.println(dataJson.size());
-        for (int x = 0; x < dataJson.size(); x++) {
-            
-            System.out.println(dataJson.get(x));
-        
-        }
         
         
         

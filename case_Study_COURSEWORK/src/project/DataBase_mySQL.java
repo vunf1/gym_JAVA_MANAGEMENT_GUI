@@ -17,10 +17,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.ArrayList;
 import com.google.gson.*;
+import java.util.List;
 
-
-
-
+/**
+ *
+ * @author foxst
+ */
 public class DataBase_mySQL {
 
     
@@ -41,12 +43,21 @@ public class DataBase_mySQL {
         //System.out.println(setNewMember(data));
         
         /*Done extract ALL data from1 members_request and send it as JsonArray*/
-        JsonArray ALLdataMsR = new JsonArray();
+        /*JsonArray ALLdataMsR = new JsonArray();
         ALLdataMsR.addAll(getALLData_Request());
         System.out.println(ALLdataMsR);
-        System.out.println("Data from members Requests");
+        System.out.println("Data from members ");
         System.out.println(ALLdataMsR.size());
-        System.out.println(ALLdataMsR.get(1));
+        System.out.println(ALLdataMsR.get(0));*/
+        
+        
+        //System.out.println(checkUsername("m"));
+        
+        
+        
+        
+        
+        
         
         
         /*
@@ -64,6 +75,10 @@ public class DataBase_mySQL {
         while(rs.next()){
         System.out.println(rs.getInt("id")+"\t"+rs.getString("username")+"\t"+rs.getString("membership"));
         }
+        
+        
+        
+        
         
         /*
         //insert a new record to the Person table (id = 2; first name = Paul)
@@ -113,8 +128,16 @@ public class DataBase_mySQL {
         System.out.println("null");
         }
         */
+        
+        System.out.println(checkAdmin("m"));
+        
     }
     
+    /**
+     *
+     * @param username
+     * @return
+     */
     public static ArrayList getMemberData_Request(String username) {
        
         
@@ -152,6 +175,10 @@ public class DataBase_mySQL {
         
     }
     
+    /**
+     *
+     * @return
+     */
     public static JsonArray getALLData_Request() {
        
         
@@ -162,15 +189,11 @@ public class DataBase_mySQL {
             
                 Statement st = conn.createStatement();
                 ResultSet rs=null;
-                //retrieve the sample records from the Person table
-                //System.out.println("retrieve the sample records");
-                //System.out.println("---------------------------------");
                 String sql = "SELECT * FROM members_request ";
                 rs=st.executeQuery(sql);
                 while(rs.next()){
                     String  id_json=Integer.toString(rs.getInt("id"));
                     String username_json=rs.getString("username");
-                    String pw_json=rs.getString("password");
                     String email_json=rs.getString("email");
                     String address_json=rs.getString("address");
                     String meship_json=rs.getString("membership");
@@ -179,7 +202,6 @@ public class DataBase_mySQL {
                     JsonObject jObj = new JsonObject(); //json class instance
                     jObj.addProperty("member_id",id_json);
                     jObj.addProperty("username",username_json);
-                    jObj.addProperty("password",pw_json);
                     jObj.addProperty("email",email_json);
                     jObj.addProperty("address",address_json);
                     jObj.addProperty("membership",meship_json);
@@ -200,46 +222,146 @@ public class DataBase_mySQL {
     
     }
     
+    /**
+     *
+     * @param username
+     * @return
+     */
+    public static int checkUsername(String username){//Check Username on DataBase
+        
+        
+        try {
+            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
+            if (conn != null){
+            
+                Statement st = conn.createStatement();
+                ResultSet rs=null;
+                
+                String sql = "SELECT COUNT(*)  FROM members WHERE username='"+username+"'";
+                rs=st.executeQuery(sql);
+                while(rs.next()){
+                    if(rs.getInt(1 )==1){
+                        return 1;
+                    };
+                    
+                }
+                
+            }else{System.out.println("DB FAILED"); }
+        } catch (SQLException ex){
+            Logger.getLogger(DataBase_mySQL.class.getName()).log(Level.SEVERE, null, ex);
+            return -1;
+        }
+        return 0;//nothing found 
+    };
     
-    public static boolean setNewMemberREQUEST(ArrayList data){
+    
+     
+    public static String checkAdmin(String username){//Check Username on DataBase
+        
+        
+        try {
+            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
+            if (conn != null){
+            
+                Statement st = conn.createStatement();
+                ResultSet rs=null;
+                
+                String sql = "SELECT COUNT(*)  FROM members WHERE username='"+username+"' AND status=1 AND status=1";
+                rs=st.executeQuery(sql);
+                while(rs.next()){
+                    if(rs.getInt(1 )==1){
+                        return "1";
+                    };
+                    
+                }
+                
+            }else{System.out.println("DB FAILED"); }
+        } catch (SQLException ex){
+            Logger.getLogger(DataBase_mySQL.class.getName()).log(Level.SEVERE, null, ex);
+            return "-1";
+        }
+        return "0";//nothing found 
+    }; 
+    /**
+     *
+     * @param username
+     * @return
+     */
+    public static int checkPassword(List<String> data){//Check Username on DataBase
+        //data 0 username
+        //data 1 password
+        
+        try {
+            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
+            if (conn != null){
+            
+                Statement st = conn.createStatement();
+                ResultSet rs=null;
+                
+                String sql = "SELECT COUNT(*)  FROM members WHERE username='"+data.get(0)+"' AND password='"+data.get(1)+"'";
+                rs=st.executeQuery(sql);
+                while(rs.next()){
+                    if(rs.getInt(1 )==1){
+                        return 1;
+                    };
+                    
+                }
+                
+            }else{System.out.println("DB FAILED"); }
+        } catch (SQLException ex){
+            Logger.getLogger(DataBase_mySQL.class.getName()).log(Level.SEVERE, null, ex);
+            return -1;
+        }
+        return 0;//nothing found 
+    };
+    
+    
+    
+    
+    /**
+     *
+     * @param data
+     * @return
+     */
+    public static int registerREQmember(List<String> data){
         /*
         *
         *  data 0 - username
         *  data 1 - pw
         *  data 2 - email
         *  data 3 - address
-        *  data 5 - membership
-        *  data 6 - status
         *
         */
         
-        System.out.println(data);
-        
-        /*try {
+        PreparedStatement statement;
+        try {
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
             if (conn != null){
-            
-                Statement st = conn.createStatement();
-                ResultSet rs=null;
-                //retrieve the sample records from the Person table
-                //System.out.println("retrieve the sample records");
-                //System.out.println("---------------------------------");
-                String sql = "INSERT INTO members VALUES ("+data.get(0)+","+data.get(1)+",)";
-                rs=st.executeQuery(sql);
-                while(rs.next()){
-                   
-                    
-                    
-                    
-                }
+            conn.setAutoCommit(true);
+
+        String compiledQuery = "INSERT INTO members_request (username, password, email, address, membership,status)" +
+                " VALUES" + "(?, ?, ?, ?, ?, ?)";
+        statement = conn.prepareStatement(compiledQuery);
+
+
+        statement.setString(1, data.get(0));
+        statement.setString(2, data.get(1));
+        statement.setString(3, data.get(2));
+        statement.setString(4, data.get(3));
+        statement.setString(5, "silver");
+        statement.setString(6, "0");
+
+        statement.executeUpdate();
+        statement.close();
+        conn.close();
                 
-            }else{System.out.println("DB FAILED");}
+            }else{System.out.println("DB FAILED");return 0;}
         } catch (SQLException ex) {
             Logger.getLogger(DataBase_mySQL.class.getName()).log(Level.SEVERE, null, ex);
             Logger.getGlobal();}
-        */
         
-        return true;
+        
+        return 1;
     }
     
 }
