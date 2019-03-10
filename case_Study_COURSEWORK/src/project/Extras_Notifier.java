@@ -1,6 +1,8 @@
 
 package project;
 
+import java.awt.Dimension;
+import java.awt.GraphicsEnvironment;
 import java.awt.Point;
 import java.util.List;
 import javax.swing.JDialog;
@@ -70,6 +72,10 @@ public class Extras_Notifier {
         }
 
     };
+    public int checkUsername(String data){
+        return calls.checkUsername(data);
+    
+    }
     
     
     public int registerMember(List<String> data){

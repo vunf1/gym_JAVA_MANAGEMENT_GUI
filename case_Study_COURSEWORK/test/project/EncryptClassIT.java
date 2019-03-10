@@ -16,9 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author foxst
  */
-public class Admin_FRAMEIT {
+public class EncryptClassIT {
     
-    public Admin_FRAMEIT() {
+    public EncryptClassIT() {
     }
     
     @BeforeClass
@@ -38,25 +38,27 @@ public class Admin_FRAMEIT {
     }
 
     /**
-     * Test of main method, of class Admin_FRAME.
+     * Test of setPassword2Hash method, of class EncryptClass.
      */
     @Test
-    public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        Admin_FRAME.main(args);
+    public void testSetPassword2Hash() {
+        System.out.println("setPassword2Hash");
+        String password = "";
+        String expResult = "";
+        String result = EncryptClass.setPassword2Hash(password);
+        assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of displayUser method, of class Admin_FRAME.
+     * Test of main method, of class EncryptClass.
      */
     @Test
-    public void testDisplayUser() {
-        System.out.println("displayUser");
-        Admin_FRAME instance = new Admin_FRAME();
-        instance.displayUser();
+    public void testMain() throws Exception {
+        System.out.println("main");
+        String[] args = null;
+        EncryptClass.main(args);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

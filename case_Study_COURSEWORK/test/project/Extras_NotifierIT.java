@@ -5,6 +5,7 @@
  */
 package project;
 
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -77,15 +78,60 @@ public class Extras_NotifierIT {
     }
 
     /**
-     * Test of centerFrame method, of class Extras_Notifier.
+     * Test of alertWARR method, of class Extras_Notifier.
      */
     @Test
-    public void testCenterFrame() {
-        System.out.println("centerFrame");
+    public void testAlertWARR() {
+        System.out.println("alertWARR");
+        String s = "";
         Extras_Notifier instance = new Extras_Notifier();
-        instance.centerFrame();
+        instance.alertWARR(s);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+
+    /**
+     * Test of checkLogin method, of class Extras_Notifier.
+     */
+    @Test
+    public void testCheckLogin() {
+        System.out.println("checkLogin");
+        List<String> data = null;
+        Extras_Notifier instance = new Extras_Notifier();
+        instance.checkLogin(data);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of checkUsername method, of class Extras_Notifier.
+     */
+    @Test
+    public void testCheckUsername() {
+        System.out.println("checkUsername");
+        String data = "";
+        Extras_Notifier instance = new Extras_Notifier();
+        int expResult = 0;
+        int result = instance.checkUsername(data);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of registerMember method, of class Extras_Notifier.
+     */
+    @Test
+    public void testRegisterMember() {
+        System.out.println("registerMember");
+        List<String> data = null;
+        Extras_Notifier instance = new Extras_Notifier();
+        int expResult = 0;
+        int result = instance.registerMember(data);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+    
     
 }

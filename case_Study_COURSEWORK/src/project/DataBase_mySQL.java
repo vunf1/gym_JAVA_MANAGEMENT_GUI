@@ -16,8 +16,11 @@ import java.sql.Connection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.ArrayList;
-import com.google.gson.*;
 import java.util.List;
+
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  *
@@ -26,10 +29,10 @@ import java.util.List;
 public class DataBase_mySQL {
 
     
-    public static String connectionURL = "jdbc:mysql://localhost/membershipdb";
-    public static String uName = "root";
-    public static String uPass= "";
-    
+    private static String connectionURL = "jdbc:mysql://localhost/membershipdb";
+    private static String uName = "root";
+    private static String uPass= "";
+    public static int counter=0;//For JSON FILE index
     public static void main(String[] args) {
 
         
@@ -43,13 +46,27 @@ public class DataBase_mySQL {
         //System.out.println(setNewMember(data));
         
         /*Done extract ALL data from1 members_request and send it as JsonArray*/
-        /*JsonArray ALLdataMsR = new JsonArray();
-        ALLdataMsR.addAll(getALLData_Request());
+        JSONArray  ALLdataMsR = new JSONArray ();
+        ALLdataMsR=getALLData_Request();
         System.out.println(ALLdataMsR);
-        System.out.println("Data from members ");
-        System.out.println(ALLdataMsR.size());
-        System.out.println(ALLdataMsR.get(0));*/
+        System.out.println("Data status members request ");
+        System.out.println(ALLdataMsR.length() );
+        System.out.println(ALLdataMsR.getJSONObject(0).length());
         
+        
+        
+        //Json Reader
+        //Save Index Array as a Object and Display by Key the Values
+        for(int x=0;x<ALLdataMsR.length();x++){
+            JSONArray  Ass = new JSONArray ();
+            Ass.put(ALLdataMsR.getJSONObject(x));
+            Ass.forEach(item -> {
+                JSONObject obj = (JSONObject) item;
+                System.out.println(obj.get("membership").toString());
+            
+            });
+                
+        }
         
         //System.out.println(checkUsername("m"));
         
@@ -129,7 +146,7 @@ public class DataBase_mySQL {
         }
         */
         
-        System.out.println(checkAdmin("m"));
+        
         
     }
     
@@ -179,10 +196,11 @@ public class DataBase_mySQL {
      *
      * @return
      */
-    public static JsonArray getALLData_Request() {
+    public static JSONArray  getALLData_Request() {
        
+        counter=0;
         
-        JsonArray blockData = new JsonArray();
+        JSONArray  blockData = new JSONArray();
         try {
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
             if (conn != null){
@@ -199,16 +217,16 @@ public class DataBase_mySQL {
                     String meship_json=rs.getString("membership");
                     String status_json=Integer.toString(rs.getInt("status"));
                     
-                    JsonObject jObj = new JsonObject(); //json class instance
-                    jObj.addProperty("member_id",id_json);
-                    jObj.addProperty("username",username_json);
-                    jObj.addProperty("email",email_json);
-                    jObj.addProperty("address",address_json);
-                    jObj.addProperty("membership",meship_json);
-                    jObj.addProperty("status",status_json);
+                    JSONObject jObj = new JSONObject(); //json class instance
+                    jObj.put("member_id",id_json);
+                    jObj.put("username",username_json);
+                    jObj.put("email",email_json);
+                    jObj.put("address",address_json);
+                    jObj.put("membership",meship_json);
+                    jObj.put("status",status_json);
                     
-                    blockData.add(jObj);
-                    
+                    blockData.put(counter, jObj);
+                    counter++;
                 }
                 
             }else{System.out.println("DB FAILED");}
@@ -287,7 +305,7 @@ public class DataBase_mySQL {
      * @param username
      * @return
      */
-    public static int checkPassword(List<String> data){//Check Username on DataBase
+    public static int checkPassword(List<String> data){//Check Username/PW on DataBase
         //data 0 username
         //data 1 password
         
@@ -354,6 +372,7 @@ public class DataBase_mySQL {
         statement.executeUpdate();
         statement.close();
         conn.close();
+        
                 
             }else{System.out.println("DB FAILED");return 0;}
         } catch (SQLException ex) {

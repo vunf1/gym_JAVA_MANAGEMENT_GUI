@@ -6,13 +6,13 @@
 package project;
 
 
-import com.google.gson.*;
 import javax.swing.*;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
+import org.json.JSONArray;
 
 /**
  *
@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class HomeController {
     
-    public static  String varUser;
+    public static  String varUser="m";
     
     private static DataBase_mySQL dataAction = new DataBase_mySQL();
     
@@ -64,13 +64,11 @@ public class HomeController {
      * REQUESTS_
      * @return
      */
-    public static JsonArray getREMembersData(){
+    public static JSONArray getREMembersData(){
+       
+        return  dataAction.getALLData_Request();
         
-        JsonArray dataJson = new JsonArray();
-        dataJson.addAll(dataAction.getALLData_Request());
-        return dataJson;
-        
-    }
+    };
     
     
     

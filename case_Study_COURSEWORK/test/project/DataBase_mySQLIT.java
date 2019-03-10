@@ -5,8 +5,9 @@
  */
 package project;
 
-import com.google.gson.JsonArray;
 import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -71,8 +72,8 @@ public class DataBase_mySQLIT {
     @Test
     public void testGetALLData_Request() {
         System.out.println("getALLData_Request");
-        JsonArray expResult = null;
-        JsonArray result = DataBase_mySQL.getALLData_Request();
+        JSONArray expResult = null;
+        JSONArray result = DataBase_mySQL.getALLData_Request();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -86,7 +87,63 @@ public class DataBase_mySQLIT {
         System.out.println("setNewMemberREQUEST");
         ArrayList data = null;
         boolean expResult = false;
-        boolean result = DataBase_mySQL.setNewMemberREQUEST(data);
+        int result = DataBase_mySQL.registerREQmember(data);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of checkUsername method, of class DataBase_mySQL.
+     */
+    @Test
+    public void testCheckUsername() {
+        System.out.println("checkUsername");
+        String username = "";
+        int expResult = 0;
+        int result = DataBase_mySQL.checkUsername(username);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of checkAdmin method, of class DataBase_mySQL.
+     */
+    @Test
+    public void testCheckAdmin() {
+        System.out.println("checkAdmin");
+        String username = "";
+        String expResult = "";
+        String result = DataBase_mySQL.checkAdmin(username);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of checkPassword method, of class DataBase_mySQL.
+     */
+    @Test
+    public void testCheckPassword() {
+        System.out.println("checkPassword");
+        List<String> data = null;
+        int expResult = 0;
+        int result = DataBase_mySQL.checkPassword(data);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of registerREQmember method, of class DataBase_mySQL.
+     */
+    @Test
+    public void testRegisterREQmember() {
+        System.out.println("registerREQmember");
+        List<String> data = null;
+        int expResult = 0;
+        int result = DataBase_mySQL.registerREQmember(data);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

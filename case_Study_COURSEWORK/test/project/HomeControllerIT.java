@@ -5,6 +5,8 @@
  */
 package project;
 
+import java.util.List;
+import org.json.JSONArray;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -45,6 +47,73 @@ public class HomeControllerIT {
         System.out.println("main");
         String[] args = null;
         HomeController.main(args);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of checkUsername method, of class HomeController.
+     */
+    @Test
+    public void testCheckUsername() {
+        System.out.println("checkUsername");
+        String data = "";
+        int expResult = 0;
+        int result = HomeController.checkUsername(data);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of checkPassword method, of class HomeController.
+     */
+    @Test
+    public void testCheckPassword() {
+        System.out.println("checkPassword");
+        List<String> data = null;
+        int expResult = 0;
+        int result = HomeController.checkPassword(data);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of registerREQmember method, of class HomeController.
+     */
+    @Test
+    public void testRegisterREQmember() {
+        System.out.println("registerREQmember");
+        List<String> data = null;
+        int expResult = 0;
+        int result = HomeController.registerREQmember(data);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getREMembersData method, of class HomeController.
+     */
+    @Test
+    public void testGetREMembersData() {
+        System.out.println("getREMembersData");
+        JSONArray expResult = null;
+        JSONArray result = HomeController.getREMembersData();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of callNextFrame method, of class HomeController.
+     */
+    @Test
+    public void testCallNextFrame() {
+        System.out.println("callNextFrame");
+        String username = "";
+        HomeController.callNextFrame(username);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

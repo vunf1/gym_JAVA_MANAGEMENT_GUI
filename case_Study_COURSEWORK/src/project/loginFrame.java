@@ -1,12 +1,14 @@
 
 
 package project;
-import com.google.gson.JsonArray;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.UIManager;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -24,25 +26,16 @@ public class loginFrame extends javax.swing.JFrame {
      * Creates new form loginFrame
      */
     
-    public void centerFrame() {
-        //call to center Frames to center of actual Screen
-          
-        Dimension windowSize = getSize();
-            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            Point centerPoint = ge.getCenterPoint();
-
-            int dx = centerPoint.x - windowSize.width / 2;
-            int dy = centerPoint.y - windowSize.height / 2;    
-            setLocation(dx, dy);
-    
-    };
     Extras_Notifier alert = new Extras_Notifier();
     EncryptClass encrypt= new EncryptClass();
     public loginFrame() {
         
         initComponents();
-        centerFrame();
+
+        
         register_panel.setVisible(false);
+        register_password_text.setEchoChar('*');
+        register_password_text1.setEchoChar('*');
     }
 
     /**
@@ -59,15 +52,15 @@ public class loginFrame extends javax.swing.JFrame {
         label_info = new javax.swing.JLabel();
         register_username_text = new javax.swing.JTextField();
         register_email_text = new javax.swing.JTextField();
-        register_password_text = new javax.swing.JTextField();
         register_address_text = new javax.swing.JTextField();
         label_username = new javax.swing.JLabel();
         label_password = new javax.swing.JLabel();
         label_mail = new javax.swing.JLabel();
         label_address = new javax.swing.JLabel();
-        register_password_text1 = new javax.swing.JTextField();
         back_btn = new javax.swing.JLabel();
         register_btn_action = new javax.swing.JButton();
+        register_password_text1 = new javax.swing.JPasswordField();
+        register_password_text = new javax.swing.JPasswordField();
         login_Panel = new javax.swing.JPanel();
         username_text_login = new javax.swing.JTextField();
         password_text_login = new javax.swing.JTextField();
@@ -88,10 +81,9 @@ public class loginFrame extends javax.swing.JFrame {
         register_panel.add(label_title_register_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 163, 36));
 
         label_info.setText("*After the creation of your account need to be verify by Advisor to be activated.");
-        register_panel.add(label_info, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 395, -1, -1));
+        register_panel.add(label_info, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, -1));
         register_panel.add(register_username_text, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 74, 167, -1));
         register_panel.add(register_email_text, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 166, 167, -1));
-        register_panel.add(register_password_text, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 120, 167, -1));
         register_panel.add(register_address_text, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 212, 167, -1));
 
         label_username.setText("Username");
@@ -105,7 +97,6 @@ public class loginFrame extends javax.swing.JFrame {
 
         label_address.setText("Address");
         register_panel.add(label_address, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 191, -1, -1));
-        register_panel.add(register_password_text1, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 120, 167, -1));
 
         back_btn.setText("back");
         back_btn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -122,6 +113,8 @@ public class loginFrame extends javax.swing.JFrame {
             }
         });
         register_panel.add(register_btn_action, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, 150, -1));
+        register_panel.add(register_password_text1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 170, -1));
+        register_panel.add(register_password_text, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 170, -1));
 
         getContentPane().add(register_panel);
         register_panel.setBounds(40, 40, 420, 440);
@@ -235,13 +228,22 @@ public class loginFrame extends javax.swing.JFrame {
         }else{
         
             if(register_password_text.getText().equals(register_password_text1.getText())){
-
-                data.add(register_username_text.getText());
-                data.add(register_password_text.getText());
-                data.add(register_email_text.getText());
-                data.add(register_address_text.getText());
-                data.set(1,encrypt.setPassword2Hash(register_password_text.getText()));
-                alert.registerMember(data);
+                if(alert.checkUsername(register_username_text.getText())==1){
+                    
+                    alert.alertERROR("Username "+register_username_text.getText()+" Already Exist");
+                    
+                }else{
+                    data.add(register_username_text.getText());
+                    data.add(register_password_text.getText());
+                    data.add(register_email_text.getText());
+                    data.add(register_address_text.getText());
+                    data.set(1,encrypt.setPassword2Hash(register_password_text.getText()));
+                    if(alert.registerMember(data)==1){
+                        alert.alertINFO("Account Created Succesfully");
+                    }else{
+                        alert.alertERROR("Account Not Created");
+                    }
+                }
             }else{
 
                 alert.alertERROR("Password field not equal");
@@ -273,6 +275,7 @@ public class loginFrame extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -289,6 +292,7 @@ public class loginFrame extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(loginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        
         //</editor-fold>
 
         /* Create and display the form */
@@ -316,8 +320,8 @@ public class loginFrame extends javax.swing.JFrame {
     private javax.swing.JTextField register_email_text;
     private javax.swing.JLabel register_label;
     private javax.swing.JPanel register_panel;
-    private javax.swing.JTextField register_password_text;
-    private javax.swing.JTextField register_password_text1;
+    private javax.swing.JPasswordField register_password_text;
+    private javax.swing.JPasswordField register_password_text1;
     private javax.swing.JTextField register_username_text;
     private javax.swing.JTextField username_text_login;
     // End of variables declaration//GEN-END:variables
