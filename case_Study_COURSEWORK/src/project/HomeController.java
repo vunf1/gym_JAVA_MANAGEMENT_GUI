@@ -6,11 +6,15 @@
 package project;
 
 
+import java.awt.Color;
 import javax.swing.*;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
 import java.awt.Point;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import org.json.JSONArray;
 
@@ -19,13 +23,16 @@ import org.json.JSONArray;
  * @author foxst
  */
 public class HomeController {
-    
+    /*-USERNAME - After Login-*/
     public static  String varUser="m";
+    
     
     private static DataBase_mySQL dataAction = new DataBase_mySQL();
     
+    
+    
     private static loginFrame loginFrame = new loginFrame();
-    public static Admin_FRAME Admin_FRAME = new Admin_FRAME();
+    private static Admin_FRAME Admin_FRAME = new Admin_FRAME();
     private static index_FRAME index_FRAME = new index_FRAME();
     
     
@@ -36,7 +43,7 @@ public class HomeController {
     public static void main(String[] args) {
         
         
-       
+        
         loginFrame.setVisible(true);
         
         
@@ -79,8 +86,8 @@ public class HomeController {
         varUser=username;
         loginFrame.setVisible(false);
         if(dataAction.checkAdmin(username).equals("1")){
-        Admin_FRAME.displayUser();
-         Admin_FRAME.setVisible(true);
+            Admin_FRAME.displayUser();
+            Admin_FRAME.setVisible(true);
         
         }else{
             
@@ -91,5 +98,83 @@ public class HomeController {
     }
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    public static int checkMembership(){
+        
+       
+        return  -1;
+        
+    };
     
 }

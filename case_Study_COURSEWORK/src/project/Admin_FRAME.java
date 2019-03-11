@@ -41,19 +41,19 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
  * @author foxst
  */
 public class Admin_FRAME extends javax.swing.JFrame {
-    public static HomeController controller = new HomeController();
-    public static Extras_Notifier alert = new Extras_Notifier();
+    private static HomeController controller = new HomeController();
+    private static Extras_Notifier alert = new Extras_Notifier();
     static GraphicsConfiguration gc;
     /**
      * Creates new form Admin_Page
      */
     private JSONArray dataJson = new JSONArray();
-    private int counter = 0;
+    
     
     
     public Admin_FRAME() {
         initComponents();
-        setTitle("Welcome m");
+        setTitle("Welcome "+controller.varUser);
         //label_username_left.setText(controller.varUser);
         dataJson=controller.getREMembersData();
         badge_count_request.setText(String.valueOf(dataJson.length()));
@@ -70,7 +70,8 @@ public class Admin_FRAME extends javax.swing.JFrame {
     {
         
         //label_username_left.setText(controller.varUser);
-        label_username_left.setText("m");
+        label_username_left.setText(controller.varUser);
+        initRequestPanel();
         
     } 
     
@@ -95,7 +96,6 @@ public class Admin_FRAME extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMaximumSize(new java.awt.Dimension(1250, 700));
         setMinimumSize(new java.awt.Dimension(1250, 700));
-        setPreferredSize(new java.awt.Dimension(1250, 700));
         setResizable(false);
         addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -126,32 +126,30 @@ public class Admin_FRAME extends javax.swing.JFrame {
         left_panelLayout.setHorizontalGroup(
             left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(left_panelLayout.createSequentialGroup()
-                .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(left_panelLayout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addComponent(label_username_left))
-                    .addGroup(left_panelLayout.createSequentialGroup()
-                        .addGap(122, 122, 122)
-                        .addComponent(upLabel_user_left)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, left_panelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btn_membersRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(badge_count_request, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, left_panelLayout.createSequentialGroup()
+                        .addComponent(btn_membersRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(badge_count_request, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(left_panelLayout.createSequentialGroup()
+                        .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(upLabel_user_left)
+                            .addComponent(label_username_left))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         left_panelLayout.setVerticalGroup(
             left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(left_panelLayout.createSequentialGroup()
-                .addGap(95, 95, 95)
+                .addGap(107, 107, 107)
                 .addComponent(upLabel_user_left)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(label_username_left)
-                .addGap(34, 34, 34)
+                .addGap(28, 28, 28)
                 .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(badge_count_request, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_membersRequest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_membersRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(455, Short.MAX_VALUE))
         );
 
         right_panel_index.setBackground(left_panel.getBackground());
@@ -181,7 +179,8 @@ public class Admin_FRAME extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_membersRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_membersRequestActionPerformed
-    initRequestPanel();
+        
+        initRequestPanel();
         
 
 
@@ -196,6 +195,7 @@ public class Admin_FRAME extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -239,7 +239,10 @@ public class Admin_FRAME extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void initRequestPanel() {
-        counter=0;
+        dataJson=controller.getREMembersData();//Reload Data onclick
+        badge_count_request.setText(String.valueOf(dataJson.length()));
+        
+        
         right_panel_index.removeAll(); 
         MigLayout layout = new MigLayout("insets 2 2 2 2, fillx"); 
         right_panel_index.setLayout(layout);
@@ -263,11 +266,12 @@ public class Admin_FRAME extends javax.swing.JFrame {
     
     /**
     *
-    * Generate Dinamic Buttons for Number of new members to verify
+    * Generate Dinamic Buttons for Request of new members for ClubAdvisor 
+    * Club Manager can have access to this button too - setITUP *****
     * 
      */
     private JButton createButton(String text) {
-        counter++;
+        
 
         Border empty;
         empty = BorderFactory.createEmptyBorder();
@@ -282,7 +286,8 @@ public class Admin_FRAME extends javax.swing.JFrame {
         btn.setBorder(title);
 
         btn.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
+        //Dynamic event fot each button
+            public void actionPerformed(ActionEvent e){//event
                 genMemberRequestFrame(text);
             }
         });

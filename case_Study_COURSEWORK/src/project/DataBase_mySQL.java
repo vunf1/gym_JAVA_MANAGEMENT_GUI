@@ -51,28 +51,33 @@ public class DataBase_mySQL {
         System.out.println(ALLdataMsR);
         System.out.println("Data status members request ");
         System.out.println(ALLdataMsR.length() );
-        System.out.println(ALLdataMsR.getJSONObject(0).length());
+        System.out.println(ALLdataMsR.getJSONObject(0));
         
         
         
         //Json Reader
         //Save Index Array as a Object and Display by Key the Values
-        for(int x=0;x<ALLdataMsR.length();x++){
+        /*for(int x=0;x<ALLdataMsR.length();x++){
             JSONArray  Ass = new JSONArray ();
             Ass.put(ALLdataMsR.getJSONObject(x));
             Ass.forEach(item -> {
                 JSONObject obj = (JSONObject) item;
-                System.out.println(obj.get("membership").toString());
+                //System.out.println(obj.get("membership").toString());
             
             });
                 
-        }
+        }*/
         
         //System.out.println(checkUsername("m"));
-        
-        
-        
-        
+        /*
+        List<String> data=new ArrayList();
+        data.add("12");
+        data.add("12");
+        data.add("12");
+        data.add("12");
+        data.add("12");
+        registerREQmember(data);
+        */
         
         
         
@@ -345,9 +350,10 @@ public class DataBase_mySQL {
         /*
         *
         *  data 0 - username
-        *  data 1 - pw
+        *  data 1 - pw encrypt - key 256 bytes
         *  data 2 - email
         *  data 3 - address
+        *  data 4 - Date
         *
         */
         
@@ -357,23 +363,24 @@ public class DataBase_mySQL {
             if (conn != null){
             conn.setAutoCommit(true);
 
-        String compiledQuery = "INSERT INTO members_request (username, password, email, address, membership,status)" +
-                " VALUES" + "(?, ?, ?, ?, ?, ?)";
-        statement = conn.prepareStatement(compiledQuery);
+                String compiledQuery = "INSERT INTO members_request (username, password, email, address, membership, status, request_date)" +
+                        " VALUES" + "(?, ?, ?, ?, ?, ?, ?)";
+                statement = conn.prepareStatement(compiledQuery);
 
 
-        statement.setString(1, data.get(0));
-        statement.setString(2, data.get(1));
-        statement.setString(3, data.get(2));
-        statement.setString(4, data.get(3));
-        statement.setString(5, "silver");
-        statement.setString(6, "0");
+                statement.setString(1, data.get(0));
+                statement.setString(2, data.get(1));
+                statement.setString(3, data.get(2));
+                statement.setString(4, data.get(3));
+                statement.setString(5, "silver");
+                statement.setString(6, "0");
+                statement.setString(7, data.get(4));
 
-        statement.executeUpdate();
-        statement.close();
-        conn.close();
+                statement.executeUpdate();
+                statement.close();
+                conn.close();
         
-                
+                return 1;
             }else{System.out.println("DB FAILED");return 0;}
         } catch (SQLException ex) {
             Logger.getLogger(DataBase_mySQL.class.getName()).log(Level.SEVERE, null, ex);
