@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 08, 2019 at 05:47 AM
+-- Generation Time: Mar 11, 2019 at 01:15 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `membershipdb`
 --
-CREATE DATABASE IF NOT EXISTS `membershipdb` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
-USE `membershipdb`;
 
 -- --------------------------------------------------------
 
@@ -30,22 +28,25 @@ USE `membershipdb`;
 -- Table structure for table `members`
 --
 
-CREATE TABLE `members` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `members` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(20) COLLATE utf8_bin NOT NULL,
   `password` varchar(255) COLLATE utf8_bin NOT NULL,
   `email` varchar(20) COLLATE utf8_bin NOT NULL,
   `address` varchar(50) COLLATE utf8_bin NOT NULL,
   `membership` varchar(20) COLLATE utf8_bin NOT NULL,
-  `status` tinyint(1) NOT NULL
+  `status` tinyint(1) NOT NULL,
+  `gender` varchar(20) COLLATE utf8_bin NOT NULL,
+  `date` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `members`
 --
 
-INSERT INTO `members` (`id`, `username`, `password`, `email`, `address`, `membership`, `status`) VALUES
-(1, 'm', '35C92AC0288173706E2748EA251436CD', 'jokass.workplace@gma', 'street ok', 'silver', 1);
+INSERT INTO `members` (`id`, `username`, `password`, `email`, `address`, `membership`, `status`, `gender`, `date`) VALUES
+(1, 'm', '35C92AC0288173706E2748EA251436CD', 'jokass.workplace@gma', 'street ok', 'silver', 1, '', 0);
 
 -- --------------------------------------------------------
 
@@ -53,47 +54,33 @@ INSERT INTO `members` (`id`, `username`, `password`, `email`, `address`, `member
 -- Table structure for table `members_request`
 --
 
-CREATE TABLE `members_request` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `members_request` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) COLLATE utf8_bin NOT NULL,
   `password` varchar(255) COLLATE utf8_bin NOT NULL,
   `email` varchar(50) COLLATE utf8_bin NOT NULL,
   `address` varchar(50) COLLATE utf8_bin NOT NULL,
   `membership` varchar(20) COLLATE utf8_bin NOT NULL,
-  `status` tinyint(1) NOT NULL
+  `status` tinyint(1) NOT NULL,
+  `request_date` int(11) NOT NULL,
+  `gender` varchar(20) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Indexes for dumped tables
+-- Dumping data for table `members_request`
 --
 
---
--- Indexes for table `members`
---
-ALTER TABLE `members`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `members_request`
---
-ALTER TABLE `members_request`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `members`
---
-ALTER TABLE `members`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `members_request`
---
-ALTER TABLE `members_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+INSERT INTO `members_request` (`id`, `username`, `password`, `email`, `address`, `membership`, `status`, `request_date`, `gender`) VALUES
+(1, 'vunf1', '6A7DDADDDF21907285421E0850F0BBEB', '1', '1', 'silver', 0, 0, ''),
+(2, 'vunf2', '6A7DDADDDF21907285421E0850F0BBEB', '1', '1', 'silver', 0, 0, ''),
+(3, '1', '6A7DDADDDF21907285421E0850F0BBEB', '1', '1', 'silver', 0, 0, ''),
+(4, '12', '12', '12', '12', 'silver', 0, 12, ''),
+(5, 'rasca@sbcglobal.net ', '28958F2B261830ACC6BBFAC30F09B3059F7B91A6724A97AC0245B3DAF9A9D147', 'rasca@sbcglobal.net ', 'rasca@sbcglobal.net ', 'silver', 0, 20190310, ''),
+(6, '555', 'A5B47ADA0CECCDE5EC999DAF91267EC2', 'rasca@sbcglobal.net ', 'f', 'silver', 0, 20190310, ''),
+(7, 'qwerty', 'AA1391E03471ADAF166F00CD9B979A81', 'heine@live.com ', 'ddd', 'silver', 0, 20190310, ''),
+(8, 'asdf', 'BAC7A6428E97F62748E17111D1857341', 'ssss@vlll.com ', 'sdad', 'silver', 0, 20190310, ''),
+(9, 'heine@live.com ', 'C5B0AF00CE2F40BD43C7DE0A4E6299BA', 'heine@live.com', 'heine@live.com ', 'silver', 0, 20190310, '');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
