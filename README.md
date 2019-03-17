@@ -5,6 +5,11 @@
 - Swing GUI - Dynamic OOP
 - SCRUD SYSTEM
 
+## Libraries
+
+- MySQL client connector java - mysql-connector-java-5.1.47-bin.jar
+- JSON manipulation methods - org.json
+
 ## Case Study:
 ###### Sports and Leisure Village Registration and Booking System (VRB)
 ---
@@ -45,16 +50,19 @@ The club would also welcome any new features recommended by the software develop
 
 
 ### BackLog
-- [ ] Club Manager
-- [ ] Club Advisor Request Member Table trigger
+- [ ] add max char to creat a password - 30 - because encryption lenght after, DB max 256 chars;
+
+- [ ] Club Manager - acc give acess to users and booking
 - [ ] Club Advisor Request Member Table trigger edit
 - [ ] Club Advisor Request Booking Table trigger - no need doing memebership managment
 - [ ] Members GUI change memebership
 - [ ] Members GUI progress bar
 - [ ] Members GUI trigger booking 
-- [ ] DB Improve DATA Extract from Member - gender, date,+?.
+- [ ] DB Improve DATA Extract from Member - gender, date,bookingP/year,+?.
 - [ ] DB Improve DATA Booking, ID - CLASS - DATE.
 
+--- 
+- [ ] Generate encryption key dinamically 
 
 - [ ] Review Algorithmn
 - [ ] Review Code Idention
@@ -77,6 +85,7 @@ The club would also welcome any new features recommended by the software develop
 - [x] 4 - Layer Architecture (MVC);
 - [x] Club Advisor Request Member Dinamic List;
 - [x] Club Advisor Request Member event trigger;
+- [x] Club Advisor Request Member Table trigger
 
 
 ### Extra Files

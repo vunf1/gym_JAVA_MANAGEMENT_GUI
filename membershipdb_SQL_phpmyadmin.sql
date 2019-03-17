@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2019 at 01:15 AM
+-- Generation Time: Mar 17, 2019 at 10:07 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `membershipdb`
 --
+CREATE DATABASE IF NOT EXISTS `membershipdb` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
+USE `membershipdb`;
 
 -- --------------------------------------------------------
 
@@ -38,15 +40,16 @@ CREATE TABLE IF NOT EXISTS `members` (
   `status` tinyint(1) NOT NULL,
   `gender` varchar(20) COLLATE utf8_bin NOT NULL,
   `date` int(11) NOT NULL,
+  `booking` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `members`
 --
 
-INSERT INTO `members` (`id`, `username`, `password`, `email`, `address`, `membership`, `status`, `gender`, `date`) VALUES
-(1, 'm', '35C92AC0288173706E2748EA251436CD', 'jokass.workplace@gma', 'street ok', 'silver', 1, '', 0);
+INSERT INTO `members` (`id`, `username`, `password`, `email`, `address`, `membership`, `status`, `gender`, `date`, `booking`) VALUES
+(1, 'm', '35C92AC0288173706E2748EA251436CD', 'jokass.workplace@gma', 'street ok', 'silver', 1, '', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -65,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `members_request` (
   `request_date` int(11) NOT NULL,
   `gender` varchar(20) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `members_request`
@@ -78,7 +81,6 @@ INSERT INTO `members_request` (`id`, `username`, `password`, `email`, `address`,
 (4, '12', '12', '12', '12', 'silver', 0, 12, ''),
 (5, 'rasca@sbcglobal.net ', '28958F2B261830ACC6BBFAC30F09B3059F7B91A6724A97AC0245B3DAF9A9D147', 'rasca@sbcglobal.net ', 'rasca@sbcglobal.net ', 'silver', 0, 20190310, ''),
 (6, '555', 'A5B47ADA0CECCDE5EC999DAF91267EC2', 'rasca@sbcglobal.net ', 'f', 'silver', 0, 20190310, ''),
-(7, 'qwerty', 'AA1391E03471ADAF166F00CD9B979A81', 'heine@live.com ', 'ddd', 'silver', 0, 20190310, ''),
 (8, 'asdf', 'BAC7A6428E97F62748E17111D1857341', 'ssss@vlll.com ', 'sdad', 'silver', 0, 20190310, ''),
 (9, 'heine@live.com ', 'C5B0AF00CE2F40BD43C7DE0A4E6299BA', 'heine@live.com', 'heine@live.com ', 'silver', 0, 20190310, '');
 COMMIT;
