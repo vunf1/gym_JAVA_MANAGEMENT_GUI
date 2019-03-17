@@ -1,11 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package project;
 
-import java.io.IOException;
+
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -16,18 +11,16 @@ import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
-import javax.crypto.KeyGenerator;
-import javax.crypto.SecretKey;
 
 /**
- *
- * @author Narayanaswamy
- * @version https://narayanatutorial.com/java-tutorial/java-security/how-to-encrypt-and-decrypt-password-in-java
+ * 
+ * @encrytionAuthor Narayanaswamy
+ * @avaiable https://narayanatutorial.com/java-tutorial/java-security/how-to-encrypt-and-decrypt-password-in-java
  */
 public class EncryptClass {//Encrypt AES
     //key : 
     private static  String KEY = "8D1EECA816447188D02655C2AA8F831FE62B9DB43A7B761BD744184C3AA0DF34";
-    /*- Try to find a way to use a dinamic key for each password -*/
+    /*- later- Try to find a way to use a dinamic key for each password -*/
     public static final String AES = "AES";
 
     private static String byteArrayToHexString(byte[] b) {
@@ -58,7 +51,7 @@ public class EncryptClass {//Encrypt AES
      *
      *  Decrypt hash
      * @param hashpassword : String
-     * @return plain text pw
+     * @return plain text -> AEStype- string, Decrypt
      */
     private static String getPlainPassword(String hashpassword) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException{
     
@@ -80,7 +73,7 @@ public class EncryptClass {//Encrypt AES
      * @return password to hashpassword
      */
     private static String setEncryptedPassword(String password) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException{
-        //String key = "DB99A2A8EB6904F492E9DF0595ED683C";
+        //String key 256AES = "8D1EECA816447188D02655C2AA8F831FE62B9DB43A7B761BD744184C3AA0DF34";
         
 
 
@@ -98,11 +91,12 @@ public class EncryptClass {//Encrypt AES
     
     
     /**
-     *
-     * Generate a key for encryption
+     * private
+     * Generate a key for encryption string in AES
+     * not in use - later use
      * @return {key}: 256 bytes Key
      * 
-     */
+    
     private static String generateKey256() throws NoSuchAlgorithmException{
         KeyGenerator keyGen = KeyGenerator.getInstance(EncryptClass.AES);
         keyGen.init(256);
@@ -110,11 +104,11 @@ public class EncryptClass {//Encrypt AES
         String key = byteArrayToHexString(sk.getEncoded());
         return key;
     
-    }
+    }*/
 
     
     
-    public static String setPassword2Hash(String password){
+    public static String setPassword2Hash(String password){//String reading fails
     
         try {
             return setEncryptedPassword(password);
@@ -135,17 +129,21 @@ public class EncryptClass {//Encrypt AES
     }
     
     
-    
-    public static void main(String args[]) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException, IOException {
+    /**
+     *
+     * Main test function - improve to JUnit
+     *
+     * 
+    public static void main(String args[]) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException {
         //String key = "DB99A2A8EB6904F492E9DF0595ED683C";
-        //String password = "Admin";
-        /*System.out.println(KEY);
+        String password = "Admin";
+        System.out.println(KEY);
         
         String encrypPW=setPassword2Hash("m");
         System.out.println(encrypPW);
         
-        System.out.println(getPlainPassword(encrypPW));*/
+        System.out.println(getPlainPassword(encrypPW));
         
         
-    }
+    }*/
 }

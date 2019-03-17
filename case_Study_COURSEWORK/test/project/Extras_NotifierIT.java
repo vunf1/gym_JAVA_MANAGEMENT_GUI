@@ -132,6 +132,21 @@ public class Extras_NotifierIT {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+
+    /**
+     * Test of alertYesNo method, of class Extras_Notifier.
+     */
+    @Test
+    public void testAlertYesNo() {
+        System.out.println("alertYesNo");
+        String s = "";
+        Extras_Notifier instance = new Extras_Notifier();
+        boolean expResult = false;
+        boolean result = instance.alertYesNo(s);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
     
     
 }

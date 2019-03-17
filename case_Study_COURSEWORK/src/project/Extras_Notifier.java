@@ -1,27 +1,39 @@
 
 package project;
 
-import java.awt.Dimension;
-import java.awt.GraphicsEnvironment;
-import java.awt.Point;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import javax.swing.JDialog;
-import javax.swing.JLabel;
+
 import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
+
 
 /**
  *
  * @author deoiveij
  */
 public class Extras_Notifier {
-    HomeController calls = new HomeController(); 
-    EncryptClass encrypt= new EncryptClass();
+    private HomeController calls = new HomeController();
     
-
+/**
+     * Custom Alert Objects Yes No 
+     * @param s:String
+     */
+    public boolean alertYesNo(String s){
+        JOptionPane optionPane = new JOptionPane();
+        /*JDialog dialog = optionPane.createDialog("Warning!");
+        dialog.setAlwaysOnTop(true); // to show top of all other application
+        dialog.setVisible(true); // to visible the dialog*/
+        if (optionPane.showConfirmDialog(null, s, "WARNING",
+        optionPane.YES_NO_OPTION) == optionPane.YES_OPTION) {
+            return true;
+            // yes option
+        } else {
+            return false;
+    // no option
+        }
+    };
+    
+    
     /**
      * Custom Alert Objects
      * @param s:String

@@ -78,8 +78,26 @@ public class HomeController {
     };
     
     
+    /**
+     * DELETE REQUEST_ MEMBER by id
+     * @return
+     */
+    public static int delREQmember(String id){
+       
+        return  dataAction.deleteRequestROW(id);
+        
+    };
     
     
+    /**
+     * INSERT NEW OFICIAL MEMBER
+     * @return boolean
+     */
+    public static int insertNewMember(List<String> data){
+       
+        return  dataAction.inserREQintoMembers(data);
+        
+    };
     
     
     public static void callNextFrame(String username) {

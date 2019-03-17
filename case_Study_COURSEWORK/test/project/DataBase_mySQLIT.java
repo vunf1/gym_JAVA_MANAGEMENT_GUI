@@ -53,20 +53,6 @@ public class DataBase_mySQLIT {
     }
 
     /**
-     * Test of getMemberData_Request method, of class DataBase_mySQL.
-     */
-    @Test
-    public void testGetMemberData_Request() {
-        System.out.println("getMemberData_Request");
-        String username = "";
-        ArrayList expResult = null;
-        ArrayList result = DataBase_mySQL.getMemberData_Request(username);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of getALLData_Request method, of class DataBase_mySQL.
      */
     @Test
@@ -144,6 +130,47 @@ public class DataBase_mySQLIT {
         List<String> data = null;
         int expResult = 0;
         int result = DataBase_mySQL.registerREQmember(data);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getALLData_ method, of class DataBase_mySQL.
+     */
+    @Test
+    public void testGetALLData_() {
+        System.out.println("getALLData_");
+        JSONArray expResult = null;
+        JSONArray result = DataBase_mySQL.getALLData_();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of inserREQintoMembers method, of class DataBase_mySQL.
+     */
+    @Test
+    public void testInserREQintoMembers() {
+        System.out.println("inserREQintoMembers");
+        List<String> data = null;
+        int expResult = 0;
+        int result = DataBase_mySQL.inserREQintoMembers(data);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of deleteRequestROW method, of class DataBase_mySQL.
+     */
+    @Test
+    public void testDeleteRequestROW() {
+        System.out.println("deleteRequestROW");
+        String idMember = "";
+        int expResult = 0;
+        int result = DataBase_mySQL.deleteRequestROW(idMember);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

@@ -47,7 +47,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="10" y="40" width="450" height="370"/>
+          <AbsoluteConstraints x="10" y="40" width="450" height="360"/>
         </Constraint>
       </Constraints>
 
@@ -65,22 +65,6 @@
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="20" y="0" width="163" height="36"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JLabel" name="label_info">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Consolas" size="12" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="33" red="ff" type="rgb"/>
-            </Property>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="350" width="450" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -164,7 +148,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="400" y="0" width="50" height="30"/>
+              <AbsoluteConstraints x="390" y="0" width="60" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -275,36 +259,38 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="0" y="130" width="460" height="260"/>
+          <AbsoluteConstraints x="0" y="130" width="460" height="250"/>
         </Constraint>
       </Constraints>
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
-                  <Component id="btn_action" min="-2" pref="96" max="-2" attributes="0"/>
-                  <EmptySpace pref="56" max="32767" attributes="0"/>
-                  <Component id="register_label" min="-2" pref="113" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="labelUser_Login" min="-2" max="-2" attributes="0"/>
-                      <Component id="username_text_login" min="-2" pref="181" max="-2" attributes="0"/>
-                      <Component id="labelPW_Login" min="-2" max="-2" attributes="0"/>
-                      <Component id="password_text_login" min="-2" pref="181" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="btn_action" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
+                              <Component id="labelUser_Login" min="-2" max="-2" attributes="0"/>
+                              <Component id="username_text_login" min="-2" pref="181" max="-2" attributes="0"/>
+                              <Component id="labelPW_Login" min="-2" max="-2" attributes="0"/>
+                              <Component id="password_text_login" min="-2" pref="181" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="register_label" min="-2" pref="113" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="184" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace pref="46" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="labelUser_Login" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="username_text_login" min="-2" pref="33" max="-2" attributes="0"/>
@@ -313,11 +299,10 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="password_text_login" min="-2" pref="31" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btn_action" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                      <Component id="register_label" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                  <Component id="btn_action" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="register_label" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -367,24 +352,6 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="exit_btn">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Consolas" size="12" style="0"/>
-        </Property>
-        <Property name="borderPainted" type="boolean" value="false"/>
-        <Property name="focusable" type="boolean" value="false"/>
-        <Property name="label" type="java.lang.String" value="Close"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exit_btnActionPerformed"/>
-      </Events>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="400" y="10" width="-1" height="-1"/>
-        </Constraint>
-      </Constraints>
-    </Component>
     <Component class="javax.swing.JLabel" name="label_Time">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -407,7 +374,43 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="0" y="0" width="120" height="-1"/>
+          <AbsoluteConstraints x="370" y="390" width="120" height="30"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="hours_">
+      <Properties>
+        <Property name="text" type="java.lang.String" value=" Date  :"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="330" y="390" width="40" height="30"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="hours_1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Hours : "/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="330" y="415" width="-1" height="20"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="exit_btn">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Consolas" size="12" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Close"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="exit_btnMouseClicked"/>
+      </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="410" y="0" width="60" height="30"/>
         </Constraint>
       </Constraints>
     </Component>

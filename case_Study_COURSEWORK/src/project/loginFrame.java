@@ -25,12 +25,6 @@ public class loginFrame extends javax.swing.JFrame {
     EncryptClass encrypt= new EncryptClass();
     
     
-    
-
-
-    
-    
-    
     protected DateTimer timerThread;
     
     
@@ -53,8 +47,8 @@ public class loginFrame extends javax.swing.JFrame {
         register_password_text.setEchoChar('+');
         register_password_text1.setEchoChar('+');
         
-        label_info1.setText("*After the creation of your account will to be verified by a  ");
-        label_info.setText("Club Advisor only then will be activated.");
+        label_info1.setText("<html>*After the creation of your account will to be verified by a  Club Advisor only then will be activated.</html>");
+        
         gender_Box.addItem("Male");
         gender_Box.addItem("Female");
         
@@ -75,7 +69,6 @@ public class loginFrame extends javax.swing.JFrame {
 
         register_panel = new javax.swing.JPanel();
         label_title_register_panel = new javax.swing.JLabel();
-        label_info = new javax.swing.JLabel();
         register_username_text = new javax.swing.JTextField();
         register_email_text = new javax.swing.JTextField();
         label_username = new javax.swing.JLabel();
@@ -98,9 +91,11 @@ public class loginFrame extends javax.swing.JFrame {
         password_text_login = new javax.swing.JPasswordField();
         labelUser_Login = new javax.swing.JLabel();
         labelPW_Login = new javax.swing.JLabel();
-        exit_btn = new javax.swing.JButton();
         label_Time = new javax.swing.JLabel();
         label_Date = new javax.swing.JLabel();
+        hours_ = new javax.swing.JLabel();
+        hours_1 = new javax.swing.JLabel();
+        exit_btn = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
@@ -117,11 +112,6 @@ public class loginFrame extends javax.swing.JFrame {
         label_title_register_panel.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         label_title_register_panel.setText("Registration Area");
         register_panel.add(label_title_register_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 163, 36));
-
-        label_info.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
-        label_info.setForeground(new java.awt.Color(255, 51, 0));
-        label_info.setToolTipText("");
-        register_panel.add(label_info, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 450, 30));
         register_panel.add(register_username_text, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 74, 167, 30));
         register_panel.add(register_email_text, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 167, 30));
 
@@ -150,7 +140,7 @@ public class loginFrame extends javax.swing.JFrame {
                 back_btnMouseClicked(evt);
             }
         });
-        register_panel.add(back_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, 50, 30));
+        register_panel.add(back_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, 60, 30));
 
         register_btn_action.setText("Action");
         register_btn_action.addActionListener(new java.awt.event.ActionListener() {
@@ -178,7 +168,7 @@ public class loginFrame extends javax.swing.JFrame {
         label_info1.setToolTipText("");
         register_panel.add(label_info1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 450, 30));
 
-        getContentPane().add(register_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 450, 370));
+        getContentPane().add(register_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 450, 360));
 
         login_Panel.setMaximumSize(new java.awt.Dimension(250, 300));
         login_Panel.setMinimumSize(new java.awt.Dimension(250, 300));
@@ -211,24 +201,24 @@ public class loginFrame extends javax.swing.JFrame {
         login_PanelLayout.setHorizontalGroup(
             login_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(login_PanelLayout.createSequentialGroup()
-                .addGap(157, 157, 157)
-                .addComponent(btn_action, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                .addComponent(register_label, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(login_PanelLayout.createSequentialGroup()
-                .addGap(95, 95, 95)
                 .addGroup(login_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelUser_Login)
-                    .addComponent(username_text_login, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelPW_Login)
-                    .addComponent(password_text_login, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(login_PanelLayout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addGroup(login_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_action, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelUser_Login)
+                            .addComponent(username_text_login, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelPW_Login)
+                            .addComponent(password_text_login, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(login_PanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(register_label, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(184, Short.MAX_VALUE))
         );
         login_PanelLayout.setVerticalGroup(
             login_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(login_PanelLayout.createSequentialGroup()
-                .addContainerGap(46, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(labelUser_Login)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(username_text_login, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -237,24 +227,13 @@ public class loginFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(password_text_login, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
-                .addGroup(login_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_action, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(register_label))
-                .addGap(62, 62, 62))
+                .addComponent(btn_action)
+                .addGap(42, 42, 42)
+                .addComponent(register_label)
+                .addGap(66, 66, 66))
         );
 
-        getContentPane().add(login_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 460, 260));
-
-        exit_btn.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
-        exit_btn.setBorderPainted(false);
-        exit_btn.setFocusable(false);
-        exit_btn.setLabel("Close");
-        exit_btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exit_btnActionPerformed(evt);
-            }
-        });
-        getContentPane().add(exit_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, -1));
+        getContentPane().add(login_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 460, 250));
 
         label_Time.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         label_Time.setText("< h/m/s>");
@@ -262,7 +241,22 @@ public class loginFrame extends javax.swing.JFrame {
 
         label_Date.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         label_Date.setText("<yy/mm/dd>");
-        getContentPane().add(label_Date, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, -1));
+        getContentPane().add(label_Date, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 390, 120, 30));
+
+        hours_.setText(" Date  :");
+        getContentPane().add(hours_, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 390, 40, 30));
+
+        hours_1.setText("Hours : ");
+        getContentPane().add(hours_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 415, -1, 20));
+
+        exit_btn.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        exit_btn.setText("Close");
+        exit_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exit_btnMouseClicked(evt);
+            }
+        });
+        getContentPane().add(exit_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 60, 30));
 
         pack();
         setLocationRelativeTo(null);
@@ -296,13 +290,8 @@ public class loginFrame extends javax.swing.JFrame {
     private void register_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_register_labelMouseClicked
         login_Panel.setVisible(false);
         register_panel.setVisible(true);
-        System.out.println(gender_Box.getSelectedItem().toString());
         // TODO add your handling code here:
     }//GEN-LAST:event_register_labelMouseClicked
-
-    private void exit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_btnActionPerformed
-        timerThread.exitProcedure();
-    }//GEN-LAST:event_exit_btnActionPerformed
 
     
 /**
@@ -349,7 +338,6 @@ public class loginFrame extends javax.swing.JFrame {
                         data.add(label_Date.getText().replaceAll("\\s+",""));
                         //data.add(label_Time.getText());
                         
-                        
                         if(alert.registerMember(data)==1){
                             alert.alertINFO("Account Created Succesfully");
                         }else{
@@ -366,6 +354,11 @@ public class loginFrame extends javax.swing.JFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_register_btn_actionActionPerformed
+
+    private void exit_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exit_btnMouseClicked
+        timerThread.exitProcedure();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_exit_btnMouseClicked
 
     /**
      * MAIN
@@ -413,15 +406,16 @@ public class loginFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel back_btn;
     private javax.swing.JButton btn_action;
-    private javax.swing.JButton exit_btn;
+    private javax.swing.JLabel exit_btn;
     private javax.swing.JComboBox<String> gender_Box;
+    private javax.swing.JLabel hours_;
+    private javax.swing.JLabel hours_1;
     private javax.swing.JLabel labelPW_Login;
     private javax.swing.JLabel labelUser_Login;
     private javax.swing.JLabel label_Date;
     private javax.swing.JLabel label_Time;
     private javax.swing.JLabel label_address;
     private javax.swing.JLabel label_gender;
-    private javax.swing.JLabel label_info;
     private javax.swing.JLabel label_info1;
     private javax.swing.JLabel label_mail;
     private javax.swing.JLabel label_password;

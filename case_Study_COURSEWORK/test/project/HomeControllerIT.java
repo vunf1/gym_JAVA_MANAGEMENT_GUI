@@ -117,5 +117,46 @@ public class HomeControllerIT {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+
+    /**
+     * Test of delREQmember method, of class HomeController.
+     */
+    @Test
+    public void testDelREQmember() {
+        System.out.println("delREQmember");
+        String id = "";
+        int expResult = 0;
+        int result = HomeController.delREQmember(id);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of insertNewMember method, of class HomeController.
+     */
+    @Test
+    public void testInsertNewMember() {
+        System.out.println("insertNewMember");
+        List<String> data = null;
+        int expResult = 0;
+        int result = HomeController.insertNewMember(data);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of checkMembership method, of class HomeController.
+     */
+    @Test
+    public void testCheckMembership() {
+        System.out.println("checkMembership");
+        int expResult = 0;
+        int result = HomeController.checkMembership();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
     
 }
