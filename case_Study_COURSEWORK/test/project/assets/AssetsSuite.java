@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package project.assets;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -16,8 +17,8 @@ import org.junit.runners.Suite;
  * @author deoiveij
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({project.ProjectITSuite.class})
-public class RootSuite {
+@Suite.SuiteClasses({})
+public class AssetsSuite {
 
     @BeforeClass
     public static void setUpClass() throws Exception {

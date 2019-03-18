@@ -1,6 +1,7 @@
 package project;
 
 
+import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -9,7 +10,9 @@ import java.util.logging.Logger;
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
 /**
@@ -19,7 +22,7 @@ import javax.crypto.spec.SecretKeySpec;
  */
 public class EncryptClass {//Encrypt AES
     //key : 
-    private static  String KEY = "8D1EECA816447188D02655C2AA8F831FE62B9DB43A7B761BD744184C3AA0DF34";
+    private static  String KEY = "7D764C9798662E1E53B6808EEC9B868D";
     /*- later- Try to find a way to use a dinamic key for each password -*/
     public static final String AES = "AES";
 
@@ -72,8 +75,8 @@ public class EncryptClass {//Encrypt AES
      * @param password : String
      * @return password to hashpassword
      */
-    private static String setEncryptedPassword(String password) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException{
-        //String key 256AES = "8D1EECA816447188D02655C2AA8F831FE62B9DB43A7B761BD744184C3AA0DF34";
+    private static String setEncryptedPassword(String password) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException{
+        //String key 256AES = "7D764C9798662E1E53B6808EEC9B868D";
         
 
 
@@ -94,17 +97,17 @@ public class EncryptClass {//Encrypt AES
      * private
      * Generate a key for encryption string in AES
      * not in use - later use
-     * @return {key}: 256 bytes Key
-     * 
+     * @return {key}: 128 bytes Key
+     */ 
     
-    private static String generateKey256() throws NoSuchAlgorithmException{
+    private static String generateKey128() throws NoSuchAlgorithmException{
         KeyGenerator keyGen = KeyGenerator.getInstance(EncryptClass.AES);
-        keyGen.init(256);
+        keyGen.init(128);
         SecretKey sk = keyGen.generateKey();
         String key = byteArrayToHexString(sk.getEncoded());
         return key;
     
-    }*/
+    }
 
     
     
@@ -133,17 +136,20 @@ public class EncryptClass {//Encrypt AES
      *
      * Main test function - improve to JUnit
      *
-     * 
-    public static void main(String args[]) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException {
+     */
+    public static void main(String args[]) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException, IOException {
         //String key = "DB99A2A8EB6904F492E9DF0595ED683C";
         String password = "Admin";
+        
+        
+        System.out.println(generateKey128());
         System.out.println(KEY);
         
-        String encrypPW=setPassword2Hash("m");
+        String encrypPW="35C92AC0288173706E2748EA251436CD";
         System.out.println(encrypPW);
         
         System.out.println(getPlainPassword(encrypPW));
         
         
-    }*/
+    }
 }

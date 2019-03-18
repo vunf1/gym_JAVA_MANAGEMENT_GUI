@@ -176,6 +176,7 @@ public class DataBase_mySQL {
                     String status_json=Integer.toString(rs.getInt("status"));
                     String date_json=Integer.toString(rs.getInt("request_date"));
                     String gender_json=rs.getString("gender");
+                    String pwEncrypt_json=rs.getString("password");
                     
                     JSONObject jObj = new JSONObject(); //json class instance
                     jObj.put("member_id",id_json);
@@ -186,6 +187,7 @@ public class DataBase_mySQL {
                     jObj.put("status",status_json);
                     jObj.put("date",date_json);
                     jObj.put("gender",gender_json);
+                    jObj.put("passwordEncrypt",pwEncrypt_json);
                     
                     blockData.put(counter, jObj);
                     counter++;
@@ -298,7 +300,7 @@ public class DataBase_mySQL {
      * @param username
      * @return boolean
      */  
-    public static String checkAdmin(String username){//Check Username on DataBase
+    public static int checkAdmin(String username){//Check Username on DataBase
         
         
         try {
@@ -312,7 +314,7 @@ public class DataBase_mySQL {
                 rs=st.executeQuery(sql);
                 while(rs.next()){
                     if(rs.getInt(1 )==1){
-                        return "1";
+                        return 1;
                     };
                     
                 }
@@ -320,9 +322,9 @@ public class DataBase_mySQL {
             }else{System.out.println("DB FAILED"); }
         } catch (SQLException ex){
             Logger.getLogger(DataBase_mySQL.class.getName()).log(Level.SEVERE, null, ex);
-            return "-1";
+            return -1;
         }
-        return "0";//nothing found 
+        return 0;//nothing found 
     }; 
 
     
@@ -385,8 +387,8 @@ public class DataBase_mySQL {
             if (conn != null){
             conn.setAutoCommit(true);
 
-                String compiledQuery = "INSERT INTO members_request (username, password, email, address, membership, status, request_date)" +
-                        " VALUES" + "(?, ?, ?, ?, ?, ?, ?)";
+                String compiledQuery = "INSERT INTO members_request (username, password, email, address, membership, status, request_date, gender)" +
+                        " VALUES" + "(?, ?, ?, ?, ?, ?, ?, ?)";
                 statement = conn.prepareStatement(compiledQuery);
 
 
@@ -397,6 +399,7 @@ public class DataBase_mySQL {
                 statement.setString(5, "silver");
                 statement.setString(6, "0");
                 statement.setString(7, data.get(4));
+                statement.setString(8, data.get(5));
 
                 statement.executeUpdate();
                 statement.close();
@@ -443,14 +446,14 @@ public class DataBase_mySQL {
                 statement = conn.prepareStatement(compiledQuery);
 
 
-                statement.setString(1, data.get(0));
-                statement.setString(2, data.get(1));
-                statement.setString(3, data.get(2));
-                statement.setString(4, data.get(3));
-                statement.setString(5, "silver");
-                statement.setString(6, "0");
-                statement.setString(7, data.get(4));
-                statement.setString(8, data.get(5));
+                statement.setString(1, data.get(1));
+                statement.setString(2, data.get(2));
+                statement.setString(3, data.get(3));
+                statement.setString(4, data.get(4));
+                statement.setString(5, data.get(5));
+                statement.setString(6, data.get(6));
+                statement.setString(7, data.get(7));
+                statement.setString(8, data.get(8));
                 statement.setString(9, "0");
 
                 statement.executeUpdate();

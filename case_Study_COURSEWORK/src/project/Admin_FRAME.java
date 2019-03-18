@@ -2,6 +2,7 @@
 package project;
 
 import java.awt.BorderLayout;
+import java.awt.ComponentOrientation;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -13,13 +14,18 @@ import org.json.JSONObject;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.BorderFactory;
+import javax.swing.DefaultListCellRenderer;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import static javax.swing.SwingConstants.CENTER;
 
 import javax.swing.border.Border;
 
@@ -46,7 +52,7 @@ public class Admin_FRAME extends javax.swing.JFrame {
     
     public Admin_FRAME() {
         initComponents();
-        setTitle("Welcome "+controller.varUser);
+        
         //label_username_left.setText(controller.varUser);
         dataJson=controller.getREMembersData();
         badge_count_request.setText(String.valueOf(dataJson.length()));
@@ -85,6 +91,8 @@ public class Admin_FRAME extends javax.swing.JFrame {
         badge_count_request = new javax.swing.JLabel();
         _date = new javax.swing.JLabel();
         _time = new javax.swing.JLabel();
+        btn_logOut = new javax.swing.JLabel();
+        btn_exit = new javax.swing.JLabel();
         right_panel_index = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -92,6 +100,7 @@ public class Admin_FRAME extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMaximumSize(new java.awt.Dimension(1250, 700));
         setMinimumSize(new java.awt.Dimension(1250, 700));
+        setUndecorated(true);
         setResizable(false);
         addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -121,6 +130,20 @@ public class Admin_FRAME extends javax.swing.JFrame {
 
         _time.setText("<time>");
 
+        btn_logOut.setText("Log Out");
+        btn_logOut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_logOutMouseClicked(evt);
+            }
+        });
+
+        btn_exit.setText("Exit");
+        btn_exit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_exitMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout left_panelLayout = new javax.swing.GroupLayout(left_panel);
         left_panel.setLayout(left_panelLayout);
         left_panelLayout.setHorizontalGroup(
@@ -128,11 +151,6 @@ public class Admin_FRAME extends javax.swing.JFrame {
             .addGroup(left_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, left_panelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btn_membersRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(badge_count_request, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(left_panelLayout.createSequentialGroup()
                         .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(upLabel_user_left)
@@ -142,7 +160,18 @@ public class Admin_FRAME extends javax.swing.JFrame {
                         .addComponent(_date, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(_time, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, left_panelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btn_membersRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(badge_count_request, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, left_panelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_exit, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_logOut, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24))
         );
         left_panelLayout.setVerticalGroup(
             left_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,7 +189,11 @@ public class Admin_FRAME extends javax.swing.JFrame {
                             .addComponent(_time, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 27, 27)
                         .addComponent(btn_membersRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_logOut, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_exit, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
 
         right_panel_index.setBackground(left_panel.getBackground());
@@ -201,6 +234,19 @@ public class Admin_FRAME extends javax.swing.JFrame {
     private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
         // TODO add your handling code here:
     }//GEN-LAST:event_formFocusGained
+
+    private void btn_logOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_logOutMouseClicked
+      
+        controller.logOut("admin");
+        
+        
+    }//GEN-LAST:event_btn_logOutMouseClicked
+
+    private void btn_exitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_exitMouseClicked
+
+        timerThread.exitProcedure();
+        
+    }//GEN-LAST:event_btn_exitMouseClicked
 
     /**
      * @param args the command line arguments
@@ -244,6 +290,8 @@ public class Admin_FRAME extends javax.swing.JFrame {
     private javax.swing.JLabel _date;
     private javax.swing.JLabel _time;
     private javax.swing.JLabel badge_count_request;
+    private javax.swing.JLabel btn_exit;
+    private javax.swing.JLabel btn_logOut;
     private javax.swing.JButton btn_membersRequest;
     public javax.swing.JLabel label_username_left;
     private javax.swing.JPanel left_panel;
@@ -253,7 +301,7 @@ public class Admin_FRAME extends javax.swing.JFrame {
 
     private void initRequestPanel() {
         dataJson=controller.getREMembersData();//Reload Data onclick
-        badge_count_request.setText(String.valueOf(dataJson.length()));
+        badge_count_request.setText(String.valueOf(dataJson.length()));//Update onClick
         
         
         right_panel_index.removeAll(); 
@@ -314,6 +362,8 @@ public class Admin_FRAME extends javax.swing.JFrame {
         
         
         JSONArray  editUser = new JSONArray ();
+        List<String>  sendData = new ArrayList();
+        
         
         for(int x=0;x<dataJson.length();x++){
             JSONArray  All = new JSONArray ();
@@ -329,6 +379,9 @@ public class Admin_FRAME extends javax.swing.JFrame {
                     editUser.put(3,value.get("address").toString());
                     editUser.put(4,value.get("membership").toString());
                     editUser.put(5,value.get("status").toString());
+                    editUser.put(6,value.get("date").toString());
+                    editUser.put(7,value.get("gender").toString());
+                    editUser.put(8,value.get("passwordEncrypt").toString());
                 }
             });
         }
@@ -346,35 +399,68 @@ public class Admin_FRAME extends javax.swing.JFrame {
         
         JFrame main = new JFrame(gc);
         main.setTitle("Request Approval");
-        main.setSize(280, 500);
+        main.setSize(270, 500);
         main.toFront();
         main.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         main.setLocationRelativeTo(null);
         main.setResizable(false);
         
         main.setLayout(new FlowLayout());
-        JTextField username_,email_,address_ ;
+        JTextField username_,email_,address_,date_ ;
         username_ = new JTextField(editUser.get(1).toString(), 20);
         email_ = new JTextField(editUser.get(2).toString(), 20);
         address_ = new JTextField(editUser.get(3).toString(), 20);
+        date_ = new JTextField(editUser.get(6).toString(), 20);
+        
+        username_.setHorizontalAlignment(SwingConstants.CENTER);
+        email_.setHorizontalAlignment(SwingConstants.CENTER);
+        address_.setHorizontalAlignment(SwingConstants.CENTER);
+        date_.setHorizontalAlignment(SwingConstants.CENTER);
+        date_.setEnabled(false);
         
         
-        JLabel user,im,addr,mship,stus;
+        JLabel user,im,addr,mship,stus,dateL;
         user=new JLabel("Username");
         im=new JLabel("E-mail");
         addr=new JLabel("Address");
         mship=new JLabel("Membership");
         stus=new JLabel("Status");
+        dateL=new JLabel("Date");
         
         
-        String[] MSlist={"Silver","Gold","Platinum"};
-        String[] STlist={"0 - Normal","1 - Club Advisor","2 - Club Manager"};
+        
+        
+        
         JComboBox membership_,status_;
         
-        membership_= new JComboBox(MSlist);
-        status_= new JComboBox(STlist);
+        membership_= new JComboBox(new Object[] {"Silver","Gold","Platinum"});
+        status_= new JComboBox(new Object[] {"0 - Normal","1 - Club Advisor","2 - Club Manager"});
         membership_.setPreferredSize(new Dimension(230,20));
         status_.setPreferredSize(new Dimension(230,20));
+            
+        
+        System.out.println(editUser.get(4).toString());
+        System.out.println(editUser.get(5).toString());
+        
+        if(editUser.get(4).toString().equals("silver")){
+            membership_.setSelectedItem("Silver");
+            
+        }else if(editUser.get(4).toString().equals("gold")){
+            membership_.setSelectedItem("Gold");
+            
+        }else if(editUser.get(4).toString().equals("platinum")){
+            membership_.setSelectedItem("Platinum");
+            
+        }
+        
+        if(editUser.get(5).toString().equals("0")){
+            status_.setSelectedItem("0 - Normal");
+        }else if(editUser.get(5).toString().equals("1")){
+            status_.setSelectedItem("1 - Club Advisor");
+        }else if(editUser.get(5).toString().equals("2")){
+            status_.setSelectedItem("2 - Club Manager");
+        }
+        
         
         
         JButton action=new JButton("Action");
@@ -398,6 +484,12 @@ public class Admin_FRAME extends javax.swing.JFrame {
         main.add(status_, BorderLayout.NORTH);
         
         
+        main.add(dateL, BorderLayout.NORTH);
+        main.add(date_, BorderLayout.NORTH);
+        
+        
+        
+        
         main.add(action, BorderLayout.NORTH);//event done
         
         main.add(delete, BorderLayout.NORTH);
@@ -406,23 +498,32 @@ public class Admin_FRAME extends javax.swing.JFrame {
         //Dynamic event for each button
             String statusValue;
             public void actionPerformed(ActionEvent e){//event
-                System.out.println(username_.getText());
-                System.out.println(email_.getText());
-                System.out.println(address_.getText());
-                System.out.println(membership_.getSelectedItem());
-                statusValue=String.valueOf(status_.getSelectedItem());
-                System.out.println(statusValue.charAt(0));
+                System.out.println(status_.getSelectedItem().toString().substring(0, 1));
                 
-                System.out.println();
+                sendData.add(0,editUser.get(0).toString());//MemberID
+                sendData.add(1,username_.getText());//Username
+                sendData.add(2,editUser.get(8).toString());//EncryptPW
+                sendData.add(3,email_.getText());//email
+                sendData.add(4,address_.getText());//Address
+                sendData.add(5,membership_.getSelectedItem().toString().toLowerCase());//Membership
+                
+                sendData.add(6,status_.getSelectedItem().toString().substring(0, 1));//Status
+                
+                sendData.add(7,editUser.get(7).toString());//Gender
+                sendData.add(8,_date.getText().replaceAll("\\s+",""));//Date
+                
+                
+                
+                System.out.println(sendData);
+                
+                
+                
                 
                 
                 if(alert.alertYesNo("Are you sure ?")){
                     
-                    System.out.println(_date.getText());
-                
-                    System.out.println(_time.getText());
-                
-                    System.out.println("OK");
+                    controller.insertNewMember(sendData);
+                    controller.delREQmember(sendData.get(0));
                 }else{
                     
                 }

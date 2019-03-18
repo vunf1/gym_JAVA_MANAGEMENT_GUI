@@ -83,7 +83,7 @@ public class Extras_Notifier {
         }
         if(calls.checkPassword(data)==1){
             alertINFO("Log in... ");
-            calls.callNextFrame(data.get(0));
+            calls.callNextLogin(data.get(0));
         }else{
             alertERROR("Fail to Login - Check Username or Password");
         }

@@ -11,14 +11,13 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
-import project.assets.AssetsITSuite;
 
 /**
  *
- * @author foxst
+ * @author deoiveij
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({index_FRAMEIT.class, DataBase_mySQLIT.class, HomeControllerIT.class, DateTimerIT.class, loginFrameIT.class, Extras_NotifierIT.class, EncryptClassIT.class, Admin_FRAMEIT.class, AssetsITSuite.class})
+@Suite.SuiteClasses({project.loginFrameIT.class, project.DataBase_mySQLIT.class, project.assets.AssetsITSuite.class, project.Admin_FRAMEIT.class, project.index_FRAMEIT.class, project.DateTimerIT.class, project.HomeControllerIT.class, project.Extras_NotifierIT.class, project.EncryptClassIT.class})
 public class ProjectITSuite {
 
     @BeforeClass

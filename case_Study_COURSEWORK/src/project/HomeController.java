@@ -6,15 +6,6 @@
 package project;
 
 
-import java.awt.Color;
-import javax.swing.*;
-import java.awt.Dimension;
-import java.awt.GraphicsEnvironment;
-import java.awt.Point;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import org.json.JSONArray;
 
@@ -95,15 +86,35 @@ public class HomeController {
      */
     public static int insertNewMember(List<String> data){
        
-        return  dataAction.inserREQintoMembers(data);
+       return  dataAction.inserREQintoMembers(data);
         
     };
     
     
-    public static void callNextFrame(String username) {
+    
+    
+    
+    
+    public static void logOut(String data){
+        
+        if(data.equals("admin")){
+            Admin_FRAME.setVisible(false);
+            loginFrame.setVisible(true);
+        }else{
+            
+            index_FRAME.setVisible(false);
+            loginFrame.setVisible(true);
+        }
+        
+    };
+    
+    public static void callNextLogin(String username) {
         varUser=username;
+        
         loginFrame.setVisible(false);
-        if(dataAction.checkAdmin(username).equals("1")){
+        
+        if(dataAction.checkAdmin(username)==1){
+            
             Admin_FRAME.displayUser();
             Admin_FRAME.setVisible(true);
         

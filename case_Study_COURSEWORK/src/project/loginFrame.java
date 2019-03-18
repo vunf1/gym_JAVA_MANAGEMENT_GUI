@@ -299,10 +299,10 @@ public class loginFrame extends javax.swing.JFrame {
  * Get data from textbox objects,
  * check if fields are empty
  * check if fields password are equal and more than 8 characters
- * check if fields are empty
- * check if fields are empty
+ * check if email have email parameters
+ * set password field with encryption
  * 
- * save it inside array and send back to controller(HomeController),
+ * save it inside array and send back to controller(HomeController->Database),
  * 
  * 
  */    
@@ -329,13 +329,14 @@ public class loginFrame extends javax.swing.JFrame {
                        
                         alert.alertERROR("Invalid Email");  
                     }else{
-                        data.add(register_username_text.getText());
-                        data.add(register_password_text.getText());
-                        data.add(register_email_text.getText());
-                        data.add(register_address_text.getText());
+                        data.add(register_username_text.getText());//0
+                        data.add(register_password_text.getText());//1
+                        data.add(register_email_text.getText());//2
+                        data.add(register_address_text.getText());//3
                         data.set(1,encrypt.setPassword2Hash(register_password_text.getText()));
                         
-                        data.add(label_Date.getText().replaceAll("\\s+",""));
+                        data.add(label_Date.getText().replaceAll("\\s+",""));//4
+                        data.add(String.valueOf(gender_Box.getSelectedItem()));
                         //data.add(label_Time.getText());
                         
                         if(alert.registerMember(data)==1){

@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author foxst
+ * @author deoiveij
  */
 public class HomeControllerIT {
     
@@ -107,18 +107,6 @@ public class HomeControllerIT {
     }
 
     /**
-     * Test of callNextFrame method, of class HomeController.
-     */
-    @Test
-    public void testCallNextFrame() {
-        System.out.println("callNextFrame");
-        String username = "";
-        HomeController.callNextFrame(username);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of delREQmember method, of class HomeController.
      */
     @Test
@@ -142,6 +130,30 @@ public class HomeControllerIT {
         int expResult = 0;
         int result = HomeController.insertNewMember(data);
         assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of logOut method, of class HomeController.
+     */
+    @Test
+    public void testLogOut() {
+        System.out.println("logOut");
+        String data = "";
+        HomeController.logOut(data);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of callNextLogin method, of class HomeController.
+     */
+    @Test
+    public void testCallNextLogin() {
+        System.out.println("callNextLogin");
+        String username = "";
+        HomeController.callNextLogin(username);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

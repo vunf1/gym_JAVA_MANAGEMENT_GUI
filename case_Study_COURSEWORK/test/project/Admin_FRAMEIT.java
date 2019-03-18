@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author foxst
+ * @author deoiveij
  */
 public class Admin_FRAMEIT {
     
@@ -38,18 +38,6 @@ public class Admin_FRAMEIT {
     }
 
     /**
-     * Test of main method, of class Admin_FRAME.
-     */
-    @Test
-    public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        Admin_FRAME.main(args);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of displayUser method, of class Admin_FRAME.
      */
     @Test
@@ -57,6 +45,18 @@ public class Admin_FRAMEIT {
         System.out.println("displayUser");
         Admin_FRAME instance = new Admin_FRAME();
         instance.displayUser();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of main method, of class Admin_FRAME.
+     */
+    @Test
+    public void testMain() {
+        System.out.println("main");
+        String[] args = null;
+        Admin_FRAME.main(args);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

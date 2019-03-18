@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author foxst
+ * @author deoiveij
  */
 public class EncryptClassIT {
     
@@ -51,6 +51,16 @@ public class EncryptClassIT {
         fail("The test case is a prototype.");
     }
 
-    
+    /**
+     * Test of main method, of class EncryptClass.
+     */
+    @Test
+    public void testMain() throws Exception {
+        System.out.println("main");
+        String[] args = null;
+        EncryptClass.main(args);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
     
 }
