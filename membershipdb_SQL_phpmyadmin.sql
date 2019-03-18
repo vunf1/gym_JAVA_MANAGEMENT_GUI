@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2019 at 10:07 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 5.6.40
+-- Generation Time: Mar 18, 2019 at 04:14 AM
+-- Server version: 10.1.35-MariaDB
+-- PHP Version: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -30,6 +30,7 @@ USE `membershipdb`;
 -- Table structure for table `members`
 --
 
+DROP TABLE IF EXISTS `members`;
 CREATE TABLE IF NOT EXISTS `members` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(20) COLLATE utf8_bin NOT NULL,
@@ -42,14 +43,16 @@ CREATE TABLE IF NOT EXISTS `members` (
   `date` int(11) NOT NULL,
   `booking` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `members`
 --
 
 INSERT INTO `members` (`id`, `username`, `password`, `email`, `address`, `membership`, `status`, `gender`, `date`, `booking`) VALUES
-(1, 'm', '35C92AC0288173706E2748EA251436CD', 'jokass.workplace@gma', 'street ok', 'silver', 1, '', 0, NULL);
+(1, 'm', '35C92AC0288173706E2748EA251436CD', 'jokass.workplace@gma', 'street ok', 'silver', 1, '', 0, NULL),
+(2, 'mm', '602982B94E3B2B7247D9A5303393A868', 'stefano@outlook.com', '2323wew', 'silver', 1, 'Male', 20190318, NULL),
+(3, 'ola', '602982B94E3B2B7247D9A5303393A868', 'stefano@outlook.com', 'DSASS', 'gold', 1, 'Male', 20190318, 0);
 
 -- --------------------------------------------------------
 
@@ -57,6 +60,7 @@ INSERT INTO `members` (`id`, `username`, `password`, `email`, `address`, `member
 -- Table structure for table `members_request`
 --
 
+DROP TABLE IF EXISTS `members_request`;
 CREATE TABLE IF NOT EXISTS `members_request` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) COLLATE utf8_bin NOT NULL,
@@ -68,21 +72,14 @@ CREATE TABLE IF NOT EXISTS `members_request` (
   `request_date` int(11) NOT NULL,
   `gender` varchar(20) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `members_request`
 --
 
 INSERT INTO `members_request` (`id`, `username`, `password`, `email`, `address`, `membership`, `status`, `request_date`, `gender`) VALUES
-(1, 'vunf1', '6A7DDADDDF21907285421E0850F0BBEB', '1', '1', 'silver', 0, 0, ''),
-(2, 'vunf2', '6A7DDADDDF21907285421E0850F0BBEB', '1', '1', 'silver', 0, 0, ''),
-(3, '1', '6A7DDADDDF21907285421E0850F0BBEB', '1', '1', 'silver', 0, 0, ''),
-(4, '12', '12', '12', '12', 'silver', 0, 12, ''),
-(5, 'rasca@sbcglobal.net ', '28958F2B261830ACC6BBFAC30F09B3059F7B91A6724A97AC0245B3DAF9A9D147', 'rasca@sbcglobal.net ', 'rasca@sbcglobal.net ', 'silver', 0, 20190310, ''),
-(6, '555', 'A5B47ADA0CECCDE5EC999DAF91267EC2', 'rasca@sbcglobal.net ', 'f', 'silver', 0, 20190310, ''),
-(8, 'asdf', 'BAC7A6428E97F62748E17111D1857341', 'ssss@vlll.com ', 'sdad', 'silver', 0, 20190310, ''),
-(9, 'heine@live.com ', 'C5B0AF00CE2F40BD43C7DE0A4E6299BA', 'heine@live.com', 'heine@live.com ', 'silver', 0, 20190310, '');
+(10, 'ddd', '0175B116507C40A403B131FFB822F7FC', 'stefano@outlook.com', '333', 'silver', 0, 20190318, 'Male');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
