@@ -81,4 +81,14 @@ The club would also welcome any new features recommended by the software develop
 
 ### Extra Files
 
+Logos Source:
+https://cooltext.com
+
+Logos colors:
+gym name - #8A6D15 
+
+badge:
+    silver - #575652
+    gold - #DAA520
+    plat - #e5e4e2
 ```soon``` 

@@ -44,9 +44,10 @@ public class DataBase_mySQL {
      */
     public static void main(String[] args) {
 
-        
+        System.out.println(checkAdmin("joao"));
         
         /*Done extract ALL data from1 members_request and send it as JsonArray*/
+        /*
         JSONArray  ALLdataMsR = new JSONArray ();
         ALLdataMsR=getALLData_Request();
         System.out.println(ALLdataMsR);
@@ -54,10 +55,11 @@ public class DataBase_mySQL {
         System.out.println(ALLdataMsR.length());
         System.out.println(ALLdataMsR.getJSONObject(0));
         
-        
+        */
         
         //Json Reader
         //Save Index Array as a Object and Display by Key the Values
+        /*
         for(int x=0;x<ALLdataMsR.length();x++){
             JSONArray  Ass = new JSONArray ();
             Ass.put(ALLdataMsR.getJSONObject(x));
@@ -72,7 +74,7 @@ public class DataBase_mySQL {
         
         System.out.println("DELETE by ID ");
         System.out.println(deleteRequestROW("7"));
-        
+        */
         
         /*
         System.out.println("Trying to connect to database...");
@@ -224,8 +226,12 @@ public class DataBase_mySQL {
                 String sql = "SELECT * FROM members ";
                 rs=st.executeQuery(sql);
                 while(rs.next()){
+                    
+                    
+                    
                     String  id_json=Integer.toString(rs.getInt("id"));
                     String username_json=rs.getString("username");
+                    String pw_json=rs.getString("password");
                     String email_json=rs.getString("email");
                     String address_json=rs.getString("address");
                     String meship_json=rs.getString("membership");
@@ -237,6 +243,7 @@ public class DataBase_mySQL {
                     JSONObject jObj = new JSONObject(); //json class instance
                     jObj.put("member_id",id_json);
                     jObj.put("username",username_json);
+                    jObj.put("password",pw_json);
                     jObj.put("email",email_json);
                     jObj.put("address",address_json);
                     jObj.put("membership",meship_json);
@@ -255,11 +262,78 @@ public class DataBase_mySQL {
             Logger.getLogger(DataBase_mySQL.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        
         return blockData;
         
     
     
     }
+    
+    
+    
+    public static JSONArray  getUserData_(String username) {
+       
+        counter=0;
+        
+        JSONArray  blockData = new JSONArray();
+        try {
+            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
+            if (conn != null){
+            
+                Statement st = conn.createStatement();
+                ResultSet rs=null;
+                String sql = "SELECT * FROM members WHERE username='"+username+"'";
+                rs=st.executeQuery(sql);
+                while(rs.next()){
+                    
+                    
+                    
+                    String  id_json=Integer.toString(rs.getInt("id"));
+                    String username_json=rs.getString("username");
+                    String pw_json=rs.getString("password");
+                    String email_json=rs.getString("email");
+                    String address_json=rs.getString("address");
+                    String meship_json=rs.getString("membership");
+                    String status_json=Integer.toString(rs.getInt("status"));
+                    String date_json=Integer.toString(rs.getInt("date"));
+                    String gender_json=rs.getString("gender");
+                    String book_json=Integer.toString(rs.getInt("booking"));
+                    
+                    JSONObject jObj = new JSONObject(); //json class instance
+                    jObj.put("member_id",id_json);
+                    jObj.put("username",username_json);
+                    jObj.put("password",pw_json);
+                    jObj.put("email",email_json);
+                    jObj.put("address",address_json);
+                    jObj.put("membership",meship_json);
+                    jObj.put("status",status_json);
+                    jObj.put("date",date_json);
+                    jObj.put("gender",gender_json);
+                    jObj.put("booking",book_json);
+                    
+                    
+                    blockData.put(counter, jObj);
+                    counter++;
+                }
+                
+            }else{System.out.println("DB FAILED") ;}
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase_mySQL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+        return blockData;
+        
+    
+    
+    }
+    
+    
+    
+    
+    
+    
     
     /**
      * check if username exists on the database
@@ -310,13 +384,12 @@ public class DataBase_mySQL {
                 Statement st = conn.createStatement();
                 ResultSet rs=null;
                 
-                String sql = "SELECT COUNT(*)  FROM members WHERE username='"+username+"' AND status=1 AND status=1";
+                String sql = "SELECT status  FROM members WHERE username='"+username+"'";
                 rs=st.executeQuery(sql);
                 while(rs.next()){
-                    if(rs.getInt(1 )==1){
-                        return 1;
-                    };
                     
+                    return  rs.getInt(1);
+                        
                 }
                 
             }else{System.out.println("DB FAILED"); }
@@ -390,8 +463,7 @@ public class DataBase_mySQL {
                 String compiledQuery = "INSERT INTO members_request (username, password, email, address, membership, status, request_date, gender)" +
                         " VALUES" + "(?, ?, ?, ?, ?, ?, ?, ?)";
                 statement = conn.prepareStatement(compiledQuery);
-
-
+   
                 statement.setString(1, data.get(0));
                 statement.setString(2, data.get(1));
                 statement.setString(3, data.get(2));
@@ -417,6 +489,7 @@ public class DataBase_mySQL {
     
 
     /**
+     * Insert member data table[request] into table[member]
      * Regist new user on request table for later be verified by ClubAdvisor/ClubManager
      * @param ArrayList of data inserted by user
      * @return boolean
@@ -474,8 +547,8 @@ public class DataBase_mySQL {
     
     /**
      *      
-     * Members on Request 
-     * Modifid table names when insert data on 'ArrayLsit'
+     * Members [on Request] 
+     * Delete Row on table REQUEST
      * @return JSONArray[index][memData] = memData[value]
      */
     public static int  deleteRequestROW(String idMember) {
@@ -498,7 +571,6 @@ public class DataBase_mySQL {
                 statement.setString(1, idMember);
 
                 if(statement.executeUpdate()==1){
-;
                     statement.close();
                     conn.close();
 

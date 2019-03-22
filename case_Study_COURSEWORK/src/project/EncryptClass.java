@@ -139,13 +139,14 @@ public class EncryptClass {//Encrypt AES
      */
     public static void main(String args[]) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException, IOException {
         //String key = "DB99A2A8EB6904F492E9DF0595ED683C";
-        String password = "Admin";
+        String password = "tesTencryption";
         
         
-        System.out.println(generateKey128());
-        System.out.println(KEY);
+        //System.out.println(generateKey128());
+        //System.out.println(KEY);
         
-        String encrypPW="35C92AC0288173706E2748EA251436CD";
+        System.out.println(password);
+        String encrypPW=setPassword2Hash(password);
         System.out.println(encrypPW);
         
         System.out.println(getPlainPassword(encrypPW));

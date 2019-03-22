@@ -4,8 +4,16 @@
  * and open the template in the editor.
  */
 package project;
+/*
+label_name - username
+label_email - email
+label_membership - membership
 
+n_actual_class_booked2 - label booking number
+progressBar_membership2 - prossgressbar 3simplerule
+*/
 
+import java.awt.Color;
 import java.util.List;
 import org.json.JSONArray;
 
@@ -15,16 +23,16 @@ import org.json.JSONArray;
  */
 public class HomeController {
     /*-USERNAME - After Login-*/
-    public static  String varUser="m";
+    public static  String varUser;
     
     
     private static DataBase_mySQL dataAction = new DataBase_mySQL();
     
     
     
-    private static loginFrame loginFrame = new loginFrame();
-    private static Admin_FRAME Admin_FRAME = new Admin_FRAME();
-    private static index_FRAME index_FRAME = new index_FRAME();
+    private static loginFrame loginFrame;//Login Frame - Index
+    private static Admin_FRAME Admin_FRAME;//Admin Frame - ClubAdvisor, ClubManager
+    private static index_FRAME index_FRAME;//Member Frame
     
     
     /**
@@ -32,7 +40,7 @@ public class HomeController {
      * @param args
      */
     public static void main(String[] args) {
-        
+        loginFrame = new loginFrame();
         
         
         loginFrame.setVisible(true);
@@ -101,7 +109,6 @@ public class HomeController {
             Admin_FRAME.setVisible(false);
             loginFrame.setVisible(true);
         }else{
-            
             index_FRAME.setVisible(false);
             loginFrame.setVisible(true);
         }
@@ -114,21 +121,55 @@ public class HomeController {
         loginFrame.setVisible(false);
         
         if(dataAction.checkAdmin(username)==1){
-            
+            Admin_FRAME = new Admin_FRAME();
             Admin_FRAME.displayUser();
+            Admin_FRAME.ImageIconSetup(1);
             Admin_FRAME.setVisible(true);
         
-        }else{
-            
+        }if(dataAction.checkAdmin(username)==2){
+            Admin_FRAME = new Admin_FRAME();
+            Admin_FRAME.displayUser();
+            Admin_FRAME.ImageIconSetup(2);
+            Admin_FRAME.setVisible(true);
+        
+        }
+        if(dataAction.checkAdmin(username)==0){
+            index_FRAME = new index_FRAME();
+            index_FRAME.displayUser(varUser);
             index_FRAME.setVisible(true);
         
         }
         
+      
+        
     }
     
+    public static int checkAdmin(String username) {
+        
+      return  dataAction.checkAdmin(username);
+        
+    }
     
-    
-    
+    /**
+     * Members
+     * @return
+     */
+    public static JSONArray getUsersData(){
+       /*Dont grab pw*/
+       //System.out.println(dataAction.getALLData_().toString());
+        return  dataAction.getALLData_();
+        
+    };
+    /**
+     * Members
+     * @return
+     */
+    public static JSONArray getUserData(String username){
+       /*Dont grab pw*/
+       //System.out.println(dataAction.getALLData_().toString());
+        return  dataAction.getUserData_(username);
+        
+    };
     
     
     
