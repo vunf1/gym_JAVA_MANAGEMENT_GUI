@@ -5,18 +5,15 @@
 - Swing GUI - Dynamic OOP
 - SCRUD SYSTEM
 
-## Libraries
-
-- MySQL client connector java - mysql-connector-java-5.1.47-bin.jar
-- JSON manipulation methods - org.json
-
 ## Case Study:
-###### Sports and Leisure Village Registration and Booking System (VRB)
+# Sports and Leisure Village Registration and Booking System (VRB)
 ---
+
 - Sports and Leisure Village is a nation-wide club that offers a variety of facilities for sports (such as
 swimming and indoor tennis) and classes (such as yoga and fitness training) to members. The classes
 are run by qualified instructors working on a full-time or part-time basis. The club requires a new
 computer system to manage their members’ registration and bookings.
+
 
 - New customers who wish to book the club facilities or classes should firstly be registered by a club
 advisor. The club offers different types of membership, including silver, gold and platinum. The silver
@@ -25,6 +22,7 @@ customer has more than 10 bookings each year. The gold membership status for a m
 maintained if the member has at least 10 bookings made with the club. However, the platinum
 membership will require a fee of £100 a year, but members will receive discounts on bookings and
 other benefits.
+
 
 - A club member can book a scheduled class (led by an instructor) or the use of facility with a club
 advisor. Prior to a booking, the advisor would need to be able to check the details of the classes,
@@ -50,23 +48,17 @@ The club would also welcome any new features recommended by the software develop
 
 
 ### BackLog
-- [ ] add max char to creat a password - 30 - because encryption lenght after, DB max 256 chars;
-
-- [ ] Club Manager - acc give acess to users and booking
-- [ ] Club Advisor Request Member Table trigger edit
-- [ ] Club Advisor Request Booking Table trigger - no need doing memebership managment
 - [ ] Members GUI change memebership
-- [ ] Members GUI progress bar
 - [ ] Members GUI trigger booking 
-- [ ] DB Improve DATA Extract from Member - gender, date,bookingP/year,+?.
 - [ ] DB Improve DATA Booking, ID - CLASS - DATE.
+- [ ] When User LogIn check Membership diff DB date[date Actual].
+- [ ] Club Advisor Request Booking Table trigger - no  memebership managment
 
---- 
-- [ ] Generate encryption key dinamically 
-
-- [ ] Review Algorithmn
-- [ ] Review Code Idention
-- [ ] Improve design GUI
+- [ ] CLASS DIAGRAM :warning:
+- [ ] GRASP DIAGRAM :warning:
+- [ ] GOF DIAGRAM :warning:
+- [ ] Review Algorithmn :warning:
+- [ ] Review Code Idention :warning:
 
 ### Done
 
@@ -86,8 +78,22 @@ The club would also welcome any new features recommended by the software develop
 - [x] Club Advisor Request Member Dinamic List;
 - [x] Club Advisor Request Member event trigger;
 - [x] Club Advisor Request Member Table trigger
+- [x] Club Advisor Request Member Table trigger edit
+- [x] Members GUI progress bar
+- [x] Club Manager, exclusive table
+- [x] DB Improve DATA Extract from Member - gender, date,+?.
+- [x] Improve design GUI
 
 
 ### Extra Files
 
-```soon``` 
+Logos Source:
+https://cooltext.com
+
+Logos colors:
+gym name - #8A6D15 
+
+badge:
+    silver - #575652
+    gold - #DAA520
+    plat - #e5e4e2
