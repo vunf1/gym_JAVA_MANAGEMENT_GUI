@@ -35,6 +35,8 @@ public class HomeController {
     private static index_FRAME index_FRAME;//Member Frame
     
     
+   
+    
     /**
      *
      * @param args
@@ -42,7 +44,7 @@ public class HomeController {
     public static void main(String[] args) {
         loginFrame = new loginFrame();
         
-        
+        loginFrame.imgInitSetup();
         loginFrame.setVisible(true);
         
         
@@ -98,8 +100,26 @@ public class HomeController {
         
     };
     
+    /**
+     * Update OFICIAL MEMBER
+     * @return boolean
+     */
+    public static int updateMember(List<String> data){
+       
+       return  dataAction.modifyMember(data);
+        
+    };
     
     
+    /**
+     * Delete OFICIAL MEMBER
+     * @return boolean
+     */
+    public static int deleteMember(String usernameID){
+       
+       return  dataAction.deleteMemberROW(usernameID);
+        
+    };
     
     
     
@@ -124,18 +144,21 @@ public class HomeController {
             Admin_FRAME = new Admin_FRAME();
             Admin_FRAME.displayUser();
             Admin_FRAME.ImageIconSetup(1);
+            Admin_FRAME.noOnAdvisor(0);
             Admin_FRAME.setVisible(true);
         
         }if(dataAction.checkAdmin(username)==2){
             Admin_FRAME = new Admin_FRAME();
             Admin_FRAME.displayUser();
             Admin_FRAME.ImageIconSetup(2);
+            Admin_FRAME.noOnAdvisor(1);
             Admin_FRAME.setVisible(true);
         
         }
         if(dataAction.checkAdmin(username)==0){
-            index_FRAME = new index_FRAME();
+            index_FRAME = new index_FRAME(); 
             index_FRAME.displayUser(varUser);
+            index_FRAME.initFrame();
             index_FRAME.setVisible(true);
         
         }

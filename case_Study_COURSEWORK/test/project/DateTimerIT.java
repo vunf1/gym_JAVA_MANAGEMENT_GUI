@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author deoiveij
+ * @author foxst
  */
 public class DateTimerIT {
     

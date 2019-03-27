@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author deoiveij
+ * @author foxst
  */
 public class DataBase_mySQLIT {
     
@@ -72,6 +72,20 @@ public class DataBase_mySQLIT {
         System.out.println("getALLData_");
         JSONArray expResult = null;
         JSONArray result = DataBase_mySQL.getALLData_();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getUserData_ method, of class DataBase_mySQL.
+     */
+    @Test
+    public void testGetUserData_() {
+        System.out.println("getUserData_");
+        String username = "";
+        JSONArray expResult = null;
+        JSONArray result = DataBase_mySQL.getUserData_(username);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -156,6 +170,34 @@ public class DataBase_mySQLIT {
         String idMember = "";
         int expResult = 0;
         int result = DataBase_mySQL.deleteRequestROW(idMember);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of modifyMember method, of class DataBase_mySQL.
+     */
+    @Test
+    public void testModifyMember() {
+        System.out.println("modifyMember");
+        List<String> data = null;
+        int expResult = 0;
+        int result = DataBase_mySQL.modifyMember(data);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of deleteMemberROW method, of class DataBase_mySQL.
+     */
+    @Test
+    public void testDeleteMemberROW() {
+        System.out.println("deleteMemberROW");
+        String idMember = "";
+        int expResult = 0;
+        int result = DataBase_mySQL.deleteMemberROW(idMember);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

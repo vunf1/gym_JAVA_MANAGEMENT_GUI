@@ -1,17 +1,10 @@
 
-
-/**
- *
- * @author foxst
- */
-
 package project;
 
 import java.sql.*;
 import java.sql.Connection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -23,7 +16,7 @@ import org.json.JSONObject;
  * 
  * Database: phpmyAdmin / mySQL connector ()
  * Data manipulation : JSONArray / ArrayList
- * @author foxst
+ * @author deoiveij
  */
 public class DataBase_mySQL {
 
@@ -41,13 +34,14 @@ public class DataBase_mySQL {
      * * extract data as JSON and send it as ArrayList
      * * Json Reader
      * * * Save Index Array as a Object and Display by Key the Values
+     * 
      */
     public static void main(String[] args) {
 
         System.out.println(checkAdmin("joao"));
         
         /*Done extract ALL data from1 members_request and send it as JsonArray*/
-        /*
+        
         JSONArray  ALLdataMsR = new JSONArray ();
         ALLdataMsR=getALLData_Request();
         System.out.println(ALLdataMsR);
@@ -55,95 +49,30 @@ public class DataBase_mySQL {
         System.out.println(ALLdataMsR.length());
         System.out.println(ALLdataMsR.getJSONObject(0));
         
-        */
+        
         
         //Json Reader
         //Save Index Array as a Object and Display by Key the Values
-        /*
-        for(int x=0;x<ALLdataMsR.length();x++){
+        
+        JSONArray  ALLdata = new JSONArray ();
+        ALLdata=getALLData_();
+        for(int x=0;x<ALLdata.length();x++){
             JSONArray  Ass = new JSONArray ();
-            Ass.put(ALLdataMsR.getJSONObject(x));
+            Ass.put(ALLdata.getJSONObject(x));
             Ass.forEach(item -> {
                 JSONObject obj = (JSONObject) item;
-                //System.out.println(obj.get("membership").toString());
+                System.out.println(obj.get("membership").toString());
+                System.out.println(item.toString());
             
             });
                 
         }
         
         
-        System.out.println("DELETE by ID ");
-        System.out.println(deleteRequestROW("7"));
-        */
-        
-        /*
-        System.out.println("Trying to connect to database...");
-        Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
-        System.out.println("Connected");
-        if (conn != null){
-        Statement st = conn.createStatement();
-        ResultSet rs=null;
-        //retrieve the sample records from the Person table
-        System.out.println("retrieve the sample records");
-        System.out.println("---------------------------------");
-        String sql = "SELECT * FROM members_request ";
-        rs=st.executeQuery(sql);
-        while(rs.next()){
-        System.out.println(rs.getInt("id")+"\t"+rs.getString("username")+"\t"+rs.getString("membership"));
-        }
+        System.out.println("DELETE by ID - OFF ");
+        //System.out.println(deleteRequestROW("7"));
         
         
-        
-        
-        
-        /*
-        //insert a new record to the Person table (id = 2; first name = Paul)
-        sql = "INSERT INTO Person VALUES (2, 'Paul')";
-        st.executeUpdate(sql);
-        
-        System.out.println("insert a sample record");
-        System.out.println("---------------------------------");
-        sql = "SELECT * FROM Person ";
-        rs=st.executeQuery(sql);
-        while(rs.next()){
-        System.out.println(rs.getInt("id")+"\t"+rs.getString("firstname"));
-        }
-        */
-        /*
-        //update a record in the Person table (id = 1; first name = David)
-        sql = "UPDATE Person SET firstname='David' WHERE id=1";
-        st.executeUpdate(sql);
-        
-        System.out.println("update the sample record");
-        System.out.println("---------------------------------");
-        sql = "SELECT * FROM Person ";
-        rs=st.executeQuery(sql);
-        while(rs.next()){
-        System.out.println(rs.getInt("id")+"\t"+rs.getString("firstname"));
-        }
-        
-        //delete a record from the Person table (id = 2)
-        sql = "DELETE FROM Person WHERE id=2";
-        st.executeUpdate(sql);
-        
-        System.out.println("delete the sample record");
-        System.out.println("---------------------------------");
-        sql = "SELECT * FROM Person ";
-        rs=st.executeQuery(sql);
-        while(rs.next()){
-        System.out.println(rs.getInt("id")+"\t"+rs.getString("firstname"));
-        }
-        
-        
-        rs.close();
-        st.close();
-        conn.close();
-        System.out.println("Connection is closed.");
-        
-        } else {
-        System.out.println("null");
-        }
-        */
         
         
         
@@ -152,8 +81,8 @@ public class DataBase_mySQL {
     
     /**
      *      
-     * Members on Request 
-     * Modifid table names when insert data on 'ArrayLsit'
+     * Members on Request DATA
+     * 
      * @return JSONArray[index][memData] = memData[value]
      */
     public static JSONArray  getALLData_Request() {
@@ -208,8 +137,8 @@ public class DataBase_mySQL {
     
     /**
      *      
-     * Members on Request 
-     * Modifid table names when insert data on 'ArrayLsit'
+     * Members DATA
+     * return ALL memeber data to the Admin
      * @return JSONArray[index][memData] = memData[value]
      */
     public static JSONArray  getALLData_() {
@@ -270,7 +199,11 @@ public class DataBase_mySQL {
     }
     
     
-    
+    /**
+     *
+     * Return all user Data on memeber Table
+     * @return JSONArray
+     */
     public static JSONArray  getUserData_(String username) {
        
         counter=0;
@@ -336,7 +269,7 @@ public class DataBase_mySQL {
     
     
     /**
-     * check if username exists on the database
+     * check if username exists on the database -Table Member
      * @param username
      * @return boolean
      */
@@ -370,7 +303,7 @@ public class DataBase_mySQL {
     
      /**
       * 
-     * check if username have admin status 
+     * send username account status to verify priviligies
      * @param username
      * @return boolean
      */  
@@ -409,7 +342,7 @@ public class DataBase_mySQL {
      */ 
     public static int checkPassword(List<String> data){
     //data 0 username
-    //data 1 password
+    //data 1 password ENCRYP
         
         try {
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
@@ -440,7 +373,7 @@ public class DataBase_mySQL {
     
     /**
      * Regist new user on request table for later be verified by ClubAdvisor/ClubManager
-     * @param ArrayList of data inserted by user
+     * @param List of data inserted by user
      * @return boolean
      */
     public static int registerREQmember(List<String> data){
@@ -484,14 +417,15 @@ public class DataBase_mySQL {
             Logger.getGlobal();}
         
         
-        return 1;
+        return -1;
     }
     
 
     /**
+     * This method prevent SQL IN
      * Insert member data table[request] into table[member]
-     * Regist new user on request table for later be verified by ClubAdvisor/ClubManager
-     * @param ArrayList of data inserted by user
+     * 
+     * @param List of data inserted by user
      * @return boolean
      */
     public static int inserREQintoMembers(List<String> data){
@@ -549,7 +483,7 @@ public class DataBase_mySQL {
      *      
      * Members [on Request] 
      * Delete Row on table REQUEST
-     * @return JSONArray[index][memData] = memData[value]
+     * @return boolean
      */
     public static int  deleteRequestROW(String idMember) {
        
@@ -596,5 +530,113 @@ public class DataBase_mySQL {
     
 
 
+    public static int modifyMember(List<String> data){
+        /*
+        *
+        *  data 0 - username
+        *  data 1 - pw encrypt - key 256 bytes
+        *  data 2 - email
+        *  data 3 - address
+        *  data 4 - membership
+        *  data 5 - status
+        *  data 6 - gender
+        *  data 7 - date
+        *  data 8 - booking
+        *  data 9 - id
+        *
+        */
+        
+        PreparedStatement statement;
+        try {
+            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
+            if (conn != null){
+            conn.setAutoCommit(true);
 
+                String compiledQuery = "Update members set username=? ,password=?, email=?, address=?, membership=?, status=?, gender=?, date=?, booking=? WHERE id=?";
+                
+                statement = conn.prepareStatement(compiledQuery);
+
+
+                statement.setString(1, data.get(0));
+                statement.setString(2, data.get(1));
+                statement.setString(3, data.get(2));
+                statement.setString(4, data.get(3));
+                statement.setString(5, data.get(4));
+                statement.setString(6, data.get(5));
+                statement.setString(7, data.get(6));
+                statement.setString(8, data.get(7));
+                statement.setString(9, data.get(8));
+                statement.setString(10, data.get(9));
+
+                if(statement.executeUpdate()==1){
+                    statement.close();
+                    conn.close();
+
+                    return 1;
+                    
+                    
+                } else {
+                    statement.close();
+                    conn.close();
+
+                    return 0;
+                }
+            }else{System.out.println("DB FAILED");return 0;}
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase_mySQL.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getGlobal();}
+        
+        
+        return 1;
+    }
+    
+
+
+    
+    public static int  deleteMemberROW(String idMember) {
+       
+        counter=0;
+        
+        try {
+            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
+            if (conn != null){
+                
+                
+                PreparedStatement statement;
+                
+                conn.setAutoCommit(true);
+
+                String compiledQuery = "DELETE FROM members WHERE id=?";
+                statement = conn.prepareStatement(compiledQuery);
+
+
+                statement.setString(1, idMember);
+
+                if(statement.executeUpdate()==1){
+                    statement.close();
+                    conn.close();
+
+                    return 1;
+                    
+                    
+                } else {
+                    statement.close();
+                    conn.close();
+
+                    return 0;
+                }
+                
+                
+            }else{System.out.println("DB FAILED");return -1;/*server error}*/}
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase_mySQL.class.getName()).log(Level.SEVERE, null, ex);
+            return -1;//server error
+        }
+        
+            
+    }
+    
+    
+    
+    
 }

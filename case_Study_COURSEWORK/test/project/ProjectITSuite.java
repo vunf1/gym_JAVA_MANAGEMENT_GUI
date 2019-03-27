@@ -14,10 +14,10 @@ import org.junit.runners.Suite;
 
 /**
  *
- * @author deoiveij
+ * @author foxst
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({project.loginFrameIT.class, project.DataBase_mySQLIT.class, project.assets.AssetsITSuite.class, project.Admin_FRAMEIT.class, project.index_FRAMEIT.class, project.DateTimerIT.class, project.HomeControllerIT.class, project.Extras_NotifierIT.class, project.EncryptClassIT.class})
+@Suite.SuiteClasses({project.assets.AssetsITSuite.class, project.loginFrameIT.class, project.DateTimerIT.class, project.HomeControllerIT.class, project.EncryptClassIT.class, project.index_FRAMEIT.class, project.DataBase_mySQLIT.class, project.Admin_FRAMEIT.class, project.Extras_NotifierIT.class})
 public class ProjectITSuite {
 
     @BeforeClass

@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author deoiveij
+ * @author foxst
  */
 public class loginFrameIT {
     
@@ -38,13 +38,13 @@ public class loginFrameIT {
     }
 
     /**
-     * Test of main method, of class loginFrame.
+     * Test of imgInitSetup method, of class loginFrame.
      */
     @Test
-    public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        loginFrame.main(args);
+    public void testImgInitSetup() {
+        System.out.println("imgInitSetup");
+        loginFrame instance = new loginFrame();
+        instance.imgInitSetup();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

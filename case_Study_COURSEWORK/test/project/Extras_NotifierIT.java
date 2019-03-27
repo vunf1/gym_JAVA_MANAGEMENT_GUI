@@ -5,7 +5,9 @@
  */
 package project;
 
+import java.awt.Font;
 import java.util.List;
+import javax.swing.JPanel;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -15,7 +17,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author deoiveij
+ * @author foxst
  */
 public class Extras_NotifierIT {
     
@@ -88,6 +90,22 @@ public class Extras_NotifierIT {
         String s = "";
         Extras_Notifier instance = new Extras_Notifier();
         instance.alertERROR(s);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of loadFont method, of class Extras_Notifier.
+     */
+    @Test
+    public void testLoadFont() throws Exception {
+        System.out.println("loadFont");
+        float size = 0.0F;
+        int style = 0;
+        JPanel jp = null;
+        Font expResult = null;
+        Font result = Extras_Notifier.loadFont(size, style, jp);
+        assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

@@ -39,7 +39,6 @@ public class index_FRAME extends javax.swing.JFrame {
         this.update_Panel.setVisible(false);
         this.book_Panel.setVisible(false);
         
-        displayUser(controller.varUser);
         
         timerThread = new DateTimer(_date, _time);
         timerThread.start();
@@ -108,46 +107,11 @@ public class index_FRAME extends javax.swing.JFrame {
         label_membership.setText(editUser.get(5).toString());
         
         
-        
+        imgInitSetup();
         //icon_.setIcon(new javax.swing.ImageIcon());
         
     }
     public void progressBar(){
-        
-            if(editUser.get(5).toString().equals("silver")){
-                ImageIcon logo = new ImageIcon(getClass().getResource("/project/assets/clubMemberLogoSilver.png"));
-                int scale = 3;  
-                int width = logo.getIconWidth();
-                int newWidth = width / scale;
-                icon_member.setBorderPainted(false);
-                icon_member.setBorder(null);
-                icon_member.setContentAreaFilled(false);
-                icon_member.setFocusPainted(false);
-                icon_member.setIcon(new ImageIcon(logo.getImage().getScaledInstance(newWidth, -1,java.awt.Image.SCALE_SMOOTH)));
-            }
-            if(editUser.get(5).toString().equals("gold")){
-                ImageIcon logo = new ImageIcon(getClass().getResource("/project/assets/clubMemberLogoGold.png"));
-                int scale = 3;  
-                int width = logo.getIconWidth();
-                int newWidth = width / scale;
-                icon_member.setBorderPainted(false);
-                icon_member.setBorder(null);
-                icon_member.setContentAreaFilled(false);
-                icon_member.setFocusPainted(false);
-                icon_member.setIcon(new ImageIcon(logo.getImage().getScaledInstance(newWidth, -1,java.awt.Image.SCALE_SMOOTH)));
-            }
-            if(editUser.get(5).toString().equals("platinum")){
-                ImageIcon logo = new ImageIcon(getClass().getResource("/project/assets/clubMemberLogoPlat.png"));
-                int scale = 3;  
-                int width = logo.getIconWidth();
-                int newWidth = width / scale;
-                icon_member.setBorderPainted(false);
-                icon_member.setBorder(null);
-                icon_member.setContentAreaFilled(false);
-                icon_member.setFocusPainted(false);
-                icon_member.setIcon(new ImageIcon(logo.getImage().getScaledInstance(newWidth, -1,java.awt.Image.SCALE_SMOOTH)));
-            }
-            
         
         
         int pro=0;
@@ -174,7 +138,101 @@ public class index_FRAME extends javax.swing.JFrame {
         
     }
     
-    
+    public void imgInitSetup(){
+        
+         
+            ImageIcon logoExit = new ImageIcon(getClass().getResource("/project/assets/exit.png"));
+
+            int width2 = logoExit.getIconWidth();
+            int newWidth2 = width2 / 5;
+            exit_btn_index.setBorderPainted(false);
+            exit_btn_index.setBorder(null);
+            exit_btn_index.setContentAreaFilled(false);
+            exit_btn_index.setFocusPainted(false);
+            exit_btn_index.setIcon(new ImageIcon(logoExit.getImage().getScaledInstance(newWidth2, -1,java.awt.Image.SCALE_SMOOTH)));
+             
+            
+            ImageIcon logoLogOut = new ImageIcon(getClass().getResource("/project/assets/logOut.png"));
+
+            int width3 = logoLogOut.getIconWidth();
+            int newWidth3 = width3 / 5;
+            logOut_btn_index.setBorderPainted(false);
+            logOut_btn_index.setBorder(null);
+            logOut_btn_index.setContentAreaFilled(false);
+            logOut_btn_index.setFocusPainted(false);
+            logOut_btn_index.setIcon(new ImageIcon(logoLogOut.getImage().getScaledInstance(newWidth3, -1,java.awt.Image.SCALE_SMOOTH)));
+            
+            
+            
+            
+            if(editUser.get(5).toString().equals("silver")){
+                ImageIcon logo = new ImageIcon(getClass().getResource("/project/assets/clubMemberLogoSilver.png"));
+                int scale = 3;  
+                int width = logo.getIconWidth();
+                int newWidth = width / scale;
+                icon_member.setBorderPainted(false);
+                icon_member.setBorder(null);
+                icon_member.setContentAreaFilled(false);
+                icon_member.setFocusPainted(false);
+                icon_member.setIcon(new ImageIcon(logo.getImage().getScaledInstance(newWidth, -1,java.awt.Image.SCALE_SMOOTH)));
+                
+                
+                ImageIcon logoMain = new ImageIcon(getClass().getResource("/project/assets/silverSymbol.png"));
+                icon_memberShip.setBorderPainted(false);
+                icon_memberShip.setBorder(null);
+                icon_memberShip.setContentAreaFilled(false);
+                icon_memberShip.setFocusPainted(false);
+                icon_memberShip.setIcon(new ImageIcon(logoMain.getImage().getScaledInstance(newWidth, -1,java.awt.Image.SCALE_SMOOTH)));
+                
+                
+                
+                
+                
+            }
+            if(editUser.get(5).toString().equals("gold")){
+                ImageIcon logo = new ImageIcon(getClass().getResource("/project/assets/clubMemberLogoGold.png"));
+                int scale = 3;  
+                int width = logo.getIconWidth();
+                int newWidth = width / scale;
+                icon_member.setBorderPainted(false);
+                icon_member.setBorder(null);
+                icon_member.setContentAreaFilled(false);
+                icon_member.setFocusPainted(false);
+                icon_member.setIcon(new ImageIcon(logo.getImage().getScaledInstance(newWidth, -1,java.awt.Image.SCALE_SMOOTH)));
+                
+                
+                ImageIcon logoMain = new ImageIcon(getClass().getResource("/project/assets/goldSymbol.png"));
+                icon_memberShip.setBorderPainted(false);
+                icon_memberShip.setBorder(null);
+                icon_memberShip.setContentAreaFilled(false);
+                icon_memberShip.setFocusPainted(false);
+                icon_memberShip.setIcon(new ImageIcon(logoMain.getImage().getScaledInstance(newWidth, -1,java.awt.Image.SCALE_SMOOTH)));
+                
+            }
+            if(editUser.get(5).toString().equals("platinum")){
+                ImageIcon logo = new ImageIcon(getClass().getResource("/project/assets/clubMemberLogoPlat.png"));
+                int scale = 3;  
+                int width = logo.getIconWidth();
+                int newWidth = width / scale;
+                icon_member.setBorderPainted(false);
+                icon_member.setBorder(null);
+                icon_member.setContentAreaFilled(false);
+                icon_member.setFocusPainted(false);
+                icon_member.setIcon(new ImageIcon(logo.getImage().getScaledInstance(newWidth, -1,java.awt.Image.SCALE_SMOOTH)));
+                
+                
+                
+                ImageIcon logoMain = new ImageIcon(getClass().getResource("/project/assets/platSymbol.png"));
+                icon_memberShip.setBorderPainted(false);
+                icon_memberShip.setBorder(null);
+                icon_memberShip.setContentAreaFilled(false);
+                icon_memberShip.setFocusPainted(false);
+                icon_memberShip.setIcon(new ImageIcon(logoMain.getImage().getScaledInstance(newWidth, -1,java.awt.Image.SCALE_SMOOTH)));
+            }
+            
+        
+        
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -189,18 +247,19 @@ public class index_FRAME extends javax.swing.JFrame {
         menu_item_4 = new javax.swing.JButton();
         menu_item_3 = new javax.swing.JButton();
         label_username_welcome = new javax.swing.JLabel();
-        trigger_alert = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        logOut_btn_index = new javax.swing.JButton();
+        exit_btn_index = new javax.swing.JButton();
         label_time = new javax.swing.JLabel();
         label_date = new javax.swing.JLabel();
         _date = new javax.swing.JLabel();
         _time = new javax.swing.JLabel();
         icon_member = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         index_Panel = new javax.swing.JPanel();
         label_name = new javax.swing.JLabel();
         label_email = new javax.swing.JLabel();
         label_membership = new javax.swing.JLabel();
-        icon_ = new javax.swing.JButton();
+        icon_memberShip = new javax.swing.JButton();
         book_Panel = new javax.swing.JPanel();
         listOFclass_comboBox = new javax.swing.JComboBox<>();
         buttom_add2Book = new javax.swing.JButton();
@@ -291,23 +350,21 @@ public class index_FRAME extends javax.swing.JFrame {
 
         label_username_welcome.setFont(new java.awt.Font("Copperplate Gothic Light", 1, 14)); // NOI18N
         label_username_welcome.setText("Hello <display name>");
-        menu_Panel.add(label_username_welcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 70, 160, -1));
+        menu_Panel.add(label_username_welcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 130, -1));
 
-        trigger_alert.setText("Log Out");
-        trigger_alert.addActionListener(new java.awt.event.ActionListener() {
+        logOut_btn_index.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                trigger_alertActionPerformed(evt);
+                logOut_btn_indexActionPerformed(evt);
             }
         });
-        menu_Panel.add(trigger_alert, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, 80, 20));
+        menu_Panel.add(logOut_btn_index, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, 80, 20));
 
-        jButton1.setText("Close");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        exit_btn_index.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                exit_btn_indexActionPerformed(evt);
             }
         });
-        menu_Panel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, 80, 20));
+        menu_Panel.add(exit_btn_index, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, 80, 20));
 
         label_time.setForeground(new java.awt.Color(0, 0, 0));
         label_time.setText("Time: ");
@@ -324,7 +381,12 @@ public class index_FRAME extends javax.swing.JFrame {
         _time.setForeground(new java.awt.Color(0, 0, 0));
         _time.setText("<time>");
         menu_Panel.add(_time, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, -1, -1));
-        menu_Panel.add(icon_member, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 180, 60));
+        menu_Panel.add(icon_member, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 210, 60));
+
+        jLabel1.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Hello, ");
+        menu_Panel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 70, 20));
 
         getContentPane().add(menu_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 750, 90));
 
@@ -340,11 +402,10 @@ public class index_FRAME extends javax.swing.JFrame {
         label_membership.setText("<actual membership>");
         index_Panel.add(label_membership, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, -1, -1));
 
-        icon_.setBackground(new java.awt.Color(204, 204, 204));
-        icon_.setText("jButton2");
-        index_Panel.add(icon_, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 150, 110));
+        icon_memberShip.setBackground(new java.awt.Color(204, 204, 204));
+        index_Panel.add(icon_memberShip, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 150, 110));
 
-        getContentPane().add(index_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 740, 380));
+        getContentPane().add(index_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 740, 390));
 
         book_Panel.setBackground(java.awt.Color.lightGray);
         book_Panel.setToolTipText("Book a Class");
@@ -362,7 +423,7 @@ public class index_FRAME extends javax.swing.JFrame {
         label_text_AvaiableClass.setText("Avaiable Classes");
         book_Panel.add(label_text_AvaiableClass, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
 
-        getContentPane().add(book_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 740, 380));
+        getContentPane().add(book_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 740, 390));
 
         update_Panel.setBackground(java.awt.Color.lightGray);
         update_Panel.setToolTipText("Update Membership");
@@ -440,7 +501,7 @@ public class index_FRAME extends javax.swing.JFrame {
         button_submit.setText("Submit");
         accSettings_Panel.add(button_submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 290, 70, -1));
 
-        getContentPane().add(accSettings_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 740, 380));
+        getContentPane().add(accSettings_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 740, 390));
 
         pack();
         setLocationRelativeTo(null);
@@ -545,7 +606,7 @@ public class index_FRAME extends javax.swing.JFrame {
         this.buttom_add2Book2.setVisible(false);
         
         
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_buttom_add2Book2ActionPerformed
 
     
@@ -555,28 +616,29 @@ public class index_FRAME extends javax.swing.JFrame {
     
     
     
-    private void trigger_alertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trigger_alertActionPerformed
+    private void logOut_btn_indexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOut_btn_indexActionPerformed
     
         controller.logOut("normal");
         
         
-    }//GEN-LAST:event_trigger_alertActionPerformed
+    }//GEN-LAST:event_logOut_btn_indexActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void exit_btn_indexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_btn_indexActionPerformed
         
-        System.exit(0);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        timerThread.exitProcedure();
+    }//GEN-LAST:event_exit_btn_indexActionPerformed
 
     private void list_membershipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list_membershipActionPerformed
         
         if(this.list_membership.getSelectedItem()=="Gold"){
             this.label_info.setText("");
             //alertINFO(this.list_membership.getSelectedItem().toString());
+            this.label_info.setText("<html><center>You need to have a minimum of 10 Booked Classes p/year<center></html>");
         }
         
         if(this.list_membership.getSelectedItem()=="Silver"){
             this.label_info.setText("");
-            //alertINFO(this.list_membership.getSelectedItem().toString());
+            this.label_info.setText("<html><center>It's Free<center></html>");
         }
         
         if(this.list_membership.getSelectedItem()=="Platinium"){
@@ -634,10 +696,11 @@ public class index_FRAME extends javax.swing.JFrame {
     private javax.swing.JButton buttom_add2Book1;
     private javax.swing.JButton buttom_add2Book2;
     private javax.swing.JButton button_submit;
-    private javax.swing.JButton icon_;
+    private javax.swing.JButton exit_btn_index;
     private javax.swing.JButton icon_member;
+    private javax.swing.JButton icon_memberShip;
     private javax.swing.JPanel index_Panel;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel label_address;
     private javax.swing.JLabel label_date;
     private javax.swing.JLabel label_displayName;
@@ -655,6 +718,7 @@ public class index_FRAME extends javax.swing.JFrame {
     private javax.swing.JLabel label_username_welcome;
     private javax.swing.JComboBox<String> listOFclass_comboBox;
     private javax.swing.JComboBox<String> list_membership;
+    private javax.swing.JButton logOut_btn_index;
     private javax.swing.JLabel member_next_goal2;
     private javax.swing.JPanel menu_Panel;
     private javax.swing.JButton menu_item_1;
@@ -668,7 +732,6 @@ public class index_FRAME extends javax.swing.JFrame {
     private javax.swing.JTextField textBox_newPW;
     private javax.swing.JTextField textBox_oldPW;
     private javax.swing.JTextField textBox_username;
-    private javax.swing.JButton trigger_alert;
     private javax.swing.JPanel update_Panel;
     // End of variables declaration//GEN-END:variables
 }

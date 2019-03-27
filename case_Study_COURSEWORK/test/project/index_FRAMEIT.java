@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author deoiveij
+ * @author foxst
  */
 public class index_FRAMEIT {
     
@@ -35,6 +35,55 @@ public class index_FRAMEIT {
     
     @After
     public void tearDown() {
+    }
+
+    /**
+     * Test of displayUser method, of class index_FRAME.
+     */
+    @Test
+    public void testDisplayUser() {
+        System.out.println("displayUser");
+        String username = "";
+        index_FRAME instance = new index_FRAME();
+        instance.displayUser(username);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of initFrame method, of class index_FRAME.
+     */
+    @Test
+    public void testInitFrame() {
+        System.out.println("initFrame");
+        index_FRAME instance = new index_FRAME();
+        instance.initFrame();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of progressBar method, of class index_FRAME.
+     */
+    @Test
+    public void testProgressBar() {
+        System.out.println("progressBar");
+        index_FRAME instance = new index_FRAME();
+        instance.progressBar();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of imgInitSetup method, of class index_FRAME.
+     */
+    @Test
+    public void testImgInitSetup() {
+        System.out.println("imgInitSetup");
+        index_FRAME instance = new index_FRAME();
+        instance.imgInitSetup();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
 
     /**

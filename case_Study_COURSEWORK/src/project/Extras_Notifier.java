@@ -1,10 +1,15 @@
 
 package project;
 
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import javax.swing.JDialog;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 
 /**
@@ -20,11 +25,20 @@ public class Extras_Notifier {
      */
     public boolean alertYesNo(String s){
         JOptionPane optionPane = new JOptionPane();
-        /*JDialog dialog = optionPane.createDialog("Warning!");
-        dialog.setAlwaysOnTop(true); // to show top of all other application
-        dialog.setVisible(true); // to visible the dialog*/
-        if (optionPane.showConfirmDialog(null, s, "WARNING",
-        optionPane.YES_NO_OPTION) == optionPane.YES_OPTION) {
+        Object[] options = {"Yes !","No !"};
+        
+        int n = JOptionPane.showOptionDialog(optionPane,
+        s,
+        "WARNING",
+        JOptionPane.YES_NO_OPTION,
+        JOptionPane.QUESTION_MESSAGE,
+        null,     //do not use a custom Icon
+        options,  //the titles of buttons
+        options[1]); //default button title
+        
+        
+        
+        if (n == optionPane.YES_OPTION) {
             return true;
             // yes option
         } else {
@@ -68,7 +82,26 @@ public class Extras_Notifier {
         dialog.setAlwaysOnTop(true); // to show top of all other application
         dialog.setVisible(true); // to visible the dialog
     };
-    
+     
+    public static Font loadFont(float size, int style, JPanel jp) throws IOException {
+               // Opens the JPanel's resource called font/chem1.ttf
+	InputStream is = jp.getClass().getResourceAsStream("KOMIKAX_.ttf");
+        Font font = null;
+	try {
+		font = Font.createFont(Font.TRUETYPE_FONT, is);
+		font = font.deriveFont(size);
+		font = font.deriveFont(style);
+	} catch (FontFormatException e) {
+                       System.err.println("Font is null");
+                       System.exit(1);
+	} catch (IOException e) {
+                       System.err.println("Font is null");
+                       System.exit(1);
+	}
+	
+               // CAREFUL, if font returns null, you can have NullPointerExceptions
+	return font;
+}
     
     /**
      *

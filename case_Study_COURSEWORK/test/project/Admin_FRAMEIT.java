@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author deoiveij
+ * @author foxst
  */
 public class Admin_FRAMEIT {
     
@@ -38,6 +38,19 @@ public class Admin_FRAMEIT {
     }
 
     /**
+     * Test of ImageIconSetup method, of class Admin_FRAME.
+     */
+    @Test
+    public void testImageIconSetup() {
+        System.out.println("ImageIconSetup");
+        int option = 0;
+        Admin_FRAME instance = new Admin_FRAME();
+        instance.ImageIconSetup(option);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
      * Test of displayUser method, of class Admin_FRAME.
      */
     @Test
@@ -45,6 +58,19 @@ public class Admin_FRAMEIT {
         System.out.println("displayUser");
         Admin_FRAME instance = new Admin_FRAME();
         instance.displayUser();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of noOnAdvisor method, of class Admin_FRAME.
+     */
+    @Test
+    public void testNoOnAdvisor() {
+        System.out.println("noOnAdvisor");
+        int op = 0;
+        Admin_FRAME instance = new Admin_FRAME();
+        instance.noOnAdvisor(op);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

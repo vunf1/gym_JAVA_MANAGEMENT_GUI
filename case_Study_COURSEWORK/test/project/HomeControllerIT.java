@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author deoiveij
+ * @author foxst
  */
 public class HomeControllerIT {
     
@@ -135,6 +135,34 @@ public class HomeControllerIT {
     }
 
     /**
+     * Test of updateMember method, of class HomeController.
+     */
+    @Test
+    public void testUpdateMember() {
+        System.out.println("updateMember");
+        List<String> data = null;
+        int expResult = 0;
+        int result = HomeController.updateMember(data);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of deleteMember method, of class HomeController.
+     */
+    @Test
+    public void testDeleteMember() {
+        System.out.println("deleteMember");
+        String usernameID = "";
+        int expResult = 0;
+        int result = HomeController.deleteMember(usernameID);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
      * Test of logOut method, of class HomeController.
      */
     @Test
@@ -154,6 +182,47 @@ public class HomeControllerIT {
         System.out.println("callNextLogin");
         String username = "";
         HomeController.callNextLogin(username);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of checkAdmin method, of class HomeController.
+     */
+    @Test
+    public void testCheckAdmin() {
+        System.out.println("checkAdmin");
+        String username = "";
+        int expResult = 0;
+        int result = HomeController.checkAdmin(username);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getUsersData method, of class HomeController.
+     */
+    @Test
+    public void testGetUsersData() {
+        System.out.println("getUsersData");
+        JSONArray expResult = null;
+        JSONArray result = HomeController.getUsersData();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getUserData method, of class HomeController.
+     */
+    @Test
+    public void testGetUserData() {
+        System.out.println("getUserData");
+        String username = "";
+        JSONArray expResult = null;
+        JSONArray result = HomeController.getUserData(username);
+        assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
