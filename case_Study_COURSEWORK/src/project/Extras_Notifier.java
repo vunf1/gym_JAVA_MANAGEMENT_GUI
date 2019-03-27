@@ -123,6 +123,7 @@ public class Extras_Notifier {
 
     };
     public int checkUsername(String data){
+        System.out.println(data);
         return calls.checkUsername(data);
     
     }

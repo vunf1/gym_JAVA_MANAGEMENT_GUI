@@ -73,7 +73,7 @@ public class index_FRAME extends javax.swing.JFrame {
             editUser.getInt(0));member_id
             editUser.get(1));username
             editUser.get(2));password
-            editUser.get(3));email
+            editUser.get(3));ema
             editUser.get(4));address
             editUser.get(5));membership
             editUser.getInt(6));status
@@ -82,6 +82,7 @@ public class index_FRAME extends javax.swing.JFrame {
             editUser.getInt(9));booking
             
             */
+        //this.label_memberID_info.setText(editUser.get(0));
         
         this.menu_item_1.setText("<html><center>"+"Check"+"<br>"+"Membership"+"</center></html>");
         
@@ -241,6 +242,8 @@ public class index_FRAME extends javax.swing.JFrame {
         n_actual_class_booked2 = new javax.swing.JLabel();
         label_title_CLASS2 = new javax.swing.JLabel();
         member_next_goal2 = new javax.swing.JLabel();
+        label_memberid = new javax.swing.JLabel();
+        label_memberID_info = new javax.swing.JLabel();
         menu_Panel = new javax.swing.JPanel();
         menu_item_1 = new javax.swing.JButton();
         menu_item_2 = new javax.swing.JButton();
@@ -307,6 +310,10 @@ public class index_FRAME extends javax.swing.JFrame {
         member_next_goal2.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
         member_next_goal2.setText("<Next Goal>");
         getContentPane().add(member_next_goal2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 400, -1, -1));
+
+        label_memberid.setText("Member ID : ");
+        getContentPane().add(label_memberid, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 430, 80, 20));
+        getContentPane().add(label_memberID_info, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 430, 100, 20));
 
         menu_Panel.setBackground(new java.awt.Color(181, 206, 179));
         menu_Panel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -707,6 +714,8 @@ public class index_FRAME extends javax.swing.JFrame {
     private javax.swing.JLabel label_email;
     private javax.swing.JLabel label_info;
     private javax.swing.JLabel label_info_static1;
+    private javax.swing.JLabel label_memberID_info;
+    private javax.swing.JLabel label_memberid;
     private javax.swing.JLabel label_membership;
     private javax.swing.JLabel label_name;
     private javax.swing.JLabel label_password;

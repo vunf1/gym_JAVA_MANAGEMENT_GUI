@@ -370,42 +370,48 @@ public class loginFrame extends javax.swing.JFrame {
         alert.alertERROR("Empty Field");
         
         }else{
-        
-            if(register_password_text.getText().equals(register_password_text1.getText())&& register_password_text.getDocument().getLength()>=8 || register_password_text.getDocument().getLength()<=15){
-                if(alert.checkUsername(register_username_text.getText())==1){
+            System.out.println(alert.checkUsername(register_username_text.getText().toString()));
+            if(alert.checkUsername(register_username_text.getText().toString())>=1){
                     
-                    alert.alertERROR("Username "+register_username_text.getText()+" Already Exist");
-                    
-                }else{
-                    if(register_email_text.getText().toString().indexOf(' ')>=0 ||register_email_text.getText().toString().indexOf('@')<0 || register_email_text.getText().toString().indexOf('.')<0 ){
+                    alert.alertERROR("Username "+register_username_text.getText()+" Already in use!");
+            }else{
+                if(register_password_text.getText().equals(register_password_text1.getText())&& register_password_text.getDocument().getLength()>=8 && register_password_text.getDocument().getLength()<=15){
+                        
+                        if(register_email_text.getText().toString().indexOf(' ')>=0 ||register_email_text.getText().toString().indexOf('@')<0 || register_email_text.getText().toString().indexOf('.')<0 ){
                        
                         alert.alertERROR("Invalid Email");  
-                    }else{
-                        data.add(register_username_text.getText().toLowerCase());//0
-                        data.add(register_password_text.getText());//1
-                        data.add(register_email_text.getText());//2
-                        data.add(register_address_text.getText());//3
-                        data.set(1,encrypt.setPassword2Hash(register_password_text.getText()));
-                        
-                        data.add(label_Date.getText().replaceAll("\\s+",""));//4
-                        data.add(String.valueOf(gender_Box.getSelectedItem()));
-                        //data.add(label_Time.getText());
-                        
-                        if(alert.registerMember(data)==1){
-                            alert.alertINFO("Account Created Succesfully");
                         }else{
-                            alert.alertERROR("Account Not Created");
-                        } 
-                      
-                    }
-                }
-            }else{
+                            data.add(register_username_text.getText().toLowerCase());//0 - username 
+                            data.add(register_password_text.getText());//1 - pw
+                            data.add(register_email_text.getText());//2 - email
+                            data.add(register_address_text.getText());//3 - address
+                            data.set(1,encrypt.setPassword2Hash(register_password_text.getText()));//pe encrypt
+
+                            data.add(label_Date.getText().replaceAll("\\s+",""));//4 - today date
+                            data.add(String.valueOf(gender_Box.getSelectedItem()));// 
+                            //data.add(label_Time.getText());
+                        
+                            if(alert.registerMember(data)==1){
+                                alert.alertINFO("Account Created Succesfully");
+                                /*register_username_text.setText("");
+                                register_password_text.setText("");
+                                register_password_text1.setText("");
+                                register_email_text.setText("");
+                                register_address_text.setText("");*/                             
+        register_panel.setVisible(false);
+        login_Panel.setVisible(true);
+                                
+                            }else{
+                                alert.alertERROR("Account Not Created");
+                            } 
+                        }
+                }else{
 
                 alert.alertERROR("<html>Password :<br> field not equal or <br> not at least 8 with max of 15 digits</html>");
+                }
             }
-        }
 
-        // TODO add your handling code here:
+        }   // TODO add your handling code here:
     }//GEN-LAST:event_register_btn_actionActionPerformed
 
     private void exit_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exit_btnMouseClicked

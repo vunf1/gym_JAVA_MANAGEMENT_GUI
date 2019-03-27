@@ -51,8 +51,8 @@ public class HomeController {
     }
     
     public static int checkUsername(String data){
-        
-        return  dataAction.checkUsername(data);
+        return 2;
+        //return  dataAction.checkUsername(data);
         
     };
     

@@ -3,6 +3,7 @@ package project;
 
 import java.sql.*;
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.List;
@@ -19,7 +20,9 @@ import org.json.JSONObject;
  * @author deoiveij
  */
 public class DataBase_mySQL {
-
+    
+    
+    public static List<String> okCh;
     
     private static String connectionURL = "jdbc:mysql://localhost/membershipdb";
     private static String uName = "root";
@@ -38,7 +41,7 @@ public class DataBase_mySQL {
      */
     public static void main(String[] args) {
 
-        System.out.println(checkAdmin("joao"));
+        System.out.println(checkUsername("oladd"));
         
         /*Done extract ALL data from1 members_request and send it as JsonArray*/
         
@@ -138,7 +141,7 @@ public class DataBase_mySQL {
     /**
      *      
      * Members DATA
-     * return ALL memeber data to the Admin
+     * return ALL member data to the Admin
      * @return JSONArray[index][memData] = memData[value]
      */
     public static JSONArray  getALLData_() {
@@ -201,7 +204,7 @@ public class DataBase_mySQL {
     
     /**
      *
-     * Return all user Data on memeber Table
+     * Return all user Data on member Table
      * @return JSONArray
      */
     public static JSONArray  getUserData_(String username) {
@@ -273,8 +276,7 @@ public class DataBase_mySQL {
      * @param username
      * @return boolean
      */
-    public static int checkUsername(String username){//Check Username on DataBase
-        
+    public static List<String> checkUsername(String username){//Check Username on DataBase
         
         try {
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
@@ -283,27 +285,48 @@ public class DataBase_mySQL {
                 Statement st = conn.createStatement();
                 ResultSet rs=null;
                 
-                String sql = "SELECT COUNT(*)  FROM members WHERE username='"+username+"'";
+                String sql = "SELECT COUNT(*)  FROM members_request WHERE username='"+username+"'";
                 rs=st.executeQuery(sql);
                 while(rs.next()){
-                    if(rs.getInt(1 )==1){
-                        return 1;
-                    };
+                    if(rs.getInt(1 )>=1){
+                        okCh.set(0, "1");
+                        
+                    }else{
+                        okCh.set(0, "0");
+                    }
                     
                 }
+                
+                
+                Statement st2 = conn.createStatement();
+                ResultSet rs2=null;
+                
+                String sql2 = "SELECT COUNT(*)  FROM members WHERE username='"+username+"'";
+                rs2=st2.executeQuery(sql2);
+                while(rs2.next()){
+                    if(rs2.getInt(1 )>=1){
+                        okCh.set(1, "1");
+                    }else{
+                        okCh.set(1, "0");
+                    }
+                    
+                }
+                
+                
+                return okCh;
                 
             }else{System.out.println("DB FAILED"); }
         } catch (SQLException ex){
             Logger.getLogger(DataBase_mySQL.class.getName()).log(Level.SEVERE, null, ex);
-            return -1;
+            return okCh;
         }
-        return 0;//nothing found 
+        return okCh;
     };
     
     
      /**
       * 
-     * send username account status to verify priviligies
+     * send username account status to verify 
      * @param username
      * @return boolean
      */  
