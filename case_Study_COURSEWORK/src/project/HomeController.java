@@ -39,7 +39,7 @@ public class HomeController {
     
     /**
      *
-     * @param args
+     * Main 
      */
     public static void main(String[] args) {
         loginFrame = new loginFrame();
@@ -50,81 +50,12 @@ public class HomeController {
         
     }
     
-    public static int checkUsername(String data){
-        return 2;
-        //return  dataAction.checkUsername(data);
-        
-    };
-    
-    public static int checkPassword(List<String> data){
-    //System.out.println(data.get(1));
-        return dataAction.checkPassword(data);
-        
-    };
-    
-    public static int registerREQmember(List<String> data){
-    //System.out.println(data.get(1));
-        return dataAction.registerREQmember(data);
-        
-    };
-    
-    /**
-     * REQUESTS_
-     * @return
-     */
-    public static JSONArray getREMembersData(){
-       
-        return  dataAction.getALLData_Request();
-        
-    };
     
     
-    /**
-     * DELETE REQUEST_ MEMBER by id
-     * @return
-     */
-    public static int delREQmember(String id){
-       
-        return  dataAction.deleteRequestROW(id);
-        
-    };
-    
-    
-    /**
-     * INSERT NEW OFICIAL MEMBER
-     * @return boolean
-     */
-    public static int insertNewMember(List<String> data){
-       
-       return  dataAction.inserREQintoMembers(data);
-        
-    };
-    
-    /**
-     * Update OFICIAL MEMBER
-     * @return boolean
-     */
-    public static int updateMember(List<String> data){
-       
-       return  dataAction.modifyMember(data);
-        
-    };
-    
-    
-    /**
-     * Delete OFICIAL MEMBER
-     * @return boolean
-     */
-    public static int deleteMember(String usernameID){
-       
-       return  dataAction.deleteMemberROW(usernameID);
-        
-    };
-    
-    
-    
+    /*Log Out from frame */
     public static void logOut(String data){
         
+        index_FRAME.backToAdmin.setVisible(false);
         if(data.equals("admin")){
             Admin_FRAME.setVisible(false);
             loginFrame.setVisible(true);
@@ -135,6 +66,8 @@ public class HomeController {
         
     };
     
+    
+    /*After Login*/
     public static void callNextLogin(String username) {
         varUser=username;
         
@@ -167,6 +100,103 @@ public class HomeController {
         
     }
     
+    
+    public static void callMemberFrame_Admin(int op){
+        if(op==1){
+            Admin_FRAME.setVisible(false);   
+            index_FRAME = new index_FRAME();
+            index_FRAME.displayUser(varUser);
+            index_FRAME.backToAdmin.setVisible(true);
+            index_FRAME.initFrame();
+            index_FRAME.setVisible(true);
+        }else{
+            
+            index_FRAME.setVisible(false);  
+            
+            
+            Admin_FRAME.setVisible(true);
+            
+            
+        }
+        
+    }
+    
+    /*Check username  on official and request table, return true - exists , false - dont*/
+    public static int checkUsername(String data){
+        
+        return  dataAction.checkUsername(data);
+        
+    };
+    
+    /*Check username/pass  on official  table for login, return true - exists , false - dont*/
+    public static int checkPassword(List<String> data){
+        
+        return dataAction.checkPassword(data);
+        
+    };
+    
+    /*Register new user on Request Table, return true - Done , false - not Done*/
+    public static int registerREQmember(List<String> data){
+        
+        return dataAction.registerREQmember(data);
+        
+    };
+    
+    /**
+     * GET REQUESTS MEMBERS DATA
+     * @return 
+     */
+    public static JSONArray getREMembersData(){
+       
+        return  dataAction.getALLData_Request();
+        
+    };
+    
+    
+    /**
+     * DELETE REQUEST_ MEMBER by id
+     * @return  true - done , false - not done
+     */
+    public static int delREQmember(String id){
+       
+        return  dataAction.deleteRequestROW(id);
+        
+    };
+    
+    
+    /**
+     * INSERT NEW OFICIAL MEMBER from Request Table
+     * @return true - done , false - not done
+     */
+    public static int insertNewMember(List<String> data){
+       
+       return  dataAction.inserREQintoMembers(data);
+        
+    };
+    
+    /**
+     * Update OFICIAL MEMBER
+     * @return boolean
+     */
+    public static int updateMember(List<String> data){
+       
+       return  dataAction.modifyMember(data);
+        
+    };
+    
+    
+    /**
+     * Delete OFICIAL MEMBER using member ID
+     * @return boolean
+     */
+    public static int deleteMember(String usernameID){
+       
+       return  dataAction.deleteMemberROW(usernameID);
+        
+    };
+    
+    
+    /*Send User status*/
     public static int checkAdmin(String username) {
         
       return  dataAction.checkAdmin(username);
@@ -174,7 +204,7 @@ public class HomeController {
     }
     
     /**
-     * Members
+     * Members data
      * @return
      */
     public static JSONArray getUsersData(){
@@ -183,8 +213,9 @@ public class HomeController {
         return  dataAction.getALLData_();
         
     };
+    
     /**
-     * Members
+     * Member DATA
      * @return
      */
     public static JSONArray getUserData(String username){

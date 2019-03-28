@@ -27,7 +27,7 @@ public class  DateTimer extends Thread {
     protected SimpleDateFormat dateFormat = 
             new SimpleDateFormat("Y MM d");
     protected SimpleDateFormat timeFormat =
-            new SimpleDateFormat("H:mm");
+            new SimpleDateFormat("H:mm:ss");
 
     public DateTimer(JLabel dateLabel, JLabel timeLabel) {
         this.dateLabel = dateLabel;
@@ -49,7 +49,7 @@ public class  DateTimer extends Thread {
             });
 
             try {
-                Thread.sleep(5000L);
+                Thread.sleep(100L);
             } catch (InterruptedException e) {
             }
         }

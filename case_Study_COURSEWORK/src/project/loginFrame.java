@@ -393,13 +393,13 @@ public class loginFrame extends javax.swing.JFrame {
                         
                             if(alert.registerMember(data)==1){
                                 alert.alertINFO("Account Created Succesfully");
-                                /*register_username_text.setText("");
+                                register_username_text.setText("");
                                 register_password_text.setText("");
                                 register_password_text1.setText("");
                                 register_email_text.setText("");
-                                register_address_text.setText("");*/                             
-        register_panel.setVisible(false);
-        login_Panel.setVisible(true);
+                                register_address_text.setText("");                             
+                                register_panel.setVisible(false);
+                                login_Panel.setVisible(true);
                                 
                             }else{
                                 alert.alertERROR("Account Not Created");

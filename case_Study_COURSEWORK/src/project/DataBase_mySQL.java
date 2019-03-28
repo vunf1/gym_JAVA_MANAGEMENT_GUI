@@ -16,13 +16,18 @@ import org.json.JSONObject;
  *
  * 
  * Database: phpmyAdmin / mySQL connector ()
- * Data manipulation : JSONArray / ArrayList
+ * Data manipulation : JSONArray / List
  * @author deoiveij
  */
 public class DataBase_mySQL {
     
     
-    public static List<String> okCh;
+    
+    /* Coventry Domain DB 
+    private static String connectionURL = "jdbc:mysql://46.101.88.96/vunfcove_membershipdb";
+    private static String uName = "root";
+    private static String uPass= "1996maia123";
+    */
     
     private static String connectionURL = "jdbc:mysql://localhost/membershipdb";
     private static String uName = "root";
@@ -41,7 +46,7 @@ public class DataBase_mySQL {
      */
     public static void main(String[] args) {
 
-        System.out.println(checkUsername("oladd"));
+        System.out.println(checkUsername("qws"));
         
         /*Done extract ALL data from1 members_request and send it as JsonArray*/
         
@@ -64,8 +69,8 @@ public class DataBase_mySQL {
             Ass.put(ALLdata.getJSONObject(x));
             Ass.forEach(item -> {
                 JSONObject obj = (JSONObject) item;
-                System.out.println(obj.get("membership").toString());
-                System.out.println(item.toString());
+                //System.out.println(obj.get("membership").toString());
+                //System.out.println(item.toString());
             
             });
                 
@@ -276,7 +281,7 @@ public class DataBase_mySQL {
      * @param username
      * @return boolean
      */
-    public static List<String> checkUsername(String username){//Check Username on DataBase
+    public static int checkUsername(String username){//Check Username on DataBase
         
         try {
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
@@ -285,42 +290,46 @@ public class DataBase_mySQL {
                 Statement st = conn.createStatement();
                 ResultSet rs=null;
                 
-                String sql = "SELECT COUNT(*)  FROM members_request WHERE username='"+username+"'";
+                String sql = "SELECT COUNT(*)  FROM members WHERE username='"+username+"'";
                 rs=st.executeQuery(sql);
+                
                 while(rs.next()){
+                    
                     if(rs.getInt(1 )>=1){
-                        okCh.set(0, "1");
                         
-                    }else{
-                        okCh.set(0, "0");
+                        return 1;
+                        
+                    }else{ 
+                        
+
+                        String sql2 = "SELECT COUNT(*)  FROM members_request WHERE username='"+username+"'";
+                        rs=st.executeQuery(sql2);
+
+                        while(rs.next()){
+                            
+                            if(rs.getInt(1 )>=1){
+                                
+                                return 1;
+
+                            }else{
+
+                                return 0;
+                                
+                            }
+
+                        }
                     }
                     
                 }
                 
                 
-                Statement st2 = conn.createStatement();
-                ResultSet rs2=null;
-                
-                String sql2 = "SELECT COUNT(*)  FROM members WHERE username='"+username+"'";
-                rs2=st2.executeQuery(sql2);
-                while(rs2.next()){
-                    if(rs2.getInt(1 )>=1){
-                        okCh.set(1, "1");
-                    }else{
-                        okCh.set(1, "0");
-                    }
-                    
-                }
-                
-                
-                return okCh;
                 
             }else{System.out.println("DB FAILED"); }
         } catch (SQLException ex){
             Logger.getLogger(DataBase_mySQL.class.getName()).log(Level.SEVERE, null, ex);
-            return okCh;
+            
         }
-        return okCh;
+        return 0;
     };
     
     

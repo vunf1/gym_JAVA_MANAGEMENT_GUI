@@ -7,8 +7,6 @@ import java.awt.Component;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.FontFormatException;
 import java.awt.GraphicsConfiguration;
 
 import org.json.JSONArray;
@@ -16,12 +14,8 @@ import org.json.JSONObject;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 import javax.swing.BorderFactory;
@@ -173,6 +167,13 @@ public class Admin_FRAME extends javax.swing.JFrame {
         label_time.setIcon(new ImageIcon(timeICON.getImage().getScaledInstance(60, -1,java.awt.Image.SCALE_SMOOTH)));
         
         
+        ImageIcon memberDashICON = new ImageIcon(getClass().getResource("/project/assets/memberDashBoard_ADMIN.png"));
+        
+        goToMemberFrame.setBorderPainted(false);
+        goToMemberFrame.setBorder(null);
+        goToMemberFrame.setContentAreaFilled(false);
+        goToMemberFrame.setFocusPainted(false);
+        goToMemberFrame.setIcon(new ImageIcon(memberDashICON.getImage().getScaledInstance(160, -1,java.awt.Image.SCALE_SMOOTH)));
     }
     public void displayUser(){
         
@@ -214,6 +215,7 @@ public class Admin_FRAME extends javax.swing.JFrame {
         label_date = new javax.swing.JLabel();
         btn_logOut = new javax.swing.JButton();
         btn_exit = new javax.swing.JButton();
+        goToMemberFrame = new javax.swing.JButton();
         jScrollPane_right = new javax.swing.JScrollPane();
         right_panel_index = new javax.swing.JPanel();
 
@@ -257,15 +259,15 @@ public class Admin_FRAME extends javax.swing.JFrame {
         badge_count_request.setForeground(new java.awt.Color(255, 0, 0));
         left_panel.add(badge_count_request, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, 44, 47));
 
-        _date.setFont(new java.awt.Font("Copperplate Gothic Light", 1, 11)); // NOI18N
+        _date.setFont(new java.awt.Font("Copperplate Gothic Light", 2, 12)); // NOI18N
         _date.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         _date.setText("<date>");
-        left_panel.add(_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 86, 23));
+        left_panel.add(_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 86, 23));
 
-        _time.setFont(new java.awt.Font("Copperplate Gothic Light", 1, 11)); // NOI18N
+        _time.setFont(new java.awt.Font("Copperplate Gothic Light", 2, 12)); // NOI18N
         _time.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         _time.setText("<time>");
-        left_panel.add(_time, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 90, 23));
+        left_panel.add(_time, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 90, 23));
 
         btn_users_managment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -285,14 +287,21 @@ public class Admin_FRAME extends javax.swing.JFrame {
                 btn_logOutActionPerformed(evt);
             }
         });
-        left_panel.add(btn_logOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 580, 130, 40));
+        left_panel.add(btn_logOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 500, 130, 40));
 
         btn_exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_exitActionPerformed(evt);
             }
         });
-        left_panel.add(btn_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 580, 130, 40));
+        left_panel.add(btn_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 560, 130, 40));
+
+        goToMemberFrame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goToMemberFrameActionPerformed(evt);
+            }
+        });
+        left_panel.add(goToMemberFrame, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 630, 290, 40));
 
         jScrollPane_right.setBorder(null);
         jScrollPane_right.setAutoscrolls(true);
@@ -366,48 +375,17 @@ public class Admin_FRAME extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_exitActionPerformed
 
+    private void goToMemberFrameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goToMemberFrameActionPerformed
+
+        controller.callMemberFrame_Admin(1);
+
+    }//GEN-LAST:event_goToMemberFrameActionPerformed
+
     
  
     
     
     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Admin_FRAME.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Admin_FRAME.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Admin_FRAME.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Admin_FRAME.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Admin_FRAME().setVisible(true);
-                
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel _date;
@@ -417,6 +395,7 @@ public class Admin_FRAME extends javax.swing.JFrame {
     private javax.swing.JButton btn_logOut;
     private javax.swing.JButton btn_membersRequest;
     private javax.swing.JButton btn_users_managment;
+    private javax.swing.JButton goToMemberFrame;
     private javax.swing.JButton icon_logo;
     private javax.swing.JScrollPane jScrollPane_right;
     private javax.swing.JLabel label_date;
