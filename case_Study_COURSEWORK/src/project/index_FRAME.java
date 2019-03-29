@@ -5,7 +5,6 @@
  */
 package project;
 
-import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
@@ -24,7 +23,7 @@ public class index_FRAME extends javax.swing.JFrame {
     
     private HomeController controller=new HomeController();
     private Extras_Notifier alert =new Extras_Notifier();
-    
+    private EncryptClass encrypt= new EncryptClass();
     protected DateTimer timerThread;
     private JSONArray datajson=new JSONArray();
     public JSONArray  editUser= new JSONArray();
@@ -36,18 +35,16 @@ public class index_FRAME extends javax.swing.JFrame {
         initComponents();
         
         
-        this.index_Panel.setVisible(false);
-        this.accSettings_Panel.setVisible(false);
-        this.update_Panel.setVisible(false);
-        this.book_Panel.setVisible(false);
+        index_Panel.setVisible(false);
+        accSettings_Panel.setVisible(false);
+        update_Panel.setVisible(false);
+        book_Panel.setVisible(false);
         
+        backToAdmin.setVisible(false);
         
         timerThread = new DateTimer(_date, _time);
         timerThread.start();
         
-        
-        // displayUser("m");
-         //initFrame();
         
         
         }
@@ -55,6 +52,7 @@ public class index_FRAME extends javax.swing.JFrame {
     
     
     private void uploadData(String username){
+        
         datajson=controller.getUserData(username);
          
             JSONArray  Adata = new JSONArray ();
@@ -78,7 +76,6 @@ public class index_FRAME extends javax.swing.JFrame {
             
     }
     public void displayUser(String username){
-        backToAdmin.setVisible(false);
         label_username_welcome.setText(username);  
         uploadData(username);
         
@@ -95,21 +92,21 @@ public class index_FRAME extends javax.swing.JFrame {
             editUser.getInt(9));booking
             
             */
-        //this.label_memberID_info.setText(editUser.get(0));
-        this.menu_item_1.setText("<html><center>"+"Check"+"<br>"+"Membership"+"</center></html>");
+        //label_memberID_info.setText(editUser.get(0));
+        menu_item_1.setText("<html><center>"+"Check"+"<br>"+"Membership"+"</center></html>");
         
         
-        this.menu_item_2.setText("<html><center>"+"Book"+"<br>"+"Class"+"</center></html>");
+        menu_item_2.setText("<html><center>"+"Book"+"<br>"+"Class"+"</center></html>");
         
-        this.menu_item_3.setText("<html><center>"+"Update"+"<br>"+"Membership"+"</center></html>");
-        this.menu_item_4.setText("<html><center>"+"Account"+"<br>"+"Settings"+"</center></html>");
+        menu_item_3.setText("<html><center>"+"Update"+"<br>"+"Membership"+"</center></html>");
+        menu_item_4.setText("<html><center>"+"Account"+"<br>"+"Settings"+"</center></html>");
         
         String[] arrayOfGymClass = new String[]{"Yoga","Swimming","Box","Zumba","Running","Other"};
         String[] arrayOfMembership = new String[]{"Silver","Gold","Platinium"};
         String[] arrayOfGender = new String[]{"Male","Female"};
-        this.listOFclass_comboBox.setModel(new javax.swing.DefaultComboBoxModel(arrayOfGymClass));//load array into comboBox
-        this.list_membership.setModel(new javax.swing.DefaultComboBoxModel(arrayOfMembership));//load array into comboBox
-        this.comboBox_gender.setModel(new javax.swing.DefaultComboBoxModel(arrayOfGender));
+        listOFclass_comboBox.setModel(new javax.swing.DefaultComboBoxModel(arrayOfGymClass));//load array into comboBox
+        list_membership.setModel(new javax.swing.DefaultComboBoxModel(arrayOfMembership));//load array into comboBox
+        comboBox_gender.setModel(new javax.swing.DefaultComboBoxModel(arrayOfGender));
         button_submit.setVisible(false);
         button_cancel.setVisible(false);
         act_pw_new.setVisible(false);
@@ -118,12 +115,29 @@ public class index_FRAME extends javax.swing.JFrame {
     }
     public void initFrame(){//Setup MemberInfo
         progressBar();
-        
         label_memberID_info.setText(editUser.get(0).toString());
         label_name.setText(editUser.get(1).toString());
         label_email.setText(editUser.get(3).toString());
         label_membership.setText(editUser.get(5).toString());
+        label_Address.setText(editUser.get(4).toString());
         
+        
+        btn_Edit.setVisible(true);
+        
+        textBox_username.setEditable(false);
+        textBox_username.setEnabled(false);
+        
+        textBox_oldPW.setEnabled(false);
+        textBox_oldPW.setEditable(false);
+        
+        textBox_newPW.setVisible(false);
+        
+        
+        textBox_Email.setEnabled(false);
+        textBox_Email.setEditable(false);
+        
+        texBox_Address.setEnabled(false);
+        texBox_Address.setEditable(false);
         
         imgInitSetup();
         //icon_.setIcon(new javax.swing.ImageIcon());
@@ -158,7 +172,35 @@ public class index_FRAME extends javax.swing.JFrame {
     
     public void imgInitSetup(){
         
-         
+            
+            if(editUser.get(7).toString().equals("Male")){
+                ImageIcon logoGender = new ImageIcon(getClass().getResource("/project/assets/maleIcon.png"));
+
+                int width2 = logoGender.getIconWidth();
+                
+                genderIcon.setBorderPainted(false);
+                genderIcon.setBorder(null);
+                genderIcon.setContentAreaFilled(false);
+                genderIcon.setFocusPainted(false);
+                genderIcon.setIcon(new ImageIcon(logoGender.getImage().getScaledInstance(width2, -1,java.awt.Image.SCALE_SMOOTH)));
+             
+                
+                
+            }else{
+                ImageIcon logoGender = new ImageIcon(getClass().getResource("/project/assets/femaleIcon.png"));
+
+                int width2 = logoGender.getIconWidth();
+                
+                genderIcon.setBorderPainted(false);
+                genderIcon.setBorder(null);
+                genderIcon.setContentAreaFilled(false);
+                genderIcon.setFocusPainted(false);
+                genderIcon.setIcon(new ImageIcon(logoGender.getImage().getScaledInstance(width2, -1,java.awt.Image.SCALE_SMOOTH)));
+             
+                
+            }
+        
+        
             ImageIcon logoExit = new ImageIcon(getClass().getResource("/project/assets/exit.png"));
 
             int width2 = logoExit.getIconWidth();
@@ -326,6 +368,9 @@ public class index_FRAME extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        genderIcon = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        label_Address = new javax.swing.JLabel();
         book_Panel = new javax.swing.JPanel();
         listOFclass_comboBox = new javax.swing.JComboBox<>();
         buttom_add2Book = new javax.swing.JButton();
@@ -478,14 +523,17 @@ public class index_FRAME extends javax.swing.JFrame {
         index_Panel.setBackground(new java.awt.Color(204, 204, 204));
         index_Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        label_name.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         label_name.setText("<Username>");
-        index_Panel.add(label_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, 110, -1));
+        index_Panel.add(label_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 160, -1));
 
+        label_email.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         label_email.setText("<e-mail>");
-        index_Panel.add(label_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 110, -1));
+        index_Panel.add(label_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 160, -1));
 
+        label_membership.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         label_membership.setText("<actual membership>");
-        index_Panel.add(label_membership, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 120, -1));
+        index_Panel.add(label_membership, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 160, -1));
 
         icon_memberShip.setBackground(new java.awt.Color(204, 204, 204));
         index_Panel.add(icon_memberShip, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 150, 110));
@@ -497,14 +545,26 @@ public class index_FRAME extends javax.swing.JFrame {
         });
         index_Panel.add(checkMembership, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 170, 30));
 
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Username:");
-        index_Panel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, -1, -1));
+        index_Panel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 80, -1));
 
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Email: ");
-        index_Panel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, -1, -1));
+        index_Panel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 80, -1));
 
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Membership :");
-        index_Panel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, -1, -1));
+        index_Panel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 80, -1));
+        index_Panel.add(genderIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 60, 160, 130));
+
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel5.setText("Address :");
+        index_Panel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 80, -1));
+
+        label_Address.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label_Address.setText("<Address>");
+        index_Panel.add(label_Address, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, 160, -1));
 
         getContentPane().add(index_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 740, 390));
 
@@ -518,7 +578,11 @@ public class index_FRAME extends javax.swing.JFrame {
 
         buttom_add2Book.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
         buttom_add2Book.setText("Click to Book");
-        buttom_add2Book.setEnabled(false);
+        buttom_add2Book.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttom_add2BookActionPerformed(evt);
+            }
+        });
         book_Panel.add(buttom_add2Book, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 120, -1, -1));
 
         label_text_AvaiableClass.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
@@ -651,11 +715,12 @@ public class index_FRAME extends javax.swing.JFrame {
         /**
          BOOK BUTTON
          */
-        this.index_Panel.setVisible(false);
-        this.accSettings_Panel.setVisible(false);
-        this.update_Panel.setVisible(false);
+        displayUser(editUser.get(1).toString());
+        index_Panel.setVisible(false);
+        accSettings_Panel.setVisible(false);
+        update_Panel.setVisible(false);
         
-        this.book_Panel.setVisible(true);
+        book_Panel.setVisible(true);
     }//GEN-LAST:event_menu_item_2ActionPerformed
 
     private void menu_item_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_item_1ActionPerformed
@@ -663,16 +728,16 @@ public class index_FRAME extends javax.swing.JFrame {
          CHECK BUTTON
          */
         
-        
-        this.book_Panel.setVisible(false);
-        this.accSettings_Panel.setVisible(false);
-        this.update_Panel.setVisible(false);
-        
-        
+        displayUser(editUser.get(1).toString());
+        book_Panel.setVisible(false);
+        accSettings_Panel.setVisible(false);
+        update_Panel.setVisible(false);
         
         
-        this.index_Panel.setVisible(true);
-        memberShipStatusCheck();
+        
+        
+        index_Panel.setVisible(true);
+        memberShipStatusCheck(0);
         
         
     }//GEN-LAST:event_menu_item_1ActionPerformed
@@ -682,11 +747,13 @@ public class index_FRAME extends javax.swing.JFrame {
         /**
          MEMBERSHIP UPDATE BUTTON
          */
-        this.book_Panel.setVisible(false);
-        this.index_Panel.setVisible(false);
-        this.accSettings_Panel.setVisible(false);
         
-        this.update_Panel.setVisible(true);
+        displayUser(editUser.get(1).toString());
+        book_Panel.setVisible(false);
+        index_Panel.setVisible(false);
+        accSettings_Panel.setVisible(false);
+        
+        update_Panel.setVisible(true);
 
     }//GEN-LAST:event_menu_item_3ActionPerformed
 
@@ -695,18 +762,20 @@ public class index_FRAME extends javax.swing.JFrame {
         /**
          ACC SETTINGS BUTTON
          */
-        uploadData(editUser.get(1).toString());
+        displayUser(editUser.get(1).toString());
         act_pw_old.setOpaque(false);
         act_pw_new.setOpaque(false);
-        this.book_Panel.setVisible(false);
-        this.index_Panel.setVisible(false);
-        this.update_Panel.setVisible(false);
+        book_Panel.setVisible(false);
+        index_Panel.setVisible(false);
+        update_Panel.setVisible(false);
         
-        this.accSettings_Panel.setVisible(true);
+        accSettings_Panel.setVisible(true);
         
         textBox_username.setText(editUser.get(1).toString());
         textBox_Email.setText(editUser.get(3).toString());
         texBox_Address.setText(editUser.get(4).toString());
+        
+        
         if(editUser.get(7).toString().equals("Male")){
             
             comboBox_gender.setSelectedItem("Male");
@@ -740,20 +809,21 @@ public class index_FRAME extends javax.swing.JFrame {
     
     private void accSettings_PanelPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_accSettings_PanelPropertyChange
         /*ON LOAD Panel ACC-SETTINGS*/
-        this.textBox_username.setEditable(false);
-        this.textBox_username.setEnabled(false);
         
-        this.textBox_oldPW.setEnabled(false);
-        this.textBox_oldPW.setEditable(false);
+        textBox_username.setEditable(false);
+        textBox_username.setEnabled(false);
         
-        this.textBox_newPW.setVisible(false);
+        textBox_oldPW.setEnabled(false);
+        textBox_oldPW.setEditable(false);
+        
+        textBox_newPW.setVisible(false);
         
         
-        this.textBox_Email.setEnabled(false);
-        this.textBox_Email.setEditable(false);
+        textBox_Email.setEnabled(false);
+        textBox_Email.setEditable(false);
         
-        this.texBox_Address.setEnabled(false);
-        this.texBox_Address.setEditable(false);
+        texBox_Address.setEnabled(false);
+        texBox_Address.setEditable(false);
         
         
         
@@ -761,30 +831,30 @@ public class index_FRAME extends javax.swing.JFrame {
 
     private void btn_EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EditActionPerformed
 
-        this.textBox_username.setEnabled(true);
-        this.textBox_username.setEditable(true);
+        textBox_username.setEnabled(true);
+        textBox_username.setEditable(false);
         
         
         
-        this.textBox_oldPW.setEnabled(true);
-        this.textBox_oldPW.setEditable(true);
-        this.textBox_newPW.setVisible(true);
+        textBox_oldPW.setEnabled(true);
+        textBox_oldPW.setEditable(true);
+        textBox_newPW.setVisible(true);
         
         
-        this.textBox_Email.setEnabled(true);
-        this.textBox_Email.setEditable(true);
+        textBox_Email.setEnabled(true);
+        textBox_Email.setEditable(true);
         
-        this.texBox_Address.setEnabled(true);
-        this.texBox_Address.setEditable(true);
+        texBox_Address.setEnabled(true);
+        texBox_Address.setEditable(true);
         
-        this.comboBox_gender.setEnabled(true);
+        comboBox_gender.setEnabled(true);
         button_submit.setVisible(true);
         
         button_cancel.setVisible(true);
         act_pw_new.setEnabled(true);
         act_pw_old.setEnabled(true);
         act_pw_new.setVisible(true);
-        this.btn_Edit.setVisible(false);
+        btn_Edit.setVisible(false);
         
         
         
@@ -799,40 +869,43 @@ public class index_FRAME extends javax.swing.JFrame {
     
     private void logOut_btn_indexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOut_btn_indexActionPerformed
     
+        backToAdmin.setVisible(false);
         controller.logOut("normal");
+        
         
         
     }//GEN-LAST:event_logOut_btn_indexActionPerformed
 
     private void exit_btn_indexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_btn_indexActionPerformed
         
+        backToAdmin.setVisible(false);
         timerThread.exitProcedure();
     }//GEN-LAST:event_exit_btn_indexActionPerformed
 
     private void list_membershipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_list_membershipActionPerformed
         
-        if(this.list_membership.getSelectedItem()=="Gold"){
-            this.label_info.setText("");
-            //alertINFO(this.list_membership.getSelectedItem().toString());
-            this.label_info.setText("<html><center>You need to have a minimum of 10 Booked Classes p/year<center></html>");
+        if(list_membership.getSelectedItem()=="Gold"){
+            label_info.setText("");
+            //alertINFO(list_membership.getSelectedItem().toString());
+            label_info.setText("<html><center>You need to have a minimum of 10 Booked Classes p/year<center></html>");
         }
         
-        if(this.list_membership.getSelectedItem()=="Silver"){
-            this.label_info.setText("");
-            this.label_info.setText("<html><center>It's Free<center></html>");
+        if(list_membership.getSelectedItem()=="Silver"){
+            label_info.setText("");
+            label_info.setText("<html><center>It's Free<center></html>");
         }
         
-        if(this.list_membership.getSelectedItem()=="Platinium"){
-            //alertINFO(this.list_membership.getSelectedItem().toString());
+        if(list_membership.getSelectedItem()=="Platinium"){
+            //alertINFO(list_membership.getSelectedItem().toString());
             
-            this.label_info.setText("<html><center>You need first have membership Gold for only then choose Platinium, costs £100 p/year<center></html>");
+            label_info.setText("<html><center>You need first have membership Gold for only then choose Platinium, costs £100 p/year<center></html>");
         }
         
     }//GEN-LAST:event_list_membershipActionPerformed
 
     private void checkMembershipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkMembershipActionPerformed
     
-        memberShipStatusCheck();
+        memberShipStatusCheck(1);
 
 
         
@@ -847,23 +920,23 @@ public class index_FRAME extends javax.swing.JFrame {
 
     private void button_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_cancelActionPerformed
 
-        this.textBox_username.setEnabled(false);
-        this.textBox_username.setEditable(false);
+        textBox_username.setEnabled(false);
+        textBox_username.setEditable(false);
         
         
         
-        this.textBox_oldPW.setEnabled(false);
-        this.textBox_oldPW.setEditable(false);
-        this.textBox_newPW.setVisible(false);
+        textBox_oldPW.setEnabled(false);
+        textBox_oldPW.setEditable(false);
+        textBox_newPW.setVisible(false);
         
         
-        this.textBox_Email.setEnabled(false);
-        this.textBox_Email.setEditable(false);
+        textBox_Email.setEnabled(false);
+        textBox_Email.setEditable(false);
         
-        this.texBox_Address.setEnabled(false);
-        this.texBox_Address.setEditable(false);
+        texBox_Address.setEnabled(false);
+        texBox_Address.setEditable(false);
         
-        this.comboBox_gender.setEnabled(false);
+        comboBox_gender.setEnabled(false);
         button_submit.setVisible(false);
         
         button_cancel.setVisible(false);
@@ -871,7 +944,7 @@ public class index_FRAME extends javax.swing.JFrame {
         act_pw_old.setEnabled(false);
         act_pw_new.setVisible(false);
         
-        this.btn_Edit.setVisible(true);
+        btn_Edit.setVisible(true);
 
         // TODO add your handling code here:
     }//GEN-LAST:event_button_cancelActionPerformed
@@ -890,9 +963,9 @@ public class index_FRAME extends javax.swing.JFrame {
     private void act_pw_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_act_pw_newActionPerformed
 
         if(act_pw_new.isSelected()){
-            textBox_oldPW.setEchoChar((char)0);
+            textBox_newPW.setEchoChar((char)0);
         }else{
-            textBox_oldPW.setEchoChar('*');
+            textBox_newPW.setEchoChar('*');
         }
         
         
@@ -903,67 +976,153 @@ public class index_FRAME extends javax.swing.JFrame {
         
         List<String>  data = new ArrayList();
         List<String>  sendData = new ArrayList();
-        System.out.println();
+        sendData.clear();
+        data.clear();
+        data.add(0,textBox_username.getText().toString());
+        data.add(1,encrypt.setPassword2Hash(textBox_oldPW.getText().toString()));
         if(controller.checkPassword(data)==1){
+            if(textBox_newPW.getText().toString().equals("")){
+                System.out.println("NOT NEW PW INSERTED "+textBox_newPW.getText().toString());
+                
+                if(textBox_Email.getText().toString().indexOf(' ')>=0 || textBox_Email.getText().toString().indexOf('@')<0 || textBox_Email.getText().toString().indexOf('.')<0){//EMAIL CHECK 
+                        alert.alertERROR("Wrong Email Format");
+                    
+                }else{
+                
+                    sendData.add(0,editUser.get(0).toString());//MemberID
+                    sendData.add(1,textBox_username.getText().toString());//Username
+
+                    sendData.add(2,editUser.get(2).toString());//EncryptPW ON DB
+
+                    sendData.add(3,textBox_Email.getText().toString());//email
+                    sendData.add(4,texBox_Address.getText().toString());//Address
+
+                    sendData.add(5,comboBox_gender.getSelectedItem().toString());//Gender
+                
+                    if(alert.alertYesNo("<html>You will overwrite your information <br> Are you sure you want to update?</html>")==true){
+                        
+                        if(controller.setUserDataUpdate(sendData)==1){
+                            alert.alertINFO("Done!");
+                            displayUser(editUser.get(1).toString());
+                            
+                        }else{
+                            alert.alertERROR("Error while Update - Try Again");
+                        }
+
+                    }else{
+                        alert.alertWARR("Cancelled");
+                    }
+                }   
+                
+                
+            }else{
+                System.out.println(" NEW PW INSERTED "+textBox_newPW.getText().toString());
+                if(textBox_newPW.getDocument().getLength()>=8 && textBox_newPW.getDocument().getLength()<=15 ){//PW CHECK
+                    if(textBox_Email.getText().toString().indexOf(' ')>=0 || textBox_Email.getText().toString().indexOf('@')<0 || textBox_Email.getText().toString().indexOf('.')<0){//EMAIL CHECK
+                        alert.alertERROR("<html>Password :<br> field need to have <br> at least 8 with max of 15 digits</html>");
+                    
+                    
+                    
+                }else{
+                    
+                        sendData.add(0,editUser.get(0).toString());//MemberID
+                        sendData.add(1,textBox_username.getText().toString());//Username
+
+                        sendData.add(2,encrypt.setPassword2Hash(textBox_newPW.getText().toString()));//EncryptPW NEW
+
+                        sendData.add(3,textBox_Email.getText().toString());//email
+                        sendData.add(4,texBox_Address.getText().toString());//Address
+
+                        sendData.add(5,comboBox_gender.getSelectedItem().toString());//Gender
+                        
+                        
+                        if(alert.alertYesNo("<html>You will overwrite your information <br> Are you sure you want to update?</html>")==true){
+                            if(controller.setUserDataUpdate(sendData)==1){
+                                
+                            alert.alertINFO("Done!");
+                            displayUser(editUser.get(1).toString());
+                            
+                            
+                            }else{
+                                alert.alertERROR("Error while Update - Try Again");
+                            }
+                            
+
+                        }else{
+                            alert.alertWARR("Cancelled");
+                        }
+                        
+                    }
+                
+                }
+                
+            }
             
+            
+            
+        }else{
+            alert.alertERROR("Wrong Password inserted");
         }
         
-        
-        textBox_username.getText().toString();
-        textBox_Email.getText().toString();
-        texBox_Address.getText().toString();
-        comboBox_gender.getSelectedItem().toString();
-        textBox_oldPW.getText().toString();
-        textBox_newPW.getText().toString();
-        /* send data in order for databsse*/
-        sendData.add(0,editUser.get(0).toString());//MemberID
-        sendData.add(1,textBox_username.getText().toString());//Username
-
-        sendData.add(2,editUser.get(8).toString());//EncryptPW
-
-        sendData.add(3,textBox_Email.getText().toString());//email
-        sendData.add(4,texBox_Address.getText().toString());//Address
-
-
-
-
-        sendData.add(5,comboBox_gender.getSelectedItem().toString());//Gender
-
-                
         System.out.println(sendData);
 
     }//GEN-LAST:event_button_submitActionPerformed
+
+    private void buttom_add2BookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttom_add2BookActionPerformed
+/*Simple add +1 to booking number */
+
+    int value=Integer.parseInt(editUser.get(9).toString())+1;
+    controller.addBookClass(editUser.get(1).toString(),Integer.toString(value));
+    displayUser(editUser.get(1).toString());
+    alert.alertINFO("You now have "+Integer.toString(value)+" Booked Classes");
+    memberShipStatusCheck(2);
+        
+        
+    }//GEN-LAST:event_buttom_add2BookActionPerformed
     
     /*Follow case study logic of membership */
-    private void memberShipStatusCheck(){
-        
+    private void memberShipStatusCheck(int opt){
+        if(editUser.getInt(9)>=10&&editUser.get(5).toString().equals("silver") && opt==2){
+            alert.alertINFO("Congratulation you now are a Gold Member");
+            controller.setMembership(editUser.get(1).toString(),"gold");
+            
+        }else if( editUser.getInt(9) >=10&&editUser.get(5).toString().equals("gold") && opt==2){
+            alert.alertINFO("You are legible to became a Platinum Member<br>A transfer of £100 is needed to complete it.</html>");
+            
+        }
         int dateONDB=editUser.getInt(8);
         int actDate=Integer.parseInt(_date.getText().replaceAll("\\s+",""));
         int calcMembership;
         int yearDays;
-        System.out.println(dateONDB);
-        System.out.println(actDate);
+        //System.out.println(dateONDB);
+        //System.out.println(actDate);
         //alert.alertINFO(editUser.get(8).toString());
         calcMembership=actDate-dateONDB;
         //calcMembership=20200321-Integer.parseInt(editUser.get(8).toString());
-        yearDays= 365*calcMembership/10000;
+        yearDays= (365*calcMembership)/10000;
+        //System.out.println(calcMembership);
+        int diff= 365-calcMembership;
         
         
-            alert.alertINFO("<html>"+calcMembership+" </html>");
-        if(yearDays<365){//less 1 year no revoke
-            alert.alertINFO("<html>"+yearDays+" </html>");
+        if(calcMembership<365){//less 1 year no revoke
+            if(opt==1){
+                alert.alertINFO("<html>"+diff+" days until next membership reload </html>");
+        
+            }else{
+                
+            }
         }else{// 1 year pass - REVOKE membership
             if(editUser.get(5).equals("silver")){
             alert.alertINFO("<html>A year pass <br>Your membership is <u>"+editUser.get(5)+"</u> so it's free, to upgrade to gold you need 10 active booking classes per year <br><br>Your Number of Booked Classes will now be reseted.</html>");
-            
+            controller.revokeUser(editUser.get(1).toString(),Integer.toString(actDate));
                 
             }else if(editUser.get(5).equals("gold")){
-            alert.alertWARR("<html>Your membership as <u>"+editUser.get(5)+"</u> ended because a year pass <br> Your Number of Booked Classes will now be reseted.</html>");
-            
+            alert.alertWARR("<html>Your membership as <u>"+editUser.get(5)+"</u> ended because a year pass <br> Your Number of Booked Classes will now be reseted and silver membership will be added .</html>");
+            controller.revokeUser(editUser.get(1).toString(),Integer.toString(actDate));
                 
             }else if(editUser.get(5).equals("platinum")){
             alert.alertWARR("<html>Your membership as <u>"+editUser.get(5)+"</u> ended because a year pass <br> Your Number of Booked Classes will now be reseted and silver membership will be added <br> to keep Platinum membership a fee of £100 is required.</html>");
-            
+            controller.revokeUser(editUser.get(1).toString(),Integer.toString(actDate));
                 
                 
             }
@@ -988,6 +1147,7 @@ public class index_FRAME extends javax.swing.JFrame {
     private javax.swing.JButton checkMembership;
     private javax.swing.JComboBox<String> comboBox_gender;
     private javax.swing.JButton exit_btn_index;
+    private javax.swing.JButton genderIcon;
     private javax.swing.JButton icon_member;
     private javax.swing.JButton icon_memberShip;
     private javax.swing.JPanel index_Panel;
@@ -996,6 +1156,8 @@ public class index_FRAME extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel label_Address;
     private javax.swing.JLabel label_Email;
     private javax.swing.JLabel label_address;
     private javax.swing.JLabel label_date;

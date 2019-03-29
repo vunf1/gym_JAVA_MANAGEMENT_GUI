@@ -48,6 +48,7 @@ public class Admin_FRAME extends javax.swing.JFrame {
     private static Extras_Notifier alert = new Extras_Notifier();
     private static EncryptClass encrypt= new EncryptClass();
     
+    public static final Color backgroundColor = new Color(192, 192, 192);
     protected DateTimer timerThread;
     
     protected GraphicsConfiguration gc;
@@ -74,8 +75,10 @@ public class Admin_FRAME extends javax.swing.JFrame {
         
         timerThread = new DateTimer(_date, _time);
         timerThread.start();
-        
-        
+        this.setBackground(backgroundColor);
+        left_panel.setBackground(backgroundColor);
+        jScrollPane_right.setBackground(backgroundColor);
+        right_panel_index.setBackground(backgroundColor);
     }
 
     public void ImageIconSetup(int option){
@@ -220,7 +223,7 @@ public class Admin_FRAME extends javax.swing.JFrame {
         right_panel_index = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(0, 255, 255));
+        setBackground(right_panel_index.getBackground());
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMaximumSize(new java.awt.Dimension(1289, 676));
         setMinimumSize(new java.awt.Dimension(1289, 676));
@@ -232,6 +235,7 @@ public class Admin_FRAME extends javax.swing.JFrame {
                 formFocusGained(evt);
             }
         });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         left_panel.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         left_panel.setMaximumSize(new java.awt.Dimension(300, 600));
@@ -274,7 +278,7 @@ public class Admin_FRAME extends javax.swing.JFrame {
                 btn_users_managmentActionPerformed(evt);
             }
         });
-        left_panel.add(btn_users_managment, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 410, 130, 47));
+        left_panel.add(btn_users_managment, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, 190, 47));
 
         label_users_info.setText("<no. member>");
         left_panel.add(label_users_info, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 410, 42, 47));
@@ -287,14 +291,14 @@ public class Admin_FRAME extends javax.swing.JFrame {
                 btn_logOutActionPerformed(evt);
             }
         });
-        left_panel.add(btn_logOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 500, 130, 40));
+        left_panel.add(btn_logOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 500, 300, 40));
 
         btn_exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_exitActionPerformed(evt);
             }
         });
-        left_panel.add(btn_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 560, 130, 40));
+        left_panel.add(btn_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 560, 300, 40));
 
         goToMemberFrame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -302,6 +306,8 @@ public class Admin_FRAME extends javax.swing.JFrame {
             }
         });
         left_panel.add(goToMemberFrame, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 630, 290, 40));
+
+        getContentPane().add(left_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 323, 700));
 
         jScrollPane_right.setBorder(null);
         jScrollPane_right.setAutoscrolls(true);
@@ -317,21 +323,7 @@ public class Admin_FRAME extends javax.swing.JFrame {
         right_panel_index.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jScrollPane_right.setViewportView(right_panel_index);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(left_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane_right, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(left_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
-            .addComponent(jScrollPane_right, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(jScrollPane_right, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 0, 990, 700));
 
         pack();
         setLocationRelativeTo(null);
@@ -514,6 +506,25 @@ public class Admin_FRAME extends javax.swing.JFrame {
 
             }else if(option==1){
                 right_panel_index.setPreferredSize(new Dimension (right_panel_index.getWidth() ,105*dataJsonMem.length()));
+                if(status.equals("0")){
+                        title = BorderFactory.createTitledBorder(empty, "Member");
+                        title.setTitleJustification(TitledBorder.LEFT);
+                        title.setTitleColor(new Color(0, 51, 102));
+                        
+                        btn.setBorder(title);
+                }else if(status.equals("1")){
+                        title = BorderFactory.createTitledBorder(empty, "Club Advisor");
+                        title.setTitleJustification(TitledBorder.LEFT);
+                        title.setTitleColor(new Color(0, 51, 102));
+                        btn.setBorder(title);
+                }else if(status.equals("2")){
+                        title = BorderFactory.createTitledBorder(empty, "Club Manager");
+                        title.setTitleJustification(TitledBorder.LEFT);
+                        title.setTitleColor(new Color(0, 51, 102));
+                        btn.setBorder(title);
+                }
+                
+                
                 if(membership.equals("silver")){
 
                     btn.setBackground(sSilver);
@@ -526,20 +537,6 @@ public class Admin_FRAME extends javax.swing.JFrame {
 
                     btn.setBackground(pPlatinum);
                 }
-                if(status.equals("0")){
-                        title = BorderFactory.createTitledBorder(empty, "Member");
-                        title.setTitleJustification(TitledBorder.LEFT);
-                        btn.setBorder(title);
-                }else if(status.equals("1")){
-                        title = BorderFactory.createTitledBorder(empty, "Club Advisor");
-                        title.setTitleJustification(TitledBorder.LEFT);
-                        btn.setBorder(title);
-                }else if(status.equals("2")){
-                        title = BorderFactory.createTitledBorder(empty, "Club Manager");
-                        title.setTitleJustification(TitledBorder.LEFT);
-                        btn.setBorder(title);
-                }
-                
 
                 btn.addActionListener(new ActionListener(){
                     //Dynamic event for each button
@@ -841,12 +838,14 @@ public class Admin_FRAME extends javax.swing.JFrame {
         JTextField username_,pw_, email_,address_,date_,booking_ ;
         JCheckBox sendNEWPW;
         username_ = new JTextField(editUser.get(1).toString(), 20);
-        pw_ = new JTextField(editUser.get(2).toString(), 20);
+        pw_ = new JTextField(editUser.get(2).toString(), 18);
         sendNEWPW= new JCheckBox();
         email_ = new JTextField(editUser.get(3).toString(), 20);
         address_ = new JTextField(editUser.get(4).toString(), 20);
         date_ = new JTextField(editUser.get(8).toString(), 20);
         booking_ = new JTextField(editUser.get(9).toString(), 20);
+        
+        sendNEWPW.setOpaque(false);
         
         username_.setHorizontalAlignment(SwingConstants.CENTER);
         pw_.setHorizontalAlignment(SwingConstants.CENTER);

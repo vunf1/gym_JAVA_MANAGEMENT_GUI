@@ -48,11 +48,9 @@ The club would also welcome any new features recommended by the software develop
 
 
 ### BackLog
-- [ ] Members GUI change memebership
-- [ ] Members GUI trigger booking 
 - [ ] DB Improve DATA Booking, ID - CLASS - DATE.
 - [ ] When User LogIn check Membership diff DB date[date Actual].
-- [ ] Club Advisor Request Booking Table trigger - no  memebership managment
+- [x] Club Advisor Request Booking Table trigger - no  memebership managment
 
 - [ ] CLASS DIAGRAM :warning:
 - [ ] GRASP DIAGRAM :warning:
@@ -83,6 +81,9 @@ The club would also welcome any new features recommended by the software develop
 - [x] Club Manager, exclusive table
 - [x] DB Improve DATA Extract from Member - gender, date,+?.
 - [x] Improve design GUI
+- [x] Members GUI config
+- [x] Members GUI change memebership
+- [x] Members GUI trigger booking 
 
 
 ### Extra Files

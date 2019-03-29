@@ -46,6 +46,12 @@ public class DataBase_mySQL {
      */
     public static void main(String[] args) {
 
+        
+        
+        
+        
+        
+        
         System.out.println(checkUsername("qws"));
         
         /*Done extract ALL data from1 members_request and send it as JsonArray*/
@@ -561,7 +567,12 @@ public class DataBase_mySQL {
     }
     
 
-
+    /**
+     *      
+     * Modify Member - FROM adminFRAME
+     * modify Row on table Member
+     * @return boolean
+     */
     public static int modifyMember(List<String> data){
         /*
         *
@@ -625,6 +636,12 @@ public class DataBase_mySQL {
 
 
     
+    /**
+     *      
+     * Delete Member - FROM adminFRAME
+     * Delete Row on table Member
+     * @return boolean
+     */
     public static int  deleteMemberROW(String idMember) {
        
         counter=0;
@@ -669,6 +686,211 @@ public class DataBase_mySQL {
     }
     
     
+    /**
+     *      
+     * Update Member - FROM memberFRAME
+     * update Row on table Member
+     * @return boolean
+     */
+    public static int setUserDataUpdate(List<String> data){
+        /*
+        *
+        *  data 0 - ID
+        *  data 1 - username
+        *  data 2 - pw encrypt - key 256 bytes
+        *  data 3 - email
+        *  data 4 - address
+        *  data 5 - gender
+        *
+        */
+        
+        
+        PreparedStatement statement;
+        try {
+            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
+            if (conn != null){
+            conn.setAutoCommit(true);
+
+                String compiledQuery = "Update members set username=? ,password=?, email=?, address=?, gender=? WHERE id=?";
+                
+                statement = conn.prepareStatement(compiledQuery);
+
+
+                statement.setString(1, data.get(1));
+                statement.setString(2, data.get(2));
+                statement.setString(3, data.get(3));
+                statement.setString(4, data.get(4));
+                statement.setString(5, data.get(5));
+                statement.setString(6, data.get(0));
+                
+
+                if(statement.executeUpdate()==1){
+                    statement.close();
+                    conn.close();
+
+                    return 1;
+                    
+                    
+                } else {
+                    statement.close();
+                    conn.close();
+
+                    return 0;
+                }
+            }else{System.out.println("DB FAILED");return 0;}
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase_mySQL.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getGlobal();}
+        
+        
+        return -1;
+    }
     
     
+    
+    /**
+     * Revoke Member membership to silver and update date
+     * @return
+     */
+     public static int revokeUser(String username,String date){
+        
+        
+        PreparedStatement statement;
+        try {
+            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
+            if (conn != null){
+            conn.setAutoCommit(true);
+
+                String compiledQuery = "Update members set date=?,booking=0,membership='silver' WHERE username=?";
+                
+                statement = conn.prepareStatement(compiledQuery);
+
+
+                statement.setString(1, date);
+                statement.setString(2, username);
+
+                if(statement.executeUpdate()==1){
+                    statement.close();
+                    conn.close();
+
+                    return 1;
+                    
+                    
+                } else {
+                    statement.close();
+                    conn.close();
+
+                    return 0;
+                }
+            }else{System.out.println("DB FAILED");return 0;}
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase_mySQL.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getGlobal();}
+        
+        
+        return -1;
+    }
+     
+     
+    /**
+     * Send OldBooking number +1 plus username and update on DB
+     * @return boolean
+     *
+     */
+    public static int addBookClass(String username,String value){
+        /*
+        *
+        *  data 0 - username
+        *
+        */
+        
+        
+        PreparedStatement statement;
+        try {
+            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
+            if (conn != null){
+            conn.setAutoCommit(true);
+
+                String compiledQuery = "Update members set  booking=? WHERE username=?";
+                
+                statement = conn.prepareStatement(compiledQuery);
+
+
+                statement.setString(1, value);
+                statement.setString(2, username);
+
+                if(statement.executeUpdate()==1){
+                    statement.close();
+                    conn.close();
+
+                    return 1;
+                    
+                    
+                } else {
+                    statement.close();
+                    conn.close();
+
+                    return 0;
+                }
+            }else{System.out.println("DB FAILED");return 0;}
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase_mySQL.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getGlobal();}
+        
+        
+        return -1;
+    }
+
+
+/**
+     * Send OldBooking number +1 plus username and update on DB
+     * @return boolean
+     *
+     */
+    public static int setMembership(String username,String membership){
+        /*
+        *
+        *  data 0 - username
+        *
+        */
+        
+        
+        PreparedStatement statement;
+        try {
+            Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
+            if (conn != null){
+            conn.setAutoCommit(true);
+
+                String compiledQuery = "Update members set  membership=? WHERE username=?";
+                
+                statement = conn.prepareStatement(compiledQuery);
+
+
+                statement.setString(1, membership);
+                statement.setString(2, username);
+
+                if(statement.executeUpdate()==1){
+                    statement.close();
+                    conn.close();
+
+                    return 1;
+                    
+                    
+                } else {
+                    statement.close();
+                    conn.close();
+
+                    return 0;
+                }
+            }else{System.out.println("DB FAILED");return 0;}
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase_mySQL.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getGlobal();}
+        
+        
+        return -1;
+    }
+
+
+
 }

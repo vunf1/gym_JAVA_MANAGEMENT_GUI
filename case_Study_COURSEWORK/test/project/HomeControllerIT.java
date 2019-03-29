@@ -52,6 +52,42 @@ public class HomeControllerIT {
     }
 
     /**
+     * Test of logOut method, of class HomeController.
+     */
+    @Test
+    public void testLogOut() {
+        System.out.println("logOut");
+        String data = "";
+        HomeController.logOut(data);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of callNextLogin method, of class HomeController.
+     */
+    @Test
+    public void testCallNextLogin() {
+        System.out.println("callNextLogin");
+        String username = "";
+        HomeController.callNextLogin(username);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of callMemberFrame_Admin method, of class HomeController.
+     */
+    @Test
+    public void testCallMemberFrame_Admin() {
+        System.out.println("callMemberFrame_Admin");
+        int op = 0;
+        HomeController.callMemberFrame_Admin(op);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
      * Test of checkUsername method, of class HomeController.
      */
     @Test
@@ -163,30 +199,6 @@ public class HomeControllerIT {
     }
 
     /**
-     * Test of logOut method, of class HomeController.
-     */
-    @Test
-    public void testLogOut() {
-        System.out.println("logOut");
-        String data = "";
-        HomeController.logOut(data);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of callNextLogin method, of class HomeController.
-     */
-    @Test
-    public void testCallNextLogin() {
-        System.out.println("callNextLogin");
-        String username = "";
-        HomeController.callNextLogin(username);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of checkAdmin method, of class HomeController.
      */
     @Test
@@ -228,13 +240,59 @@ public class HomeControllerIT {
     }
 
     /**
-     * Test of checkMembership method, of class HomeController.
+     * Test of setUserDataUpdate method, of class HomeController.
      */
     @Test
-    public void testCheckMembership() {
-        System.out.println("checkMembership");
+    public void testSetUserDataUpdate() {
+        System.out.println("setUserDataUpdate");
+        List<String> data = null;
         int expResult = 0;
-        int result = HomeController.checkMembership();
+        int result = HomeController.setUserDataUpdate(data);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of revokeUser method, of class HomeController.
+     */
+    @Test
+    public void testRevokeUser() {
+        System.out.println("revokeUser");
+        String username = "";
+        String date = "";
+        int expResult = 0;
+        int result = HomeController.revokeUser(username, date);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of addBookClass method, of class HomeController.
+     */
+    @Test
+    public void testAddBookClass() {
+        System.out.println("addBookClass");
+        String username = "";
+        String number = "";
+        int expResult = 0;
+        int result = HomeController.addBookClass(username, number);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of setMembership method, of class HomeController.
+     */
+    @Test
+    public void testSetMembership() {
+        System.out.println("setMembership");
+        String username = "";
+        String membership = "";
+        int expResult = 0;
+        int result = HomeController.setMembership(username, membership);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

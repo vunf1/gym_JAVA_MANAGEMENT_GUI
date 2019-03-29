@@ -202,5 +202,64 @@ public class DataBase_mySQLIT {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+
+    /**
+     * Test of setUserDataUpdate method, of class DataBase_mySQL.
+     */
+    @Test
+    public void testSetUserDataUpdate() {
+        System.out.println("setUserDataUpdate");
+        List<String> data = null;
+        int expResult = 0;
+        int result = DataBase_mySQL.setUserDataUpdate(data);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of revokeUser method, of class DataBase_mySQL.
+     */
+    @Test
+    public void testRevokeUser() {
+        System.out.println("revokeUser");
+        String username = "";
+        String date = "";
+        int expResult = 0;
+        int result = DataBase_mySQL.revokeUser(username, date);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of addBookClass method, of class DataBase_mySQL.
+     */
+    @Test
+    public void testAddBookClass() {
+        System.out.println("addBookClass");
+        String username = "";
+        String value = "";
+        int expResult = 0;
+        int result = DataBase_mySQL.addBookClass(username, value);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of setMembership method, of class DataBase_mySQL.
+     */
+    @Test
+    public void testSetMembership() {
+        System.out.println("setMembership");
+        String username = "";
+        String membership = "";
+        int expResult = 0;
+        int result = DataBase_mySQL.setMembership(username, membership);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
     
 }

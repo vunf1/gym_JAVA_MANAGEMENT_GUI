@@ -112,7 +112,7 @@ public class HomeController {
         }else{
             
             index_FRAME.setVisible(false);  
-            
+            index_FRAME.backToAdmin.setVisible(false);
             
             Admin_FRAME.setVisible(true);
             
@@ -225,80 +225,43 @@ public class HomeController {
         
     };
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    public static int checkMembership(){
-        
-       
-        return  -1;
+    /**
+     * Member DATA - update - member manually update DATA - memberFrame
+     * @return
+     */
+    public static int setUserDataUpdate(List<String> data){
+       System.out.println(data);
+        return  dataAction.setUserDataUpdate(data);
         
     };
     
+    /**
+     * Revoke Member membership to silver and update date
+     * @return
+     */
+    public static int revokeUser(String username,String date){
+        
+        return  dataAction.revokeUser(username, date);
+        
+    };
+    
+    /**
+     * Add +1 to Member booking
+     * @return
+     */
+    public static int addBookClass(String username,String number){
+        
+        return  dataAction.addBookClass(username, number);
+        
+    };
+    
+    /**
+     * Set  Member Membership
+     * @return
+     */
+    public static int setMembership(String username,String membership){
+        
+        return  dataAction.setMembership(username, membership);
+        
+    };
 }
