@@ -398,6 +398,7 @@ public class index_FRAME extends javax.swing.JFrame {
         button_cancel = new javax.swing.JButton();
         act_pw_new = new javax.swing.JCheckBox();
         act_pw_old = new javax.swing.JCheckBox();
+        pw_info_new = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -641,18 +642,29 @@ public class index_FRAME extends javax.swing.JFrame {
         textBox_username.setText("<username>");
         accSettings_Panel.add(textBox_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 180, -1));
 
-        label_password.setText("Password :");
-        accSettings_Panel.add(label_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, -1));
+        label_password.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        label_password.setText("*Password :");
+        label_password.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        label_password.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        accSettings_Panel.add(label_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 90, -1));
 
+        label_address.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         label_address.setText("Address :");
-        accSettings_Panel.add(label_address, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, 20));
+        label_address.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        label_address.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        accSettings_Panel.add(label_address, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 190, 90, 20));
 
+        label_username.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         label_username.setText("Username :");
-        accSettings_Panel.add(label_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
+        label_username.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        label_username.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        accSettings_Panel.add(label_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 80, 90, -1));
 
-        label_Email.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label_Email.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         label_Email.setText("Email :");
-        accSettings_Panel.add(label_Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 70, 20));
+        label_Email.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        label_Email.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        accSettings_Panel.add(label_Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 90, 20));
 
         textBox_Email.setText("<Email>");
         accSettings_Panel.add(textBox_Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 180, -1));
@@ -675,8 +687,11 @@ public class index_FRAME extends javax.swing.JFrame {
         comboBox_gender.setEnabled(false);
         accSettings_Panel.add(comboBox_gender, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 180, -1));
 
+        label_gender.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         label_gender.setText("Gender");
-        accSettings_Panel.add(label_gender, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 50, 20));
+        label_gender.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        label_gender.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        accSettings_Panel.add(label_gender, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 90, 20));
 
         button_cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -703,6 +718,9 @@ public class index_FRAME extends javax.swing.JFrame {
             }
         });
         accSettings_Panel.add(act_pw_old, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, -1, 20));
+
+        pw_info_new.setText("new Password [optional]");
+        accSettings_Panel.add(pw_info_new, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, 180, -1));
 
         getContentPane().add(accSettings_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 740, 390));
 
@@ -825,6 +843,8 @@ public class index_FRAME extends javax.swing.JFrame {
         texBox_Address.setEnabled(false);
         texBox_Address.setEditable(false);
         
+        pw_info_new.setVisible(false);
+        
         
         
     }//GEN-LAST:event_accSettings_PanelPropertyChange
@@ -854,6 +874,8 @@ public class index_FRAME extends javax.swing.JFrame {
         act_pw_new.setEnabled(true);
         act_pw_old.setEnabled(true);
         act_pw_new.setVisible(true);
+        
+        pw_info_new.setVisible(true);
         btn_Edit.setVisible(false);
         
         
@@ -943,7 +965,7 @@ public class index_FRAME extends javax.swing.JFrame {
         act_pw_new.setEnabled(false);
         act_pw_old.setEnabled(false);
         act_pw_new.setVisible(false);
-        
+        pw_info_new.setVisible(false);
         btn_Edit.setVisible(true);
 
         // TODO add your handling code here:
@@ -1187,6 +1209,7 @@ public class index_FRAME extends javax.swing.JFrame {
     private javax.swing.JButton menu_item_4;
     public javax.swing.JLabel n_actual_class_booked2;
     public javax.swing.JProgressBar progressBar_membership2;
+    private javax.swing.JLabel pw_info_new;
     private javax.swing.JTextField texBox_Address;
     private javax.swing.JTextField textBox_Email;
     private javax.swing.JPasswordField textBox_newPW;

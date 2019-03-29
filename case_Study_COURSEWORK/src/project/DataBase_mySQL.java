@@ -61,7 +61,7 @@ public class DataBase_mySQL {
         System.out.println(ALLdataMsR);
         System.out.println("Data status members request ");
         System.out.println(ALLdataMsR.length());
-        System.out.println(ALLdataMsR.getJSONObject(0));
+        System.out.println(ALLdataMsR);
         
         
         
@@ -75,8 +75,8 @@ public class DataBase_mySQL {
             Ass.put(ALLdata.getJSONObject(x));
             Ass.forEach(item -> {
                 JSONObject obj = (JSONObject) item;
-                //System.out.println(obj.get("membership").toString());
-                //System.out.println(item.toString());
+                System.out.println(obj.get("membership").toString());
+                System.out.println(item.toString());
             
             });
                 
