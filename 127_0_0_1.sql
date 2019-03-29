@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 29, 2019 at 05:59 AM
+-- Generation Time: Mar 28, 2019 at 09:16 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -30,8 +30,8 @@ USE `membershipdb`;
 -- Table structure for table `members`
 --
 
-CREATE TABLE `members` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `members` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(20) COLLATE utf8_bin NOT NULL,
   `password` varchar(255) COLLATE utf8_bin NOT NULL,
   `email` varchar(20) COLLATE utf8_bin NOT NULL,
@@ -40,8 +40,9 @@ CREATE TABLE `members` (
   `status` tinyint(1) NOT NULL,
   `gender` varchar(20) COLLATE utf8_bin NOT NULL,
   `date` int(11) NOT NULL,
-  `booking` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `booking` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `members`
@@ -49,11 +50,13 @@ CREATE TABLE `members` (
 
 INSERT INTO `members` (`id`, `username`, `password`, `email`, `address`, `membership`, `status`, `gender`, `date`, `booking`) VALUES
 (2, 'joao', '9361C9A09B6AF0508D4329BED3CC4D3F', '12@hhh.cmm', 'asdad', 'platinum', 0, 'Female', 20190321, 0),
-(3, 'm', '602982B94E3B2B7247D9A5303393A868', '1212@fffff.COM', 'SSS', 'gold', 0, 'Male', 20190329, 10),
+(3, 'm', '602982B94E3B2B7247D9A5303393A868', '1212@fffff.fffff', 'ffff', 'silver', 0, 'Male', 20190321, 10),
 (5, 'jmaia', 'F9C9EB83CBAB9600055B116DDE4548E1', 'asd@asd.com', 'asdas', 'gold', 1, 'Male', 20190321, 0),
+(6, 'dd', '602982B94E3B2B7247D9A5303393A868', 'ddd@dddd.cco', 'asd', 'platinum', 1, 'Male', 20190321, 11),
 (7, 'james', '602982B94E3B2B7247D9A5303393A868', 'asdasd@asd.asd', 'AAAAAA', 'platinum', 0, 'Male', 20190321, 5),
-(12, 'qw', '602982B94E3B2B7247D9A5303393A868', 'jokass@gmail.com', 'King Richard Street', 'silver', 2, 'Male', 20190326, 3),
-(14, 'joaquim', '09DA6AE0B00D95885192B547637BFE3B', 'joaquim@gmail.com', 'Street Road', 'silver', 0, 'Male', 20190329, 0);
+(11, 'qw', '602982B94E3B2B7247D9A5303393A868', '222@fff.fff', 'assadd', 'silver', 2, 'Male', 20190321, 0),
+(12, 'kkk', 'B9E39E73E09813BABDACB1BD04227AFF', 'kkk@jok.com', 'asdhljk', 'silver', 0, 'Male', 20190326, 0),
+(13, 'czxds', 'F9C9EB83CBAB9600055B116DDE4548E1', 'asd@asd.com', 'asdd', 'gold', 0, 'Male', 20190326, 0);
 
 -- --------------------------------------------------------
 
@@ -61,8 +64,8 @@ INSERT INTO `members` (`id`, `username`, `password`, `email`, `address`, `member
 -- Table structure for table `members_request`
 --
 
-CREATE TABLE `members_request` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `members_request` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) COLLATE utf8_bin NOT NULL,
   `password` varchar(255) COLLATE utf8_bin NOT NULL,
   `email` varchar(50) COLLATE utf8_bin NOT NULL,
@@ -70,40 +73,17 @@ CREATE TABLE `members_request` (
   `membership` varchar(20) COLLATE utf8_bin NOT NULL,
   `status` tinyint(1) NOT NULL,
   `request_date` int(11) NOT NULL,
-  `gender` varchar(20) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `gender` varchar(20) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Indexes for dumped tables
+-- Dumping data for table `members_request`
 --
 
---
--- Indexes for table `members`
---
-ALTER TABLE `members`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `members_request`
---
-ALTER TABLE `members_request`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `members`
---
-ALTER TABLE `members`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
--- AUTO_INCREMENT for table `members_request`
---
-ALTER TABLE `members_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+INSERT INTO `members_request` (`id`, `username`, `password`, `email`, `address`, `membership`, `status`, `request_date`, `gender`) VALUES
+(16, 'kkkas', '5404859377A5EF6DF4F3A78D12346C3DF780D2156E7FB24243DF0678B03FD177', 'kkk@jok.com', 'asdhljk', 'silver', 0, 20190326, 'Male'),
+(17, 'kkkqq', '602982B94E3B2B7247D9A5303393A868', 'kjl@sd.vo', 'fsdkm', 'silver', 0, 20190328, 'Male');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

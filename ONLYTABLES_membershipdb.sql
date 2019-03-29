@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 29, 2019 at 05:59 AM
+-- Generation Time: Mar 29, 2019 at 05:58 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `membershipdb`
 --
-CREATE DATABASE IF NOT EXISTS `membershipdb` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
-USE `membershipdb`;
 
 -- --------------------------------------------------------
 
