@@ -76,7 +76,9 @@ public class index_FRAME extends javax.swing.JFrame {
             
     }
     public void displayUser(String username){
-        label_username_welcome.setText(username);  
+        label_username_welcome.setText(username);
+        
+        pw_info_new.setVisible(false);
         uploadData(username);
         
         /*
