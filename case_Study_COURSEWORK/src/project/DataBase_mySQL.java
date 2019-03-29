@@ -23,18 +23,18 @@ public class DataBase_mySQL {
     
     
     
-    /* Coventry Domain DB 
-    private static String connectionURL = "jdbc:mysql://46.101.88.96/vunfcove_membershipdb";
-    private static String uName = "root";
+    /* Coventry Domain DB */
+    private static String connectionURL = "jdbc:mysql://cpanel.coventry.domains:3306/vunfcove_membershipdb";
+    private static String uName = "vunfcove_rooty";
     private static String uPass= "1996maia123";
-    */
     
+    /*
     private static String connectionURL = "jdbc:mysql://localhost/membershipdb";
     private static String uName = "root";
     private static String uPass= "";
+    */
+    
     public static int counter=0;//JSON index of all data inside table member
-    
-    
     /**
      *
      * Test method 
@@ -262,6 +262,7 @@ public class DataBase_mySQL {
                     blockData.put(counter, jObj);
                     counter++;
                 }
+                return blockData;
                 
             }else{System.out.println("DB FAILED") ;}
         } catch (SQLException ex) {
@@ -270,7 +271,7 @@ public class DataBase_mySQL {
         
         
         
-        return blockData;
+        return null;
         
     
     
@@ -397,6 +398,7 @@ public class DataBase_mySQL {
                     }
                     
                 }
+                return 0;
                 
             }else{System.out.println("DB FAILED"); }
         } catch (SQLException ex){

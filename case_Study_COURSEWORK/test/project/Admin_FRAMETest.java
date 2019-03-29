@@ -14,11 +14,11 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author foxst
+ * @author deoiveij
  */
-public class index_FRAMEIT {
+public class Admin_FRAMETest {
     
-    public index_FRAMEIT() {
+    public Admin_FRAMETest() {
     }
     
     @BeforeClass
@@ -38,50 +38,39 @@ public class index_FRAMEIT {
     }
 
     /**
-     * Test of displayUser method, of class index_FRAME.
+     * Test of ImageIconSetup method, of class Admin_FRAME.
+     */
+    @Test
+    public void testImageIconSetup() {
+        System.out.println("ImageIconSetup");
+        int option = 0;
+        Admin_FRAME instance = new Admin_FRAME();
+        instance.ImageIconSetup(option);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of displayUser method, of class Admin_FRAME.
      */
     @Test
     public void testDisplayUser() {
         System.out.println("displayUser");
-        String username = "";
-        index_FRAME instance = new index_FRAME();
-        instance.displayUser(username);
+        Admin_FRAME instance = new Admin_FRAME();
+        instance.displayUser();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of initFrame method, of class index_FRAME.
+     * Test of noOnAdvisor method, of class Admin_FRAME.
      */
     @Test
-    public void testInitFrame() {
-        System.out.println("initFrame");
-        index_FRAME instance = new index_FRAME();
-        instance.initFrame();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of progressBar method, of class index_FRAME.
-     */
-    @Test
-    public void testProgressBar() {
-        System.out.println("progressBar");
-        index_FRAME instance = new index_FRAME();
-        instance.progressBar();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of imgInitSetup method, of class index_FRAME.
-     */
-    @Test
-    public void testImgInitSetup() {
-        System.out.println("imgInitSetup");
-        index_FRAME instance = new index_FRAME();
-        instance.imgInitSetup();
+    public void testNoOnAdvisor() {
+        System.out.println("noOnAdvisor");
+        int op = 0;
+        Admin_FRAME instance = new Admin_FRAME();
+        instance.noOnAdvisor(op);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

@@ -132,25 +132,24 @@ public class EncryptClass {//Encrypt AES
     }
     
     
-    /**
-     *
-     * Main test function - improve to JUnit
-     *
-     */
-    public static void main(String args[]) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException, IOException {
-        //String key = "DB99A2A8EB6904F492E9DF0595ED683C";
-        String password = "tesTencryption";
+    public static String getPlainText(String encrypPW){
         
+        try {
+            return getPlainPassword(encrypPW);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(EncryptClass.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchPaddingException ex) {
+            Logger.getLogger(EncryptClass.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvalidKeyException ex) {
+            Logger.getLogger(EncryptClass.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalBlockSizeException ex) {
+            Logger.getLogger(EncryptClass.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (BadPaddingException ex) {
+            Logger.getLogger(EncryptClass.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        //System.out.println(generateKey128());
-        //System.out.println(KEY);
-        
-        System.out.println(password);
-        String encrypPW=setPassword2Hash(password);
-        System.out.println(encrypPW);
-        
-        System.out.println(getPlainPassword(encrypPW));
-        
-        
+        return null;
     }
+   
+    
 }

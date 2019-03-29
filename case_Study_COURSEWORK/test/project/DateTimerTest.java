@@ -14,11 +14,11 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author foxst
+ * @author deoiveij
  */
-public class DateTimerIT {
+public class DateTimerTest {
     
-    public DateTimerIT() {
+    public DateTimerTest() {
     }
     
     @BeforeClass

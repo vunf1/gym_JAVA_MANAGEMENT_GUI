@@ -14,11 +14,11 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author foxst
+ * @author deoiveij
  */
-public class loginFrameIT {
+public class loginFrameTest {
     
-    public loginFrameIT() {
+    public loginFrameTest() {
     }
     
     @BeforeClass

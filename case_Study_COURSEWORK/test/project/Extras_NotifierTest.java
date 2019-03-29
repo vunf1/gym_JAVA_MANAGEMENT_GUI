@@ -17,11 +17,11 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author foxst
+ * @author deoiveij
  */
-public class Extras_NotifierIT {
+public class Extras_NotifierTest {
     
-    public Extras_NotifierIT() {
+    public Extras_NotifierTest() {
     }
     
     @BeforeClass

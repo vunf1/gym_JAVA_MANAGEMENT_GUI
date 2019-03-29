@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package project;
+package project.assets;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -14,11 +14,11 @@ import org.junit.runners.Suite;
 
 /**
  *
- * @author foxst
+ * @author deoiveij
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({project.assets.AssetsITSuite.class, project.loginFrameIT.class, project.DateTimerIT.class, project.HomeControllerIT.class, project.EncryptClassIT.class, project.index_FRAMEIT.class, project.DataBase_mySQLIT.class, project.Admin_FRAMEIT.class, project.Extras_NotifierIT.class})
-public class ProjectITSuite {
+@Suite.SuiteClasses({})
+public class AssetsSuite {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
