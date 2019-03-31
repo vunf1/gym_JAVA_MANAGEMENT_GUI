@@ -17,7 +17,7 @@ import org.junit.runners.Suite;
  * @author deoiveij
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({project.loginFrameTest.class, project.DataBase_mySQLTest.class, project.assets.AssetsSuite.class, project.Admin_FRAMETest.class, project.index_FRAMETest.class, project.DateTimerTest.class, project.HomeControllerTest.class, project.Extras_NotifierTest.class, project.EncryptClassTest.class})
+@Suite.SuiteClasses({ project.DataBase_mySQLTest.class, project.assets.AssetsSuite.class, project.EncryptClassTest.class})
 public class ProjectSuite {
 
     @BeforeClass

@@ -43,7 +43,7 @@ public class DataBase_mySQL {
      * * Json Reader
      * * * Save Index Array as a Object and Display by Key the Values
      * 
-     */
+     *
     public static void main(String[] args) {
 
         
@@ -54,7 +54,7 @@ public class DataBase_mySQL {
         
         System.out.println(checkUsername("qws"));
         
-        /*Done extract ALL data from1 members_request and send it as JsonArray*/
+        /*Done extract ALL data from1 members_request and send it as JsonArray
         
         JSONArray  ALLdataMsR = new JSONArray ();
         ALLdataMsR=getALLData_Request();
@@ -91,7 +91,7 @@ public class DataBase_mySQL {
         
         
     }
-    
+    */
     
     /**
      *      

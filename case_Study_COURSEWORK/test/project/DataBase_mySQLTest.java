@@ -21,7 +21,8 @@ import org.junit.runners.MethodSorters;
 /**
  *
  * @author deoiveij
- * 
+ * Testing
+ * Junit with help of Hamcrest Test Library - arrays of lists with data - testing * 
  * Source: 
  *      https://www.mkyong.com/unittest/junit-run-test-in-a-particular-order/
  *      https://stackoverflow.com/a/10660606 - Lists

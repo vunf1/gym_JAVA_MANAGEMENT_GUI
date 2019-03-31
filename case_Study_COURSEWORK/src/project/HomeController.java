@@ -14,7 +14,14 @@ progressBar_membership2 - prossgressbar 3simplerule
 */
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import org.json.JSONArray;
 
 /**
@@ -26,13 +33,13 @@ public class HomeController {
     public static  String varUser;
     
     
-    private static DataBase_mySQL dataAction = new DataBase_mySQL();
+    private static DataController dataAction = new DataController();
     
     
     
     private static loginFrame loginFrame;//Login Frame - Index
     private static Admin_FRAME Admin_FRAME;//Admin Frame - ClubAdvisor, ClubManager
-    private static index_FRAME index_FRAME;//Member Frame
+    private static Index_FRAME index_FRAME;//Member Frame
     
     
    
@@ -50,12 +57,75 @@ public class HomeController {
         
     }
     
+    /**
+     * Custom Alert Objects Yes No 
+     * @param s:String
+     */
+    public boolean alertYesNo(String s){
+        JOptionPane optionPane = new JOptionPane();
+        Object[] options = {"Yes !","No !"};
+        
+        int n = JOptionPane.showOptionDialog(optionPane,
+        s,
+        "WARNING",
+        JOptionPane.YES_NO_OPTION,
+        JOptionPane.QUESTION_MESSAGE,
+        null,     //do not use a custom Icon
+        options,  //the titles of buttons
+        options[1]); //default button title
+        
+        
+        
+        if (n == optionPane.YES_OPTION) {
+            return true;
+            // yes option
+        } else {
+            return false;
+    // no option
+        }
+    };
     
+    
+    /**
+     * Custom Alert Objects
+     * @param s:String
+     */
+    public void alertWARR(String s){
+        JOptionPane optionPane = new JOptionPane(s,JOptionPane.WARNING_MESSAGE);
+        JDialog dialog = optionPane.createDialog("Warning!");
+        dialog.setAlwaysOnTop(true); // to show top of all other application
+        dialog.setVisible(true); // to visible the dialog
+    };
+
+    
+    /**
+     * Custom Alert Object 
+     * @param s:String
+     */
+    public void alertINFO(String s){
+        JOptionPane optionPane = new JOptionPane(s,JOptionPane.INFORMATION_MESSAGE);
+        JDialog dialog = optionPane.createDialog("Information!");
+        dialog.setAlwaysOnTop(true); // to show top of all other application
+        dialog.setVisible(true); // to visible the dialog
+    };
+
+    
+    /**
+     * Custom Alert Object
+     * @param s:String
+     */
+    public void alertERROR(String s){
+        JOptionPane optionPane = new JOptionPane(s,JOptionPane.ERROR_MESSAGE);
+        JDialog dialog = optionPane.createDialog("Error!");
+        dialog.setAlwaysOnTop(true); // to show top of all other application
+        dialog.setVisible(true); // to visible the dialog
+    };
+     
     
     /*Log Out from frame */
     public static void logOut(String data){
         
-        index_FRAME.backToAdmin.setVisible(false);
+        
         if(data.equals("admin")){
             Admin_FRAME.setVisible(false);
             loginFrame.setVisible(true);
@@ -89,7 +159,7 @@ public class HomeController {
         
         }
         if(dataAction.checkAdmin(username)==0){
-            index_FRAME = new index_FRAME(); 
+            index_FRAME = new Index_FRAME(); 
             index_FRAME.displayUser(varUser);
             index_FRAME.initFrame();
             index_FRAME.setVisible(true);
@@ -104,7 +174,7 @@ public class HomeController {
     public static void callMemberFrame_Admin(int op){
         if(op==1){
             Admin_FRAME.setVisible(false);   
-            index_FRAME = new index_FRAME();
+            index_FRAME = new Index_FRAME();
             index_FRAME.displayUser(varUser);
             index_FRAME.backToAdmin.setVisible(true);
             index_FRAME.initFrame();
@@ -121,6 +191,14 @@ public class HomeController {
         
     }
     
+    
+    
+    
+    
+    
+    
+    
+    
     /*Check username  on official and request table, return true - exists , false - dont*/
     public static int checkUsername(String data){
         
@@ -134,6 +212,13 @@ public class HomeController {
         return dataAction.checkPassword(data);
         
     };
+    
+    
+    public static void checkLogin(List<String> data){
+        
+       dataAction.checkLogin(data);
+    }
+    
     
     /*Register new user on Request Table, return true - Done , false - not Done*/
     public static int registerREQmember(List<String> data){
@@ -208,8 +293,7 @@ public class HomeController {
      * @return
      */
     public static JSONArray getUsersData(){
-       /*Dont grab pw*/
-       //System.out.println(dataAction.getALLData_().toString());
+        
         return  dataAction.getALLData_();
         
     };
@@ -219,8 +303,7 @@ public class HomeController {
      * @return
      */
     public static JSONArray getUserData(String username){
-       /*Dont grab pw*/
-       //System.out.println(dataAction.getALLData_().toString());
+        
         return  dataAction.getUserData_(username);
         
     };
@@ -230,7 +313,7 @@ public class HomeController {
      * @return
      */
     public static int setUserDataUpdate(List<String> data){
-       System.out.println(data);
+        
         return  dataAction.setUserDataUpdate(data);
         
     };

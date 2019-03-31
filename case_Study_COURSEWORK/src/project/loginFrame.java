@@ -18,7 +18,8 @@ import javax.swing.ImageIcon;
  */
 public class loginFrame extends javax.swing.JFrame {
     
-    Extras_Notifier alert = new Extras_Notifier();
+    DataController alert = new DataController();
+    private static HomeController controller = new HomeController();
     EncryptClass encrypt= new EncryptClass();
     
     protected DateTimer timerThread;
@@ -316,14 +317,14 @@ public class loginFrame extends javax.swing.JFrame {
        
        
         if(username_text_login.getText().equals("") || password_text_login .getText().equals("")){
-            alert.alertERROR("Empty");
+            controller.alertERROR("Empty");
             //
             
         }else{
             dataUSPW.add(username_text_login.getText());
             dataUSPW.add(password_text_login.getText());
             dataUSPW.set(1,encrypt.setPassword2Hash(dataUSPW.get(1)));
-            alert.checkLogin(dataUSPW);
+            controller.checkLogin(dataUSPW);
             
             
         };
@@ -367,19 +368,19 @@ public class loginFrame extends javax.swing.JFrame {
         //System.out.println(label_Time.getText());
         if(register_username_text.getText().equals("")||register_password_text.getText().equals("")||register_password_text1.getText().equals("")||register_address_text.getText().equals("")||register_email_text.getText().equals("")||gender_Box.getSelectedItem().toString()==""){
         
-        alert.alertERROR("Empty Field");
+        controller.alertERROR("Empty Field");
         
         }else{
-            System.out.println(alert.checkUsername(register_username_text.getText().toString()));
-            if(alert.checkUsername(register_username_text.getText().toString())>=1){
+            //System.out.println(controller.checkUsername(register_username_text.getText().toString()));
+            if(controller.checkUsername(register_username_text.getText().toString())>=1){
                     
-                    alert.alertERROR("Username "+register_username_text.getText()+" Already in use!");
+                    controller.alertERROR("Username "+register_username_text.getText()+" Already in use!");
             }else{
                 if(register_password_text.getText().equals(register_password_text1.getText())&& register_password_text.getDocument().getLength()>=8 && register_password_text.getDocument().getLength()<=15){
                         
                         if(register_email_text.getText().toString().indexOf(' ')>=0 ||register_email_text.getText().toString().indexOf('@')<0 || register_email_text.getText().toString().indexOf('.')<0 ){
                        
-                        alert.alertERROR("Invalid Email");  
+                        controller.alertERROR("Invalid Email");  
                         }else{
                             data.add(register_username_text.getText().toLowerCase());//0 - username 
                             data.add(register_password_text.getText());//1 - pw
@@ -391,8 +392,8 @@ public class loginFrame extends javax.swing.JFrame {
                             data.add(String.valueOf(gender_Box.getSelectedItem()));// 
                             //data.add(label_Time.getText());
                         
-                            if(alert.registerMember(data)==1){
-                                alert.alertINFO("Account Created Succesfully");
+                            if(controller.registerREQmember(data)==1){
+                                controller.alertINFO("Account Created Succesfully");
                                 register_username_text.setText("");
                                 register_password_text.setText("");
                                 register_password_text1.setText("");
@@ -402,12 +403,12 @@ public class loginFrame extends javax.swing.JFrame {
                                 login_Panel.setVisible(true);
                                 
                             }else{
-                                alert.alertERROR("Account Not Created");
+                                controller.alertERROR("Account Not Created");
                             } 
                         }
                 }else{
 
-                alert.alertERROR("<html>Password :<br> field not equal or <br> not at least 8 with max of 15 digits</html>");
+                controller.alertERROR("<html>Password :<br> field not equal or <br> not at least 8 with max of 15 digits</html>");
                 }
             }
 

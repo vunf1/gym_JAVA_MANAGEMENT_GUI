@@ -45,7 +45,7 @@ public class Admin_FRAME extends javax.swing.JFrame {
     public static final Color gGold = new Color(218,165,32);
     public static final Color pPlatinum = new Color(229,228,226);
     private static HomeController controller = new HomeController();
-    private static Extras_Notifier alert = new Extras_Notifier();
+    
     private static EncryptClass encrypt= new EncryptClass();
     
     public static final Color backgroundColor = new Color(192, 192, 192);
@@ -727,11 +727,11 @@ public class Admin_FRAME extends javax.swing.JFrame {
                 
                 
                 
-                if(alert.alertYesNo("Are you sure ?")){
+                if(controller.alertYesNo("Are you sure ?")){
                     
                     if(controller.insertNewMember(sendData)==1&&controller.delREQmember(sendData.get(0))==1){
                         
-                        alert.alertINFO("Account activated");
+                        controller.alertINFO("Account activated");
                         /*reload*/
                         right_panel_index.setVisible(false);
                         initRequestPanel();
@@ -739,11 +739,11 @@ public class Admin_FRAME extends javax.swing.JFrame {
                         right_panel_index.setVisible(true);
                                                 
                     }else{
-                        alert.alertERROR("Fail to delete or insert new member ");
+                        controller.alertERROR("Fail to delete or insert new member ");
                     }
                     
                 }else{
-                    alert.alertWARR("Canceled");
+                    controller.alertWARR("Canceled");
                     
                 }
             }
@@ -752,10 +752,10 @@ public class Admin_FRAME extends javax.swing.JFrame {
         delete_R.addActionListener(new ActionListener(){
             
             public void actionPerformed(ActionEvent e){
-                if(alert.alertYesNo("<html>Are you sure you want to delete >> <u>"+editUser.get(1)+"</u> </html>")==true){
+                if(controller.alertYesNo("<html>Are you sure you want to delete >> <u>"+editUser.get(1)+"</u> </html>")==true){
                     
                       if(controller.delREQmember(editUser.get(0).toString())==1){
-                          alert.alertINFO("Request Account Deleted");
+                          controller.alertINFO("Request Account Deleted");
                           /*reload*/
                           right_panel_index.setVisible(false);
                           initRequestPanel();
@@ -763,11 +763,11 @@ public class Admin_FRAME extends javax.swing.JFrame {
                           right_panel_index.setVisible(true);
                           
                       }else{
-                          alert.alertERROR("**FAIL** to delete Request account");
+                          controller.alertERROR("**FAIL** to delete Request account");
                       }
                     
                 }else{
-                    alert.alertWARR("Cancelled");
+                    controller.alertWARR("Cancelled");
                 }
 
 
@@ -976,11 +976,11 @@ public class Admin_FRAME extends javax.swing.JFrame {
 
 
                         sendData.add(9,editUser.get(0).toString());//ID
-                        if(alert.alertYesNo("Are you sure ?")){
+                        if(controller.alertYesNo("Are you sure ?")){
                     
                             if(controller.updateMember(sendData)==1){
 
-                                alert.alertINFO("Account Modified");
+                                controller.alertINFO("Account Modified");
 
                                 /*reload*/
                                 right_panel_index.setVisible(false);
@@ -990,16 +990,16 @@ public class Admin_FRAME extends javax.swing.JFrame {
 
 
                             }else{
-                                alert.alertERROR("Fail to modify member > "+username_.getText() );
+                                controller.alertERROR("Fail to modify member > "+username_.getText() );
                             }
 
                         }else{
-                            alert.alertWARR("Canceled");
+                            controller.alertWARR("Canceled");
 
                         }
                         
                     }else{
-                        alert.alertERROR("<html>Password Field Incorrect <br> PW min:8 max: 15 </html>");
+                        controller.alertERROR("<html>Password Field Incorrect <br> PW min:8 max: 15 </html>");
                     }
                 }else{
                     sendData.add(0,username_.getText());//Username
@@ -1016,11 +1016,11 @@ public class Admin_FRAME extends javax.swing.JFrame {
 
 
                     sendData.add(9,editUser.get(0).toString());//ID
-                    if(alert.alertYesNo("Are you sure ?")){
+                    if(controller.alertYesNo("Are you sure ?")){
                     
                         if(controller.updateMember(sendData)==1){
 
-                            alert.alertINFO("Account Modified");
+                            controller.alertINFO("Account Modified");
 
                             /*reload*/
                             right_panel_index.setVisible(false);
@@ -1030,11 +1030,11 @@ public class Admin_FRAME extends javax.swing.JFrame {
 
 
                         }else{
-                            alert.alertERROR("Fail to modify member > "+username_.getText() );
+                            controller.alertERROR("Fail to modify member > "+username_.getText() );
                         }
                     
                     }else{
-                        alert.alertWARR("Canceled");
+                        controller.alertWARR("Canceled");
 
                     }
 
@@ -1048,10 +1048,10 @@ public class Admin_FRAME extends javax.swing.JFrame {
             
             public void actionPerformed(ActionEvent e){
             
-                if(alert.alertYesNo("<html>Are you sure you want to delete >> member ID: <u>"+editUser.get(0).toString()+"</u> </html>")==true){
+                if(controller.alertYesNo("<html>Are you sure you want to delete >> member ID: <u>"+editUser.get(0).toString()+"</u> </html>")==true){
                     
                       if(controller.deleteMember(editUser.get(0).toString())==1){
-                          alert.alertINFO("Member Account Deleted");
+                          controller.alertINFO("Member Account Deleted");
                           
                           right_panel_index.setVisible(false);
                           initUsersPanel();
@@ -1060,11 +1060,11 @@ public class Admin_FRAME extends javax.swing.JFrame {
                           
                           
                       }else{
-                          alert.alertERROR("**FAIL** to delete "+editUser.get(0).toString()+" Member account");
+                          controller.alertERROR("**FAIL** to delete "+editUser.get(0).toString()+" Member account");
                       }
                     
                 }else{
-                    alert.alertWARR("Cancelled");
+                    controller.alertWARR("Cancelled");
                 }
 
 
