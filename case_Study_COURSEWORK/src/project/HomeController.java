@@ -33,7 +33,7 @@ public class HomeController {
     public static  String varUser;
     
     
-    private static DataController dataAction = new DataController();
+    private static DataDomain dataAction = new DataDomain();
     
     
     
@@ -194,6 +194,12 @@ public class HomeController {
     
     
     
+    public static void checkLogin(List<String> data){
+        
+       dataAction.checkLogin(data);
+    }
+    
+    
     
     
     
@@ -212,12 +218,6 @@ public class HomeController {
         return dataAction.checkPassword(data);
         
     };
-    
-    
-    public static void checkLogin(List<String> data){
-        
-       dataAction.checkLogin(data);
-    }
     
     
     /*Register new user on Request Table, return true - Done , false - not Done*/

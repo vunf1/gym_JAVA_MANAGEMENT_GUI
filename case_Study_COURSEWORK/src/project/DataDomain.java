@@ -17,7 +17,7 @@ import org.json.JSONArray;
  *
  * @author deoiveij
  */
-public class DataController {
+public class DataDomain {
     private static HomeController calls = new HomeController();
     
     private static DataBase_mySQL dataAction = new DataBase_mySQL();

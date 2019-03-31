@@ -18,7 +18,7 @@ import javax.swing.ImageIcon;
  */
 public class loginFrame extends javax.swing.JFrame {
     
-    DataController alert = new DataController();
+    DataDomain alert = new DataDomain();
     private static HomeController controller = new HomeController();
     EncryptClass encrypt= new EncryptClass();
     
