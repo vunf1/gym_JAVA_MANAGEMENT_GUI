@@ -49,13 +49,12 @@ The club would also welcome any new features recommended by the software develop
 
 ### BackLog
 - [ ] DB Improve DATA Booking, ID - CLASS - DATE.
-- [ ] When User LogIn check Membership diff DB date[date Actual].
 - [x] Club Advisor Request Booking Table trigger - no  memebership managment
 
 - [ ] CLASS DIAGRAM :warning:
 - [ ] GRASP DIAGRAM :warning:
 - [ ] GOF DIAGRAM :warning:
-- [ ] Review Algorithmn :warning:
+- [ ] 1000 words about GRASP and GoF Pattern
 - [ ] Review Code Idention :warning:
 
 ### Done
@@ -84,6 +83,10 @@ The club would also welcome any new features recommended by the software develop
 - [x] Members GUI config
 - [x] Members GUI change memebership
 - [x] Members GUI trigger booking 
+- [x] When User LogIn check Membership diff DB date[date Actual].
+
+
+- [x] Review Algorithmn :warning:
 
 
 ### Extra Files
