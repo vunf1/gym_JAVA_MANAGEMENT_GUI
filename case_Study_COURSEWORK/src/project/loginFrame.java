@@ -18,9 +18,10 @@ import javax.swing.ImageIcon;
  */
 public class loginFrame extends javax.swing.JFrame {
     
-    DataDomain alert = new DataDomain();
+    
+    public static final Color backgroundColor = new Color(90, 90, 90);
     private static HomeController controller = new HomeController();
-    EncryptClass encrypt= new EncryptClass();
+    private static EncryptClass encrypt= new EncryptClass();
     
     protected DateTimer timerThread;
     
@@ -28,11 +29,11 @@ public class loginFrame extends javax.swing.JFrame {
     
     public loginFrame() {
         
-        
         initComponents();
         
-        
-        
+        getContentPane().setBackground(backgroundColor);
+        login_Panel.setBackground(backgroundColor);
+        register_panel.setBackground(backgroundColor);
         login_Panel.setOpaque(true);
         register_panel.setOpaque(true);
         register_panel.setVisible(false);
@@ -51,7 +52,8 @@ public class loginFrame extends javax.swing.JFrame {
     }
     
     public void imgInitSetup(){
-            
+        
+        this.setBackground(backgroundColor);
         ImageIcon logo = new ImageIcon(getClass().getResource("/project/assets/fullGym.png"));
         int scale = 2; 
         int width = logo.getIconWidth();
@@ -99,7 +101,7 @@ public class loginFrame extends javax.swing.JFrame {
         ImageIcon label_title_registerLogo = new ImageIcon(getClass().getResource("/project/assets/regisArea.png"));
         label_title_register_panel.setIcon(new ImageIcon(label_title_registerLogo.getImage().getScaledInstance(200, -1,java.awt.Image.SCALE_SMOOTH)));
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -121,6 +123,8 @@ public class loginFrame extends javax.swing.JFrame {
         labelUser_Login = new javax.swing.JLabel();
         labelPW_Login = new javax.swing.JLabel();
         icon_1 = new javax.swing.JButton();
+        save_UserData = new javax.swing.JCheckBox();
+        label_info_save = new javax.swing.JLabel();
         register_panel = new javax.swing.JPanel();
         label_title_register_panel = new javax.swing.JLabel();
         register_username_text = new javax.swing.JTextField();
@@ -150,10 +154,12 @@ public class loginFrame extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         label_Time.setFont(new java.awt.Font("Copperplate Gothic Light", 1, 12)); // NOI18N
+        label_Time.setForeground(new java.awt.Color(255, 255, 255));
         label_Time.setText("< h/m/s>");
         getContentPane().add(label_Time, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 410, 120, -1));
 
         label_Date.setFont(new java.awt.Font("Copperplate Gothic Light", 1, 12)); // NOI18N
+        label_Date.setForeground(new java.awt.Color(255, 255, 255));
         label_Date.setText("<yy/mm/dd>");
         getContentPane().add(label_Date, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 384, 120, 20));
 
@@ -166,7 +172,6 @@ public class loginFrame extends javax.swing.JFrame {
         login_Panel.setPreferredSize(new java.awt.Dimension(250, 300));
 
         btn_action.setFont(new java.awt.Font("Consolas", 0, 10)); // NOI18N
-        btn_action.setText("ACTION");
         btn_action.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_actionActionPerformed(evt);
@@ -182,40 +187,51 @@ public class loginFrame extends javax.swing.JFrame {
         });
 
         labelUser_Login.setFont(new java.awt.Font("Consolas", 0, 10)); // NOI18N
+        labelUser_Login.setForeground(new java.awt.Color(255, 255, 255));
         labelUser_Login.setText("Username");
 
         labelPW_Login.setFont(new java.awt.Font("Consolas", 0, 10)); // NOI18N
+        labelPW_Login.setForeground(new java.awt.Color(255, 255, 255));
         labelPW_Login.setText("Password");
 
         icon_1.setBackground(login_Panel.getBackground());
         icon_1.setBorder(null);
 
+        save_UserData.setContentAreaFilled(false);
+
+        label_info_save.setFont(new java.awt.Font("Consolas", 1, 11)); // NOI18N
+        label_info_save.setForeground(new java.awt.Color(255, 255, 255));
+        label_info_save.setText("Save session");
+        label_info_save.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
         javax.swing.GroupLayout login_PanelLayout = new javax.swing.GroupLayout(login_Panel);
         login_Panel.setLayout(login_PanelLayout);
         login_PanelLayout.setHorizontalGroup(
             login_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(icon_1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, login_PanelLayout.createSequentialGroup()
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addComponent(register_label, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(login_PanelLayout.createSequentialGroup()
                 .addGap(124, 124, 124)
-                .addGroup(login_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(login_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(login_PanelLayout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(btn_action, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(label_info_save)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(save_UserData, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(login_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(password_text_login, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
                         .addComponent(username_text_login, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
                         .addComponent(labelUser_Login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(labelPW_Login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(labelPW_Login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_action, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(icon_1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, login_PanelLayout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
-                .addComponent(register_label, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
         );
         login_PanelLayout.setVerticalGroup(
             login_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(login_PanelLayout.createSequentialGroup()
-                .addComponent(icon_1, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                .addComponent(icon_1, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
                 .addGap(3, 3, 3)
                 .addComponent(labelUser_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -224,9 +240,13 @@ public class loginFrame extends javax.swing.JFrame {
                 .addComponent(labelPW_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(password_text_login, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addGroup(login_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label_info_save, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(save_UserData, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn_action)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(register_label, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
         );
@@ -242,18 +262,22 @@ public class loginFrame extends javax.swing.JFrame {
         register_panel.add(register_email_text, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 167, 30));
 
         label_username.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        label_username.setForeground(new java.awt.Color(255, 255, 255));
         label_username.setText("Username");
         register_panel.add(label_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 54, -1, -1));
 
         label_password.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        label_password.setForeground(new java.awt.Color(255, 255, 255));
         label_password.setText("Password Again");
         register_panel.add(label_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, -1, -1));
 
         label_mail.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        label_mail.setForeground(new java.awt.Color(255, 255, 255));
         label_mail.setText("Email");
         register_panel.add(label_mail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
 
         label_gender.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        label_gender.setForeground(new java.awt.Color(255, 255, 255));
         label_gender.setText("Gender");
         register_panel.add(label_gender, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 60, 30));
 
@@ -278,12 +302,14 @@ public class loginFrame extends javax.swing.JFrame {
         register_panel.add(register_address_text, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 167, 30));
 
         label_address.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        label_address.setForeground(new java.awt.Color(255, 255, 255));
         label_address.setText("Address");
         register_panel.add(label_address, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, -1, -1));
 
         register_panel.add(gender_Box, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 100, 30));
 
         label_password1.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        label_password1.setForeground(new java.awt.Color(255, 255, 255));
         label_password1.setText("Password");
         register_panel.add(label_password1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
@@ -324,6 +350,12 @@ public class loginFrame extends javax.swing.JFrame {
             dataUSPW.add(username_text_login.getText());
             dataUSPW.add(password_text_login.getText());
             dataUSPW.set(1,encrypt.setPassword2Hash(dataUSPW.get(1)));
+            if(save_UserData.isSelected()){
+                
+            }else{
+                username_text_login.setText("");
+                password_text_login.setText("");
+            }
             controller.checkLogin(dataUSPW);
             
             
@@ -420,10 +452,6 @@ public class loginFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_exit_btnMouseClicked
 
-    /**
-     * MAIN
-     * @param args the command line arguments
-     */
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -441,6 +469,7 @@ public class loginFrame extends javax.swing.JFrame {
     private javax.swing.JLabel label_address;
     private javax.swing.JLabel label_gender;
     private javax.swing.JLabel label_info1;
+    private javax.swing.JLabel label_info_save;
     private javax.swing.JLabel label_mail;
     private javax.swing.JLabel label_password;
     private javax.swing.JLabel label_password1;
@@ -456,6 +485,7 @@ public class loginFrame extends javax.swing.JFrame {
     private javax.swing.JPasswordField register_password_text;
     private javax.swing.JPasswordField register_password_text1;
     private javax.swing.JTextField register_username_text;
+    private javax.swing.JCheckBox save_UserData;
     private javax.swing.JTextField username_text_login;
     // End of variables declaration//GEN-END:variables
 

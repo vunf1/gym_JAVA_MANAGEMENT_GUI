@@ -25,7 +25,7 @@ public class  DateTimer extends Thread {
     protected JLabel timeLabel;
 
     protected SimpleDateFormat dateFormat = 
-            new SimpleDateFormat("Y MM d");
+            new SimpleDateFormat("Y MM dd");
     protected SimpleDateFormat timeFormat =
             new SimpleDateFormat("H:mm:ss");
 

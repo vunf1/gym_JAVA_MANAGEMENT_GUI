@@ -43,7 +43,8 @@ public class DataBase_mySQL {
      * * Json Reader
      * * * Save Index Array as a Object and Display by Key the Values
      * 
-     *
+     */
+    /*
     public static void main(String[] args) {
 
         
@@ -90,8 +91,8 @@ public class DataBase_mySQL {
         
         
         
-    }
-    */
+    }*/
+    
     
     /**
      *      
@@ -417,6 +418,12 @@ public class DataBase_mySQL {
      * @return boolean
      */
     public static int registerREQmember(List<String> data){
+        
+        for(int x=0; x<data.size();x++){
+            System.out.println(data.get(x));
+            
+        }
+        
         /*
         *
         *  data 0 - username
@@ -431,20 +438,20 @@ public class DataBase_mySQL {
         try {
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);
             if (conn != null){
-            conn.setAutoCommit(true);
+            //conn.setAutoCommit(true);
 
                 String compiledQuery = "INSERT INTO members_request (username, password, email, address, membership, status, request_date, gender)" +
                         " VALUES" + "(?, ?, ?, ?, ?, ?, ?, ?)";
                 statement = conn.prepareStatement(compiledQuery);
    
-                statement.setString(1, data.get(0));
-                statement.setString(2, data.get(1));
-                statement.setString(3, data.get(2));
-                statement.setString(4, data.get(3));
+                statement.setString(1, data.get(0).toString());
+                statement.setString(2, data.get(1).toString());
+                statement.setString(3, data.get(2).toString());
+                statement.setString(4, data.get(3).toString());
                 statement.setString(5, "silver");
                 statement.setString(6, "0");
-                statement.setString(7, data.get(4));
-                statement.setString(8, data.get(5));
+                statement.setString(7, data.get(4).toString());
+                statement.setString(8, data.get(5).toString());
 
                 statement.executeUpdate();
                 statement.close();

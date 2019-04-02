@@ -41,14 +41,14 @@ import net.miginfocom.swing.MigLayout;
 public class Admin_FRAME extends javax.swing.JFrame {       
     
 
-    public static final Color sSilver = new Color(87,86,82);
+    public static final Color sSilver = new Color(145,145,145);
     public static final Color gGold = new Color(218,165,32);
     public static final Color pPlatinum = new Color(229,228,226);
-    private static HomeController controller = new HomeController();
     
+    private static HomeController controller = new HomeController();
     private static EncryptClass encrypt= new EncryptClass();
     
-    public static final Color backgroundColor = new Color(192, 192, 192);
+    public static final Color backgroundColor = new Color(47, 47, 47);
     protected DateTimer timerThread;
     
     protected GraphicsConfiguration gc;
@@ -56,8 +56,7 @@ public class Admin_FRAME extends javax.swing.JFrame {
      * Creates new form Admin_Page
      */
     private JSONArray dataJson = new JSONArray();
-    
-       private JSONArray  dataJsonMem = new JSONArray();
+    private JSONArray  dataJsonMem = new JSONArray();
     
     
     public Admin_FRAME() {
@@ -66,19 +65,10 @@ public class Admin_FRAME extends javax.swing.JFrame {
         initComponents();
         
         //label_username_left.setText(controller.varUser);
-        dataJson=controller.getREMembersData();
-        badge_count_request.setText(String.valueOf(dataJson.length()));//badge Requests
-        
-        
-        dataJsonMem=controller.getUsersData();
-        label_users_info.setText(String.valueOf(dataJsonMem.length()));//badge Users
         
         timerThread = new DateTimer(_date, _time);
         timerThread.start();
         this.setBackground(backgroundColor);
-        left_panel.setBackground(backgroundColor);
-        jScrollPane_right.setBackground(backgroundColor);
-        right_panel_index.setBackground(backgroundColor);
     }
 
     public void ImageIconSetup(int option){
@@ -179,6 +169,15 @@ public class Admin_FRAME extends javax.swing.JFrame {
         goToMemberFrame.setIcon(new ImageIcon(memberDashICON.getImage().getScaledInstance(160, -1,java.awt.Image.SCALE_SMOOTH)));
     }
     public void displayUser(){
+        dataJson=controller.getREMembersData();
+        badge_count_request.setText(String.valueOf(dataJson.length()));//badge Requests
+        
+        
+        dataJsonMem=controller.getUsersData();
+        label_users_info.setText(String.valueOf(dataJsonMem.length()));//badge Users
+        left_panel.setBackground(backgroundColor);
+        jScrollPane_right.setBackground(backgroundColor);
+        right_panel_index.setBackground(backgroundColor);
         
         //label_username_left.setText(controller.varUser);
         label_username_left.setText(controller.varUser);
@@ -251,12 +250,14 @@ public class Admin_FRAME extends javax.swing.JFrame {
         left_panel.add(btn_membersRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 240, 47));
 
         label_username_left.setFont(new java.awt.Font("Copperplate Gothic Light", 2, 12)); // NOI18N
+        label_username_left.setForeground(new java.awt.Color(255, 255, 255));
         label_username_left.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         label_username_left.setText("<Advisor Username>");
         label_username_left.setToolTipText("");
         left_panel.add(label_username_left, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 190, 30));
 
         upLabel_user_left.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
+        upLabel_user_left.setForeground(new java.awt.Color(255, 255, 255));
         upLabel_user_left.setText("Welcome");
         left_panel.add(upLabel_user_left, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, 30));
 
@@ -264,11 +265,13 @@ public class Admin_FRAME extends javax.swing.JFrame {
         left_panel.add(badge_count_request, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, 44, 47));
 
         _date.setFont(new java.awt.Font("Copperplate Gothic Light", 2, 12)); // NOI18N
+        _date.setForeground(new java.awt.Color(255, 255, 255));
         _date.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         _date.setText("<date>");
         left_panel.add(_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 86, 23));
 
         _time.setFont(new java.awt.Font("Copperplate Gothic Light", 2, 12)); // NOI18N
+        _time.setForeground(new java.awt.Color(255, 255, 255));
         _time.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         _time.setText("<time>");
         left_panel.add(_time, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 90, 23));
@@ -280,6 +283,7 @@ public class Admin_FRAME extends javax.swing.JFrame {
         });
         left_panel.add(btn_users_managment, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, 190, 47));
 
+        label_users_info.setForeground(new java.awt.Color(255, 0, 0));
         label_users_info.setText("<no. member>");
         left_panel.add(label_users_info, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 410, 42, 47));
         left_panel.add(icon_logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 320, 150));

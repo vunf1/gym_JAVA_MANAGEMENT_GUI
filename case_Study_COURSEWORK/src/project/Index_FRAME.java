@@ -27,7 +27,7 @@ public class Index_FRAME extends javax.swing.JFrame {
     protected DateTimer timerThread;
     
     private JSONArray datajson=new JSONArray();
-    public JSONArray  editUser= new JSONArray();
+    private JSONArray  editUser= new JSONArray();
     public String progressValue;
     
     
@@ -81,6 +81,7 @@ public class Index_FRAME extends javax.swing.JFrame {
         
         pw_info_new.setVisible(false);
         uploadData(username);
+        imgInitSetup();
         
         /*
             editUser.getInt(0));member_id
@@ -95,7 +96,7 @@ public class Index_FRAME extends javax.swing.JFrame {
             editUser.getInt(9));booking
             
             */
-        //label_memberID_info.setText(editUser.get(0));
+        
         menu_item_1.setText("<html><center>"+"Check"+"<br>"+"Membership"+"</center></html>");
         
         
@@ -142,7 +143,6 @@ public class Index_FRAME extends javax.swing.JFrame {
         texBox_Address.setEnabled(false);
         texBox_Address.setEditable(false);
         
-        imgInitSetup();
         //icon_.setIcon(new javax.swing.ImageIcon());
         
     }
@@ -376,11 +376,15 @@ public class Index_FRAME extends javax.swing.JFrame {
         label_Address = new javax.swing.JLabel();
         book_Panel = new javax.swing.JPanel();
         listOFclass_comboBox = new javax.swing.JComboBox<>();
-        buttom_add2Book = new javax.swing.JButton();
+        btn_add2Book = new javax.swing.JButton();
         label_text_AvaiableClass = new javax.swing.JLabel();
+        beta_label = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        active_list = new javax.swing.JList<>();
+        info_active_label = new javax.swing.JLabel();
         update_Panel = new javax.swing.JPanel();
         list_membership = new javax.swing.JComboBox<>();
-        buttom_add2Book1 = new javax.swing.JButton();
+        btn_upMem = new javax.swing.JButton();
         label_text_AvaiableClass1 = new javax.swing.JLabel();
         label_info = new javax.swing.JLabel();
         label_info_static1 = new javax.swing.JLabel();
@@ -575,18 +579,35 @@ public class Index_FRAME extends javax.swing.JFrame {
         listOFclass_comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         book_Panel.add(listOFclass_comboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 190, -1));
 
-        buttom_add2Book.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
-        buttom_add2Book.setText("Click to Book");
-        buttom_add2Book.addActionListener(new java.awt.event.ActionListener() {
+        btn_add2Book.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
+        btn_add2Book.setText("Click to Book");
+        btn_add2Book.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttom_add2BookActionPerformed(evt);
+                btn_add2BookActionPerformed(evt);
             }
         });
-        book_Panel.add(buttom_add2Book, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 120, -1, -1));
+        book_Panel.add(btn_add2Book, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, -1, -1));
 
         label_text_AvaiableClass.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
         label_text_AvaiableClass.setText("Avaiable Classes");
         book_Panel.add(label_text_AvaiableClass, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
+
+        beta_label.setText("(beta)");
+        book_Panel.add(beta_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, -1, -1));
+
+        active_list.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "...", "...", "..." };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        active_list.setEnabled(false);
+        jScrollPane1.setViewportView(active_list);
+
+        book_Panel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, 80, -1));
+
+        info_active_label.setText("Active Classes");
+        info_active_label.setToolTipText("");
+        book_Panel.add(info_active_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 70, -1, -1));
 
         getContentPane().add(book_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 740, 390));
 
@@ -603,9 +624,10 @@ public class Index_FRAME extends javax.swing.JFrame {
         });
         update_Panel.add(list_membership, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 190, -1));
 
-        buttom_add2Book1.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
-        buttom_add2Book1.setText("Click to Update");
-        update_Panel.add(buttom_add2Book1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, -1, -1));
+        btn_upMem.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
+        btn_upMem.setText("Click to Update");
+        btn_upMem.setEnabled(false);
+        update_Panel.add(btn_upMem, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, -1, -1));
 
         label_text_AvaiableClass1.setFont(new java.awt.Font("Trebuchet MS", 0, 11)); // NOI18N
         label_text_AvaiableClass1.setText("Avaiable Membership");
@@ -1088,7 +1110,7 @@ public class Index_FRAME extends javax.swing.JFrame {
 
     }//GEN-LAST:event_button_submitActionPerformed
 
-    private void buttom_add2BookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttom_add2BookActionPerformed
+    private void btn_add2BookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add2BookActionPerformed
 /*Simple add +1 to booking number */
 
     int value=Integer.parseInt(editUser.get(9).toString())+1;
@@ -1098,33 +1120,34 @@ public class Index_FRAME extends javax.swing.JFrame {
     memberShipStatusCheck(2);
         
         
-    }//GEN-LAST:event_buttom_add2BookActionPerformed
+    }//GEN-LAST:event_btn_add2BookActionPerformed
     
     /*Follow case study logic of membership */
     private void memberShipStatusCheck(int opt){
+    displayUser(editUser.get(1).toString());
         if(editUser.getInt(9)>=10&&editUser.get(5).toString().equals("silver") && opt==2){
             controller.alertINFO("Congratulation you now are a Gold Member");
             controller.setMembership(editUser.get(1).toString(),"gold");
             
         }else if( editUser.getInt(9) >=10&&editUser.get(5).toString().equals("gold") && opt==2){
-            controller.alertINFO("You are legible to became a Platinum Member<br>A transfer of £100 is needed to complete it.</html>");
+            controller.alertINFO("<html> You are legible to became a Platinum Member <br> A transfer of £100 is needed to complete it. </html>");
             
         }
         int dateONDB=editUser.getInt(8);
         int actDate=Integer.parseInt(_date.getText().replaceAll("\\s+",""));
         int calcMembership;
         int yearDays;
-        //System.out.println(dateONDB);
-        //System.out.println(actDate);
+        //System.out.println("ONDB :"+dateONDB);
+        //System.out.println("ACT :"+actDate);
         //alert.alertINFO(editUser.get(8).toString());
         calcMembership=actDate-dateONDB;
         //calcMembership=20200321-Integer.parseInt(editUser.get(8).toString());
         yearDays= (365*calcMembership)/10000;
-        //System.out.println(calcMembership);
-        int diff= 365-calcMembership;
+        //System.out.println("CALCDATE :"+calcMembership);
+        int diff= 365-yearDays;
         
         
-        if(calcMembership<365){//less 1 year no revoke
+        if(yearDays<365){//less 1 year no revoke
             if(opt==1){
                 controller.alertINFO("<html>"+diff+" days until next membership reload </html>");
         
@@ -1157,11 +1180,13 @@ public class Index_FRAME extends javax.swing.JFrame {
     private javax.swing.JPanel accSettings_Panel;
     private javax.swing.JCheckBox act_pw_new;
     private javax.swing.JCheckBox act_pw_old;
+    private javax.swing.JList<String> active_list;
     public javax.swing.JButton backToAdmin;
+    private javax.swing.JLabel beta_label;
     private javax.swing.JPanel book_Panel;
     private javax.swing.JButton btn_Edit;
-    private javax.swing.JButton buttom_add2Book;
-    private javax.swing.JButton buttom_add2Book1;
+    private javax.swing.JButton btn_add2Book;
+    private javax.swing.JButton btn_upMem;
     private javax.swing.JButton button_cancel;
     private javax.swing.JButton button_submit;
     private javax.swing.JButton checkMembership;
@@ -1171,12 +1196,14 @@ public class Index_FRAME extends javax.swing.JFrame {
     private javax.swing.JButton icon_member;
     private javax.swing.JButton icon_memberShip;
     private javax.swing.JPanel index_Panel;
+    private javax.swing.JLabel info_active_label;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label_Address;
     private javax.swing.JLabel label_Email;
     private javax.swing.JLabel label_address;

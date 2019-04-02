@@ -31,7 +31,7 @@ public class DataDomain {
         /*0 - username , 1 - pw encrypted*/
         int checkUser=dataAction.checkUsername(data.get(0));
         
-        if(dataAction.checkUsername(data.get(0))==1){
+        if(checkUser==1){
             
             if(dataAction.checkPassword(data)==1){
                 calls.alertINFO("Log in... ");
