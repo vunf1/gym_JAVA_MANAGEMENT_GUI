@@ -19,7 +19,7 @@ import javax.swing.ImageIcon;
 public class loginFrame extends javax.swing.JFrame {
     
     
-    public static final Color backgroundColor = new Color(90, 90, 90);
+    public static final Color backgroundColor = new Color(180, 180, 180);
     private static HomeController controller = new HomeController();
     private static EncryptClass encrypt= new EncryptClass();
     

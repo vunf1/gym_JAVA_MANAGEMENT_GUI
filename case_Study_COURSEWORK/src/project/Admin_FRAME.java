@@ -48,7 +48,7 @@ public class Admin_FRAME extends javax.swing.JFrame {
     private static HomeController controller = new HomeController();
     private static EncryptClass encrypt= new EncryptClass();
     
-    public static final Color backgroundColor = new Color(47, 47, 47);
+    public static final Color backgroundColor = new Color(180, 180, 180);
     protected DateTimer timerThread;
     
     protected GraphicsConfiguration gc;
@@ -286,7 +286,7 @@ public class Admin_FRAME extends javax.swing.JFrame {
         label_users_info.setForeground(new java.awt.Color(255, 0, 0));
         label_users_info.setText("<no. member>");
         left_panel.add(label_users_info, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 410, 42, 47));
-        left_panel.add(icon_logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 320, 150));
+        left_panel.add(icon_logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 290, 150));
         left_panel.add(label_time, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, 20));
         left_panel.add(label_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, 20));
 

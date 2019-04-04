@@ -534,7 +534,6 @@ public class DataBase_mySQL {
      */
     public static int  deleteRequestROW(String idMember) {
        
-        counter=0;
         
         try {
             Connection conn = DriverManager.getConnection(connectionURL, uName, uPass);

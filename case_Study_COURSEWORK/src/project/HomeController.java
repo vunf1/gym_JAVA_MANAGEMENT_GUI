@@ -40,15 +40,18 @@ public class HomeController {
     private static loginFrame loginFrame;//Login Frame - Index
     private static Admin_FRAME Admin_FRAME;//Admin Frame - ClubAdvisor, ClubManager
     private static Index_FRAME index_FRAME;//Member Frame
+    private static HomeController con;
     
-    
+    private static String[] argss;
    
     
     /**
      *
      * Main 
+     * @param args
      */
     public static void main(String[] args) {
+        argss=args;
         loginFrame = new loginFrame();
         
         loginFrame.imgInitSetup();
@@ -128,10 +131,12 @@ public class HomeController {
         
         if(data.equals("admin")){
             Admin_FRAME.setVisible(false);
-            loginFrame.setVisible(true);
+            con= new HomeController();
+            con.main(argss);
         }else{
             index_FRAME.setVisible(false);
-            loginFrame.setVisible(true);
+            con= new HomeController();
+            con.main(argss);
         }
         
     };
