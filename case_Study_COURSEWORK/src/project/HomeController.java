@@ -37,10 +37,10 @@ public class HomeController {
     
     
     
-    private static loginFrame loginFrame;//Login Frame - Index
-    private static Admin_FRAME Admin_FRAME;//Admin Frame - ClubAdvisor, ClubManager
-    private static Index_FRAME index_FRAME;//Member Frame
-    private static HomeController con;
+    private static loginFrame loginFrame = null;//Login Frame - Index
+    private static Admin_FRAME Admin_FRAME = null;//Admin Frame - ClubAdvisor, ClubManager
+    private static Index_FRAME index_FRAME =null;//Member Frame
+    private static HomeController con = null;
     
     private static String[] argss;
    
@@ -51,11 +51,19 @@ public class HomeController {
      * @param args
      */
     public static void main(String[] args) {
-        argss=args;
-        loginFrame = new loginFrame();
+        argss=args;//save args came from compiler
         
-        loginFrame.imgInitSetup();
-        loginFrame.setVisible(true);
+        
+            if(loginFrame == null) {
+                loginFrame = new loginFrame();
+                loginFrame.imgInitSetup();
+                loginFrame.setVisible(true);
+            }else{
+            
+                loginFrame.imgInitSetup();
+                loginFrame.setVisible(true);
+                
+            }
         
         
     }
@@ -126,17 +134,26 @@ public class HomeController {
      
     
     /*Log Out from frame */
-    public static void logOut(String data){
+    public  void logOut(String data){
         
         
         if(data.equals("admin")){
             Admin_FRAME.setVisible(false);
-            con= new HomeController();
-            con.main(argss);
+            if(con == null) {
+                con = new HomeController();
+                con.main(argss);
+            }else{
+                con.main(argss);
+            }
+            
         }else{
             index_FRAME.setVisible(false);
-            con= new HomeController();
-            con.main(argss);
+            if(con == null) {
+                con = new HomeController();
+                con.main(argss);
+            }else{
+                con.main(argss);
+            }
         }
         
     };
@@ -149,25 +166,56 @@ public class HomeController {
         loginFrame.setVisible(false);
         
         if(dataAction.checkAdmin(username)==1){
-            Admin_FRAME = new Admin_FRAME();
-            Admin_FRAME.displayUser();
-            Admin_FRAME.ImageIconSetup(1);
-            Admin_FRAME.noOnAdvisor(0);
-            Admin_FRAME.setVisible(true);
+            
+            
+            if(Admin_FRAME == null) {
+                Admin_FRAME = new Admin_FRAME();
+                Admin_FRAME.displayUser();
+                Admin_FRAME.ImageIconSetup(1);
+                Admin_FRAME.noOnAdvisor(0);
+                Admin_FRAME.setVisible(true);
+                
+            }else{
+                Admin_FRAME.displayUser();
+                Admin_FRAME.ImageIconSetup(1);
+                Admin_FRAME.noOnAdvisor(0);
+                Admin_FRAME.setVisible(true);
+            }
         
         }if(dataAction.checkAdmin(username)==2){
-            Admin_FRAME = new Admin_FRAME();
-            Admin_FRAME.displayUser();
-            Admin_FRAME.ImageIconSetup(2);
-            Admin_FRAME.noOnAdvisor(1);
-            Admin_FRAME.setVisible(true);
+            
+            
+            if(Admin_FRAME == null) {
+                
+                Admin_FRAME = new Admin_FRAME();
+                Admin_FRAME.displayUser();
+                Admin_FRAME.ImageIconSetup(2);
+                Admin_FRAME.noOnAdvisor(1);
+                Admin_FRAME.setVisible(true);
+            }else{
+                Admin_FRAME.displayUser();
+                Admin_FRAME.ImageIconSetup(2);
+                Admin_FRAME.noOnAdvisor(1);
+                Admin_FRAME.setVisible(true);
+            }
         
         }
         if(dataAction.checkAdmin(username)==0){
-            index_FRAME = new Index_FRAME(); 
-            index_FRAME.displayUser(varUser);
-            index_FRAME.initFrame();
-            index_FRAME.setVisible(true);
+            
+            
+            if(index_FRAME == null) {
+                
+                index_FRAME = new Index_FRAME();
+                index_FRAME.displayUser(varUser);
+                index_FRAME.initFrame();
+                index_FRAME.setVisible(true); 
+            }else{
+                
+                index_FRAME.displayUser(varUser);
+                index_FRAME.initFrame();
+                index_FRAME.setVisible(true);
+                
+            }
         
         }
         
@@ -179,11 +227,22 @@ public class HomeController {
     public static void callMemberFrame_Admin(int op){
         if(op==1){
             Admin_FRAME.setVisible(false);   
-            index_FRAME = new Index_FRAME();
-            index_FRAME.displayUser(varUser);
-            index_FRAME.backToAdmin.setVisible(true);
-            index_FRAME.initFrame();
-            index_FRAME.setVisible(true);
+            
+            
+            if(index_FRAME == null) {
+                
+                index_FRAME = new Index_FRAME();
+                index_FRAME.displayUser(varUser);
+                index_FRAME.backToAdmin.setVisible(true);
+                index_FRAME.initFrame();
+                index_FRAME.setVisible(true);
+            }else{
+                
+                index_FRAME.displayUser(varUser);
+                index_FRAME.backToAdmin.setVisible(true);
+                index_FRAME.initFrame();
+                index_FRAME.setVisible(true);
+            }
         }else{
             
             index_FRAME.setVisible(false);  
