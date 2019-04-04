@@ -56,7 +56,7 @@ public class EncryptClassTest {
         String expResult = "BAFAE753CC0E35F04914BB0934D26072";
         String result = EncryptClass.setPassword2Hash(password);
         assertEquals(expResult, result);
-        System.out.print(GREEN+"\t**Test Passed**"+_RESET);
+        System.out.print(GREEN+"\t\t**Test Passed**"+_RESET);
         System.out.println();
         
     }
@@ -71,7 +71,7 @@ public class EncryptClassTest {
         String expResult = "tesTencryption";
         String result = EncryptClass.getPlainText(encrypPW);
         assertEquals(expResult, result);
-        System.out.print(GREEN+"\t**Test Passed**"+_RESET);
+        System.out.print(GREEN+"\t\t**Test Passed**"+_RESET);
         System.out.println();
         
     }

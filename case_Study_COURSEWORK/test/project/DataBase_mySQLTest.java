@@ -96,7 +96,7 @@ public class DataBase_mySQLTest {
         String username = "qw";
         JSONArray result = DataBase_mySQL.getUserData_(username);
         assertNotNull(result);
-        System.out.print(GREEN+"\t**Test Passed**"+_RESET);
+        System.out.print(GREEN+"\t\t**Test Passed**"+_RESET);
         System.out.println();
         
     }
@@ -209,7 +209,7 @@ public class DataBase_mySQLTest {
         int expResult = 1;
         int result = DataBase_mySQL.checkPassword(data);
         assertEquals(expResult ,result);
-        System.out.print(GREEN+"\t**Test Passed**"+_RESET);
+        System.out.print(GREEN+"\t\t**Test Passed**"+_RESET);
         System.out.println();
         
     }
